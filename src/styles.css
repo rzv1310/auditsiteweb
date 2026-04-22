@@ -290,6 +290,85 @@
     @apply py-20 sm:py-24;
   }
 
+  .journey-tabs {
+    @apply w-full;
+  }
+
+  .journey-heading-wrap {
+    @apply border-b pb-10;
+    border-color: var(--color-border);
+  }
+
+  .journey-eyebrow {
+    @apply text-sm font-semibold uppercase tracking-[0.14em] sm:text-base;
+    color: var(--hero-copy);
+  }
+
+  .journey-tabs-list {
+    @apply mt-6 flex h-auto w-full flex-wrap justify-start gap-4 rounded-none bg-transparent p-0;
+  }
+
+  .journey-tab-trigger {
+    @apply min-h-16 rounded-[1.1rem] border px-6 py-4 text-left text-xl font-extrabold text-foreground transition duration-200 ease-out sm:px-8 sm:text-[2rem];
+    border-color: var(--color-border);
+    background: transparent;
+  }
+
+  .journey-tab-trigger:hover {
+    border-color: var(--cta-bg);
+    color: var(--cta-foreground);
+  }
+
+  .journey-tab-trigger[data-state="active"] {
+    border-color: var(--cta-bg);
+    background: var(--surface);
+    color: var(--cta-foreground);
+    box-shadow: inset 0 0 0 4px oklch(0 0 0 / 0.55);
+  }
+
+  .journey-panel {
+    @apply mt-10;
+  }
+
+  .journey-list {
+    @apply flex flex-col gap-10;
+  }
+
+  .journey-item {
+    @apply grid gap-5 md:grid-cols-[4.5rem_minmax(0,1fr)] md:gap-8;
+  }
+
+  .journey-marker {
+    @apply flex flex-col items-center;
+  }
+
+  .journey-step {
+    @apply flex h-14 w-14 items-center justify-center rounded-full text-2xl font-bold;
+    background: oklch(0.95 0.03 24);
+    color: oklch(0.54 0.19 25);
+  }
+
+  .journey-line {
+    @apply mt-3 w-px flex-1;
+    background: var(--color-border);
+    min-height: 2rem;
+  }
+
+  .journey-content {
+    @apply max-w-[70rem] pt-1;
+  }
+
+  .journey-item-title {
+    @apply text-balance text-3xl leading-tight text-foreground sm:text-[2.35rem];
+    font-family: var(--font-body);
+    font-weight: 800;
+  }
+
+  .journey-item-body {
+    @apply mt-3 max-w-[62rem] text-pretty text-xl leading-[1.45] sm:text-[2rem];
+    color: var(--hero-copy);
+  }
+
   .feature-grid {
     @apply mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4;
   }
@@ -362,7 +441,8 @@
 @media (prefers-reduced-motion: reduce) {
   .cta-primary,
   .feature-icon-box,
-  .signal-divider::after {
+  .signal-divider::after,
+  .journey-tab-trigger {
     animation: none !important;
     transition: none !important;
     transform: none !important;
