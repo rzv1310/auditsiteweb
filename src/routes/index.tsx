@@ -97,7 +97,7 @@ function Index() {
             {auditPillars.map(({ icon: Icon, title }) => (
               <article key={title} className="feature-card">
                 <div className="feature-icon-box" aria-hidden="true">
-                  <Icon className="size-10" strokeWidth={1.75} />
+                  <Icon className="feature-icon size-10" strokeWidth={1.75} />
                 </div>
                 <p className="feature-title">{title}</p>
               </article>
