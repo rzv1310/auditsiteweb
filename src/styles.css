@@ -714,14 +714,32 @@
 
   .hero-side {
     min-height: 0;
-    height: min(68vh, 640px);
+    height: min(60vh, 560px);
     align-self: center;
   }
 
   .hero-frame {
     min-height: 0;
     height: 100%;
-    max-height: min(68vh, 640px);
+    max-height: min(60vh, 560px);
+    padding: clamp(1rem, 1.8vw, 1.5rem);
+  }
+
+  .hero-frame::before {
+    inset: auto 10% 10% auto;
+    width: clamp(140px, 16vw, 220px);
+  }
+
+  .hero-frame::after {
+    inset: 8% auto auto 10%;
+    width: clamp(88px, 9vw, 128px);
+    height: clamp(220px, 30vh, 320px);
+  }
+
+  .audit-preview-card {
+    max-width: 720px;
+    padding-inline: clamp(1rem, 1.7vw, 1.5rem);
+    padding-block: clamp(1rem, 1.8vw, 1.5rem);
   }
 
   .display-hero {
