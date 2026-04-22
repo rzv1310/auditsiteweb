@@ -232,8 +232,6 @@ export function HeroAuditPreview() {
       aria-label="Previzualizare audit website cu scor general și trei metrici cheie"
     >
       <div className="audit-preview-topbar">
-        <div className="audit-preview-badge">{label}</div>
-
         <div className="audit-preview-nav" aria-label="Schimbă auditul demo">
           <button
             type="button"
@@ -243,6 +241,7 @@ export function HeroAuditPreview() {
           >
             <ChevronLeft className="size-5" aria-hidden="true" />
           </button>
+          <div className="audit-preview-badge">{label}</div>
           <button
             type="button"
             className="audit-preview-nav-button"
