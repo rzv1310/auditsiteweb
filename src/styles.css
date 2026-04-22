@@ -677,12 +677,16 @@
    }
 
    .journey-tabs-list {
-     @apply mt-4 flex-col items-stretch gap-3;
+    @apply mt-4 flex flex-wrap justify-start gap-2;
    }
 
    .journey-tab-trigger {
-     @apply w-full text-center;
-     min-height: 3.75rem;
+    @apply w-auto text-center;
+    min-height: 3rem;
+    max-width: 100%;
+    padding-inline: 0.9rem;
+    padding-block: 0.65rem;
+    font-size: 0.95rem;
    }
 
    .journey-panel {
