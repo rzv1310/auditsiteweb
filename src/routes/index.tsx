@@ -228,7 +228,7 @@ function Index() {
               <div className="journey-tabs-carousel" aria-label="Tipuri de site-uri auditate">
                 <Carousel
                   setApi={setCarouselApi}
-                  opts={{ align: "start", loop: false }}
+                  opts={{ align: "center", loop: false }}
                   className="journey-carousel-shell"
                 >
                   <CarouselContent className="journey-carousel-track">
