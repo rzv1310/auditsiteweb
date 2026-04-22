@@ -236,7 +236,7 @@ function Index() {
                       <CarouselItem key={value} className="journey-carousel-item basis-[78%]">
                         <button
                           type="button"
-                          className="journey-carousel-chip"
+                          className={`journey-carousel-chip ${activeJourney === value ? "is-active" : ""}`}
                           onClick={() => setActiveJourney(value)}
                           aria-pressed={activeJourney === value}
                         >

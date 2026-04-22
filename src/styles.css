@@ -505,9 +505,16 @@
     font-size: 0.8rem;
     line-height: 1;
     border-color: oklch(0.98 0 0);
-    background: var(--color-primary);
+    background: color-mix(in oklab, var(--color-background) 88%, black);
+    box-shadow: inset 0 0 0 1px oklch(0.98 0 0 / 0.12);
     color: oklch(0.98 0 0);
     font-family: var(--font-body);
+  }
+
+  .journey-carousel-chip.is-active {
+    background: var(--color-primary);
+    box-shadow: inset 0 0 0 2px oklch(0.98 0 0 / 0.28);
+    color: oklch(0.98 0 0);
   }
 
   .journey-tab-trigger {
