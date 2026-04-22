@@ -372,7 +372,11 @@
   }
 
   .audit-meter-track {
-    display: none;
+    display: block;
+    width: 100%;
+    height: 0.48rem;
+    overflow: hidden;
+    background: color-mix(in oklab, var(--color-border) 78%, black);
   }
 
   .audit-meter-fill {
@@ -706,7 +710,7 @@
   }
 
   .hero-stack {
-    --hero-desktop-rail-height: clamp(38rem, 76svh, 50rem);
+    --hero-desktop-rail-height: clamp(41rem, 82svh, 54rem);
     min-height: calc(100svh - clamp(2.5rem, 5.6vh, 5rem));
     align-items: stretch;
   }
@@ -787,11 +791,11 @@
 
   .hero-side .audit-metrics {
     margin-top: auto;
-    gap: 0.48rem;
+    gap: 0.62rem;
   }
 
   .hero-side .audit-metric-head {
-    margin-bottom: 0.18rem;
+    margin-bottom: 0.28rem;
   }
 
   .hero-side .audit-metric-label,
@@ -800,7 +804,7 @@
   }
 
   .hero-side .audit-meter-track {
-    height: 0.42rem;
+    height: 0.5rem;
   }
 
   .hero-side .audit-preview-divider {
