@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
+import { HeroAuditPreview } from "@/components/hero-audit-preview";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const Route = createFileRoute("/")({
@@ -161,8 +162,10 @@ function Index() {
               </div>
             </div>
 
-            <div className="hero-side" aria-hidden="true">
-              <div className="hero-frame" />
+            <div className="hero-side">
+              <div className="hero-frame">
+                <HeroAuditPreview />
+              </div>
             </div>
           </div>
         </div>
