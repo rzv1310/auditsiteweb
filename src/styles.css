@@ -256,7 +256,7 @@
   .display-section {
     font-family: var(--font-display);
     font-size: clamp(2.1rem, 5.4vw, 4.8rem);
-    line-height: 1.06;
+    line-height: 1.2;
     text-transform: uppercase;
     text-wrap: balance;
   }
