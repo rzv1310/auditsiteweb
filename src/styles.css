@@ -70,7 +70,7 @@
   --card-foreground: oklch(0.97 0 0);
   --popover: oklch(0.14 0 0);
   --popover-foreground: oklch(0.97 0 0);
-  --primary: oklch(0.538 0.211 30.763);
+  --primary: oklch(0.64 0.25 29);
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.18 0 0);
   --secondary-foreground: oklch(0.92 0 0);
@@ -82,20 +82,20 @@
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.24 0 0);
   --input: oklch(0.24 0 0);
-  --ring: oklch(0.538 0.211 30.763);
-  --chart-1: oklch(0.538 0.211 30.763);
+  --ring: oklch(0.64 0.25 29);
+  --chart-1: oklch(0.64 0.25 29);
   --chart-2: oklch(0.82 0.16 80);
   --chart-3: oklch(0.74 0.17 150);
   --chart-4: oklch(0.72 0.13 260);
   --chart-5: oklch(0.68 0.18 15);
   --sidebar: oklch(0.14 0 0);
   --sidebar-foreground: oklch(0.97 0 0);
-  --sidebar-primary: oklch(0.538 0.211 30.763);
+  --sidebar-primary: oklch(0.64 0.25 29);
   --sidebar-primary-foreground: oklch(0.98 0 0);
   --sidebar-accent: oklch(0.18 0 0);
   --sidebar-accent-foreground: oklch(0.97 0 0);
   --sidebar-border: oklch(0.24 0 0);
-  --sidebar-ring: oklch(0.538 0.211 30.763);
+  --sidebar-ring: oklch(0.64 0.25 29);
   --surface: oklch(0.15 0 0);
   --surface-strong: oklch(0.2 0 0);
   --hero-copy: oklch(0.79 0 0);
@@ -104,7 +104,7 @@
   --cta-bg-hover: oklch(0.66 0.2 146);
   --cta-foreground: oklch(0.98 0 0);
   --shadow-hero: 0 24px 80px oklch(0 0 0 / 0.42);
-  --shadow-accent: 0 0 0 1px oklch(0.538 0.211 30.763 / 0.35), 0 18px 50px oklch(0.538 0.211 30.763 / 0.18);
+  --shadow-accent: 0 0 0 1px oklch(0.64 0.25 29 / 0.35), 0 18px 50px oklch(0.64 0.25 29 / 0.18);
   --font-display: "Anton", sans-serif;
   --font-body: "Manrope", sans-serif;
 }
@@ -116,8 +116,8 @@
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
   --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.538 0.211 30.763);
-  --primary-foreground: oklch(0.98 0 0);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
@@ -232,7 +232,7 @@
     width: clamp(180px, 22vw, 320px);
     aspect-ratio: 1;
     border: 1px solid var(--color-primary);
-    background: oklch(0.538 0.211 30.763 / 0.08);
+    background: oklch(0.64 0.25 29 / 0.08);
   }
 
   .hero-frame::after {
@@ -241,7 +241,7 @@
     inset: 10% auto auto 12%;
     width: clamp(120px, 14vw, 200px);
     height: clamp(320px, 46vh, 480px);
-    background: linear-gradient(180deg, var(--color-primary), oklch(0.46 0.181 29.804));
+    background: linear-gradient(180deg, var(--color-primary), oklch(0.7 0.19 23));
     box-shadow: var(--shadow-accent);
   }
 
@@ -359,8 +359,8 @@
 
   .journey-step {
     @apply flex h-14 w-14 items-center justify-center rounded-full text-2xl font-bold;
-    background: oklch(0.93 0.02 30.763);
-    color: oklch(0.538 0.211 30.763);
+    background: oklch(0.95 0.03 24);
+    color: oklch(0.54 0.19 25);
   }
 
   .journey-line {
