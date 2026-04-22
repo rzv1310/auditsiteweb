@@ -499,10 +499,10 @@
 
   .journey-carousel-chip {
     @apply w-full rounded-[1.1rem] border text-center font-extrabold;
-    min-height: 2.6rem;
-    padding-inline: 0.75rem;
-    padding-block: 0.5rem;
-    font-size: 0.86rem;
+    min-height: 2.3rem;
+    padding-inline: 0.65rem;
+    padding-block: 0.4rem;
+    font-size: 0.8rem;
     line-height: 1;
     border-color: oklch(0.98 0 0);
     background: var(--color-primary);
@@ -714,7 +714,7 @@
    }
 
    .journey-carousel-item {
-     flex-basis: 66%;
+     flex-basis: 60%;
    }
 
    .journey-panel {
