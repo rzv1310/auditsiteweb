@@ -365,7 +365,7 @@
   }
 
   .journey-item-body {
-    @apply mt-3 max-w-[62rem] text-pretty text-xl leading-[1.45] sm:text-[2rem];
+    @apply mt-3 max-w-[62rem] text-pretty text-[1.25rem] leading-[1.45] sm:text-[2rem];
     color: var(--hero-copy);
   }
 
@@ -394,7 +394,7 @@
   }
 
   .feature-title {
-    @apply max-w-[16ch] text-[1.75rem] font-medium leading-tight;
+    @apply max-w-[16ch] text-[1.25rem] font-medium leading-tight sm:text-[2rem];
   }
 
   .mid-callout {
