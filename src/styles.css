@@ -369,7 +369,7 @@
     height: 100%;
     width: var(--meter-value);
     background: var(--audit-low);
-    transition: width 240ms ease, filter 240ms ease;
+    transition: width 1000ms ease-out, filter 240ms ease;
   }
 
   .audit-meter-fill.is-low {
