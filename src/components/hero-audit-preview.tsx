@@ -154,7 +154,12 @@ export function HeroAuditPreview() {
 
       <div className="audit-preview-header">
         <div
-          className="audit-score-ring"
+          className={cn(
+            "audit-score-ring",
+            overallScore < 50 && "is-low",
+            overallScore >= 50 && overallScore <= 79 && "is-medium",
+            overallScore > 79 && "is-high",
+          )}
           style={{
             ["--score-value" as string]: `${animatedScore}`,
           } as React.CSSProperties}

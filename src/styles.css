@@ -285,11 +285,23 @@
 
   .audit-score-ring {
     --ring-track: oklch(0.24 0 0);
-    --ring-fill: var(--color-primary);
+    --ring-fill: var(--audit-low);
     @apply relative grid shrink-0 place-items-center rounded-full;
     width: clamp(92px, 9vw, 148px);
     aspect-ratio: 1;
     background: conic-gradient(var(--ring-fill) calc(var(--score-value) * 1%), var(--ring-track) 0);
+  }
+
+  .audit-score-ring.is-low {
+    --ring-fill: var(--audit-low);
+  }
+
+  .audit-score-ring.is-medium {
+    --ring-fill: var(--audit-medium);
+  }
+
+  .audit-score-ring.is-high {
+    --ring-fill: var(--audit-high);
   }
 
   .audit-score-ring::before {
