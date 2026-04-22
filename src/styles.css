@@ -103,6 +103,9 @@
   --cta-bg: oklch(0.72 0.22 146);
   --cta-bg-hover: oklch(0.66 0.2 146);
   --cta-foreground: oklch(0.98 0 0);
+  --audit-low: oklch(0.64 0.25 29);
+  --audit-medium: oklch(0.72 0.18 55);
+  --audit-high: oklch(0.72 0.22 146);
   --shadow-hero: 0 24px 80px oklch(0 0 0 / 0.42);
   --shadow-accent: 0 0 0 1px oklch(0.64 0.25 29 / 0.35), 0 18px 50px oklch(0.64 0.25 29 / 0.18);
   --font-display: "Anton", sans-serif;
@@ -338,12 +341,20 @@
   .audit-meter-fill {
     height: 100%;
     width: var(--meter-value);
-    background: var(--cta-bg);
+    background: var(--audit-low);
     transition: width 240ms ease, filter 240ms ease;
   }
 
-  .audit-meter-fill.is-alert {
-    background: var(--color-primary);
+  .audit-meter-fill.is-low {
+    background: var(--audit-low);
+  }
+
+  .audit-meter-fill.is-medium {
+    background: var(--audit-medium);
+  }
+
+  .audit-meter-fill.is-high {
+    background: var(--audit-high);
   }
 
   .audit-metric-row.is-active .audit-meter-fill {

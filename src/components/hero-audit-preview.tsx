@@ -21,74 +21,89 @@ const demoAudits = [
   {
     id: "local-services",
     label: "Audit • București • 2026",
-    metrics: {
-      seo: 83,
-      cro: 61,
-      accessibility: 74,
-      performance: 58,
-      security: 91,
-      content: 79,
-      technical: 72,
-      legal: 66,
-      mobile: 63,
-      ux: 76,
+    overallScore: 45,
+    profile: {
+      seo: 4,
+      cro: -5,
+      accessibility: -1,
+      performance: -10,
+      security: 8,
+      content: 2,
+      technical: -4,
+      legal: -3,
+      mobile: -6,
+      ux: 1,
     },
   },
   {
     id: "online-store",
     label: "Audit • Cluj-Napoca • 2026",
-    metrics: {
-      seo: 76,
-      cro: 57,
-      accessibility: 68,
-      performance: 49,
-      security: 87,
-      content: 71,
-      technical: 64,
-      legal: 59,
-      mobile: 54,
-      ux: 69,
+    overallScore: 62,
+    profile: {
+      seo: 8,
+      cro: -2,
+      accessibility: 3,
+      performance: -8,
+      security: 7,
+      content: 2,
+      technical: -1,
+      legal: -4,
+      mobile: -6,
+      ux: 1,
     },
   },
   {
     id: "lead-gen",
     label: "Audit • Timișoara • 2026",
-    metrics: {
-      seo: 88,
-      cro: 64,
-      accessibility: 81,
-      performance: 54,
-      security: 93,
-      content: 84,
-      technical: 77,
-      legal: 69,
-      mobile: 61,
-      ux: 82,
+    overallScore: 48,
+    profile: {
+      seo: 6,
+      cro: -4,
+      accessibility: 0,
+      performance: -9,
+      security: 9,
+      content: 3,
+      technical: -3,
+      legal: -2,
+      mobile: -5,
+      ux: 5,
     },
   },
 ];
 
 function getMetricTone(value: number): DemoMetricTone {
-  return value >= 65 ? "good" : "alert";
+  return value >= 80 ? "good" : "alert";
+}
+
+function getMetricColor(value: number) {
+  if (value < 50) return "low" as const;
+  if (value <= 79) return "medium" as const;
+  return "high" as const;
+}
+
+function clampMetric(value: number) {
+  return Math.max(18, Math.min(96, value));
 }
 
 export function HeroAuditPreview() {
   const { label, metrics, overallScore } = React.useMemo(() => {
     const selectedAudit = demoAudits[Math.floor(Math.random() * demoAudits.length)] ?? demoAudits[0];
-    const selectedMetrics = Object.entries(selectedAudit.metrics).map(([key, value]) => ({
+    const selectedMetrics = Object.entries(selectedAudit.profile).map(([key, offset]) => {
+      const value = clampMetric(selectedAudit.overallScore + offset);
+
+      return {
       key,
       label: metricLabels[key as keyof typeof metricLabels],
       value,
       tone: getMetricTone(value),
-    }));
-    const score = Math.round(
-      selectedMetrics.reduce((sum, metric) => sum + metric.value, 0) / selectedMetrics.length,
-    );
+      color: getMetricColor(value),
+      };
+    });
 
     return {
       label: selectedAudit.label,
       metrics: selectedMetrics,
-      overallScore: score,
+      overallScore: selectedAudit.overallScore,
     };
   }, []);
 
@@ -137,7 +152,13 @@ export function HeroAuditPreview() {
 
             <div className="audit-meter-track" aria-hidden="true">
               <div
-                className={cn("audit-meter-fill", metric.tone === "alert" && "is-alert")}
+                className={cn(
+                  "audit-meter-fill",
+                  metric.tone === "alert" && "is-alert",
+                  metric.color === "low" && "is-low",
+                  metric.color === "medium" && "is-medium",
+                  metric.color === "high" && "is-high",
+                )}
                 style={{
                   ["--meter-value" as string]: `${metric.value}%`,
                 } as React.CSSProperties}
