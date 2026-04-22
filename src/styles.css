@@ -366,10 +366,10 @@
   }
 
   .journey-item-body {
-    @apply mt-3 max-w-[62rem] text-pretty text-xl leading-[1.45] sm:text-[2rem];
+    @apply mt-3 max-w-[62rem] text-pretty text-base leading-[1.6] sm:text-xl lg:text-[1.38rem];
     color: var(--hero-copy);
     font-family: var(--font-body);
-    font-weight: 800;
+    font-weight: 400;
   }
 
   .feature-grid {
