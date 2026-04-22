@@ -4,46 +4,90 @@ import { cn } from "@/lib/utils";
 
 type DemoMetricTone = "good" | "alert";
 
+const metricLabels = {
+  seo: "SEO",
+  cro: "CRO (Rata de conversie)",
+  accessibility: "Accesibilitate",
+  performance: "Performanță",
+  security: "Securitate",
+  content: "Conținut",
+  technical: "Tehnic",
+  legal: "Conformitate juridică",
+  mobile: "Experiență mobilă",
+  ux: "UX și design",
+} as const;
+
 const demoAudits = [
   {
     id: "local-services",
     label: "Audit • București • 2026",
-    metrics: [
-      { key: "seo", label: "SEO", value: 83, tone: "good" as DemoMetricTone },
-      { key: "performance", label: "Performanță", value: 58, tone: "alert" as DemoMetricTone },
-      { key: "security", label: "Securitate", value: 91, tone: "good" as DemoMetricTone },
-    ],
+    metrics: {
+      seo: 83,
+      cro: 61,
+      accessibility: 74,
+      performance: 58,
+      security: 91,
+      content: 79,
+      technical: 72,
+      legal: 66,
+      mobile: 63,
+      ux: 76,
+    },
   },
   {
     id: "online-store",
     label: "Audit • Cluj-Napoca • 2026",
-    metrics: [
-      { key: "seo", label: "SEO", value: 76, tone: "good" as DemoMetricTone },
-      { key: "performance", label: "Performanță", value: 49, tone: "alert" as DemoMetricTone },
-      { key: "security", label: "Securitate", value: 87, tone: "good" as DemoMetricTone },
-    ],
+    metrics: {
+      seo: 76,
+      cro: 57,
+      accessibility: 68,
+      performance: 49,
+      security: 87,
+      content: 71,
+      technical: 64,
+      legal: 59,
+      mobile: 54,
+      ux: 69,
+    },
   },
   {
     id: "lead-gen",
     label: "Audit • Timișoara • 2026",
-    metrics: [
-      { key: "seo", label: "SEO", value: 88, tone: "good" as DemoMetricTone },
-      { key: "performance", label: "Performanță", value: 54, tone: "alert" as DemoMetricTone },
-      { key: "security", label: "Securitate", value: 93, tone: "good" as DemoMetricTone },
-    ],
+    metrics: {
+      seo: 88,
+      cro: 64,
+      accessibility: 81,
+      performance: 54,
+      security: 93,
+      content: 84,
+      technical: 77,
+      legal: 69,
+      mobile: 61,
+      ux: 82,
+    },
   },
 ];
+
+function getMetricTone(value: number): DemoMetricTone {
+  return value >= 65 ? "good" : "alert";
+}
 
 export function HeroAuditPreview() {
   const { label, metrics, overallScore } = React.useMemo(() => {
     const selectedAudit = demoAudits[Math.floor(Math.random() * demoAudits.length)] ?? demoAudits[0];
+    const selectedMetrics = Object.entries(selectedAudit.metrics).map(([key, value]) => ({
+      key,
+      label: metricLabels[key as keyof typeof metricLabels],
+      value,
+      tone: getMetricTone(value),
+    }));
     const score = Math.round(
-      selectedAudit.metrics.reduce((sum, metric) => sum + metric.value, 0) / selectedAudit.metrics.length,
+      selectedMetrics.reduce((sum, metric) => sum + metric.value, 0) / selectedMetrics.length,
     );
 
     return {
       label: selectedAudit.label,
-      metrics: selectedAudit.metrics,
+      metrics: selectedMetrics,
       overallScore: score,
     };
   }, []);
