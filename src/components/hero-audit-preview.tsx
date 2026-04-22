@@ -23,10 +23,10 @@ const demoAudits = [
     id: "local-services",
     label: "Audit Stomatolog • București • 2026",
     metrics: {
-      seo: 91,
+      seo: 84,
       cro: 18,
       accessibility: 27,
-      performance: 14,
+      performance: 21,
       security: 83,
       content: 41,
       technical: 36,
