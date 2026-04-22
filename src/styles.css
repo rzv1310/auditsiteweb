@@ -196,17 +196,56 @@
   }
 
   .hero-section {
-    @apply flex min-h-screen items-center py-16 sm:py-20;
+    @apply flex min-h-screen items-center py-8 sm:py-10;
   }
 
   .hero-stack {
-    @apply max-w-[1040px];
+    @apply grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(280px,0.75fr)] lg:gap-16;
+  }
+
+  .hero-panel {
+    @apply max-w-[780px];
+  }
+
+  .hero-side {
+    @apply hidden lg:flex min-h-[72vh] items-end justify-end;
+  }
+
+  .hero-frame {
+    @apply relative h-full min-h-[520px] w-full overflow-hidden border;
+    border-color: var(--color-border);
+    background:
+      linear-gradient(180deg, oklch(0.16 0 0 / 0.1), oklch(0.12 0 0 / 0.7)),
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: auto, 80px 80px, 80px 80px;
+    box-shadow: var(--shadow-hero);
+  }
+
+  .hero-frame::before {
+    content: "";
+    position: absolute;
+    inset: auto 12% 14% auto;
+    width: clamp(180px, 22vw, 320px);
+    aspect-ratio: 1;
+    border: 1px solid var(--color-primary);
+    background: oklch(0.64 0.25 29 / 0.08);
+  }
+
+  .hero-frame::after {
+    content: "";
+    position: absolute;
+    inset: 10% auto auto 12%;
+    width: clamp(120px, 14vw, 200px);
+    height: clamp(320px, 46vh, 480px);
+    background: linear-gradient(180deg, var(--color-primary), oklch(0.7 0.19 23));
+    box-shadow: var(--shadow-accent);
   }
 
   .display-hero {
     font-family: var(--font-display);
     font-size: clamp(4.5rem, 12vw, 10.5rem);
-    line-height: 0.9;
+    line-height: 1.02;
     text-transform: uppercase;
     text-wrap: balance;
   }
@@ -214,7 +253,7 @@
   .display-section {
     font-family: var(--font-display);
     font-size: clamp(3.5rem, 9vw, 8rem);
-    line-height: 0.92;
+    line-height: 1.06;
     text-transform: uppercase;
     text-wrap: balance;
   }
@@ -224,12 +263,12 @@
   }
 
   .hero-copy {
-    @apply mt-8 max-w-4xl text-pretty text-lg leading-[1.65] sm:text-2xl;
+    @apply mt-6 max-w-4xl text-pretty text-base leading-[1.6] sm:text-xl lg:text-[1.38rem];
     color: var(--hero-copy);
   }
 
   .cta-row {
-    @apply mt-10 flex flex-wrap gap-4;
+    @apply mt-8 flex flex-wrap gap-4;
   }
 
   .cta-primary {
@@ -244,7 +283,7 @@
   }
 
   .section-block {
-    @apply py-24 sm:py-28;
+    @apply py-20 sm:py-24;
   }
 
   .feature-grid {

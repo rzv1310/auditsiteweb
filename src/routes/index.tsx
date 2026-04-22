@@ -46,32 +46,38 @@ function Index() {
       <section className="grid-stage hero-section">
         <div className="section-shell">
           <div className="hero-stack">
-            <h1 className="display-hero">
-              Site-ul tău
-              <br />
-              pierde clienți.
-              <br />
-              <span className="hero-accent">Noi îți spunem</span>
-              <br />
-              <span className="hero-accent">de ce.</span>
-            </h1>
+            <div className="hero-panel">
+              <h1 className="display-hero">
+                Site-ul tău
+                <br />
+                pierde clienți.
+                <br />
+                <span className="hero-accent">Noi îți spunem</span>
+                <br />
+                <span className="hero-accent">de ce.</span>
+              </h1>
 
-            <div className="hero-copy">
-              <p>
-                Indiferent că vinzi servicii sau produse, site-ul tău are un singur scop: să
-                transforme vizitatorii în clienți.
-              </p>
-              <p className="mt-4">
-                Auditul nostru îți arată exact unde se rupe lanțul și cum îl repari, în ordinea
-                corectă.
-              </p>
+              <div className="hero-copy">
+                <p>
+                  Indiferent că vinzi servicii sau produse, site-ul tău are un singur scop: să
+                  transforme vizitatorii în clienți.
+                </p>
+                <p className="mt-4">
+                  Auditul nostru îți arată exact unde se rupe lanțul și cum îl repari, în ordinea
+                  corectă.
+                </p>
+              </div>
+
+              <div className="cta-row">
+                <a className="cta-primary" href="#audit-focus">
+                  Vreau audit gratuit
+                  <ArrowRight className="size-6" aria-hidden="true" />
+                </a>
+              </div>
             </div>
 
-            <div className="cta-row">
-              <a className="cta-primary" href="#audit-focus">
-                Vreau audit gratuit
-                <ArrowRight className="size-6" aria-hidden="true" />
-              </a>
+            <div className="hero-side" aria-hidden="true">
+              <div className="hero-frame" />
             </div>
           </div>
         </div>
