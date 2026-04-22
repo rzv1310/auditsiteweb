@@ -232,7 +232,7 @@
     width: clamp(180px, 22vw, 320px);
     aspect-ratio: 1;
     border: 1px solid var(--color-primary);
-    background: oklch(0.538 0.211 30.763 / 0.08);
+    background: oklch(0.64 0.25 29 / 0.08);
   }
 
   .hero-frame::after {
@@ -241,7 +241,7 @@
     inset: 10% auto auto 12%;
     width: clamp(120px, 14vw, 200px);
     height: clamp(320px, 46vh, 480px);
-    background: linear-gradient(180deg, var(--color-primary), oklch(0.46 0.181 29.804));
+    background: linear-gradient(180deg, var(--color-primary), oklch(0.7 0.19 23));
     box-shadow: var(--shadow-accent);
   }
 
@@ -359,8 +359,8 @@
 
   .journey-step {
     @apply flex h-14 w-14 items-center justify-center rounded-full text-2xl font-bold;
-    background: oklch(0.93 0.02 30.763);
-    color: oklch(0.538 0.211 30.763);
+    background: oklch(0.95 0.03 24);
+    color: oklch(0.54 0.19 25);
   }
 
   .journey-line {
