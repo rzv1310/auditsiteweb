@@ -254,7 +254,7 @@
   }
 
   .audit-preview-topbar {
-    @apply mb-5 flex justify-center sm:mb-6;
+    @apply mb-7 flex justify-center sm:mb-8;
   }
 
   .audit-preview-badge {
