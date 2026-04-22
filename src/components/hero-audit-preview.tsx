@@ -7,6 +7,7 @@ type DemoMetricTone = "good" | "alert";
 const demoAudits = [
   {
     id: "local-services",
+    label: "Audit • București • 2026",
     metrics: [
       { key: "seo", label: "SEO", value: 83, tone: "good" as DemoMetricTone },
       { key: "performance", label: "Performanță", value: 58, tone: "alert" as DemoMetricTone },
@@ -15,6 +16,7 @@ const demoAudits = [
   },
   {
     id: "online-store",
+    label: "Audit • Cluj-Napoca • 2026",
     metrics: [
       { key: "seo", label: "SEO", value: 76, tone: "good" as DemoMetricTone },
       { key: "performance", label: "Performanță", value: 49, tone: "alert" as DemoMetricTone },
@@ -23,6 +25,7 @@ const demoAudits = [
   },
   {
     id: "lead-gen",
+    label: "Audit • Timișoara • 2026",
     metrics: [
       { key: "seo", label: "SEO", value: 88, tone: "good" as DemoMetricTone },
       { key: "performance", label: "Performanță", value: 54, tone: "alert" as DemoMetricTone },
@@ -32,13 +35,14 @@ const demoAudits = [
 ];
 
 export function HeroAuditPreview() {
-  const { metrics, overallScore } = React.useMemo(() => {
+  const { label, metrics, overallScore } = React.useMemo(() => {
     const selectedAudit = demoAudits[Math.floor(Math.random() * demoAudits.length)] ?? demoAudits[0];
     const score = Math.round(
       selectedAudit.metrics.reduce((sum, metric) => sum + metric.value, 0) / selectedAudit.metrics.length,
     );
 
     return {
+      label: selectedAudit.label,
       metrics: selectedAudit.metrics,
       overallScore: score,
     };
@@ -54,6 +58,8 @@ export function HeroAuditPreview() {
 
   return (
     <div className="audit-preview-card" role="img" aria-label="Previzualizare audit website cu scor general și trei metrici cheie">
+      <div className="audit-preview-badge">{label}</div>
+
       <div className="audit-preview-header">
         <div
           className="audit-score-ring"
