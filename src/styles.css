@@ -307,8 +307,11 @@
   .feature-icon-box {
     @apply mb-6 flex h-24 w-24 items-center justify-center border transition duration-200 ease-out;
     border-color: var(--color-primary);
-    color: var(--color-primary);
     background: oklch(0.14 0 0 / 0.55);
+  }
+
+  .feature-icon {
+    color: var(--cta-bg);
   }
 
   .feature-title {
