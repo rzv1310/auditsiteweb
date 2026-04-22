@@ -454,15 +454,16 @@
   }
 
   .journey-heading-wrap {
-    @apply border-b pb-10;
+    @apply border-b pb-8 sm:pb-10;
     border-color: var(--color-border);
   }
 
   .journey-heading-title {
-    @apply mx-auto max-w-5xl text-balance text-center;
+    @apply mx-auto max-w-5xl text-center;
     font-family: var(--font-display);
-    font-size: clamp(1.55rem, 4.6vw, 3.8rem);
-    line-height: 1.15;
+    font-size: clamp(1.75rem, 4.6vw, 4.15rem);
+    line-height: 1.08;
+    text-wrap: balance;
     text-transform: uppercase;
   }
 
