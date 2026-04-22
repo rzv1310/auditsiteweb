@@ -477,15 +477,21 @@
   }
 
   .journey-tabs-list {
-    @apply mt-6 flex h-auto w-full flex-wrap justify-start gap-4 rounded-none bg-transparent p-0;
+    @apply mt-5 flex h-auto w-full flex-wrap justify-start rounded-none bg-transparent p-0 sm:mt-6;
+    gap: clamp(0.65rem, 1.4vw, 1rem);
   }
 
   .journey-tab-trigger {
-    @apply min-h-12 rounded-[1.1rem] border px-3 py-2 text-center text-sm font-extrabold text-foreground transition duration-200 ease-out sm:min-h-16 sm:px-8 sm:py-4 sm:text-left sm:text-[2rem];
+    @apply rounded-[1.1rem] border text-center font-extrabold text-foreground transition duration-200 ease-out sm:text-left;
     border-color: oklch(0.98 0 0);
     background: var(--color-primary);
     color: oklch(0.98 0 0);
     font-family: var(--font-body);
+    min-height: clamp(2.9rem, 7vw, 4rem);
+    padding-inline: clamp(0.85rem, 2.4vw, 2rem);
+    padding-block: clamp(0.55rem, 1.5vw, 1rem);
+    font-size: clamp(0.88rem, 2vw, 2rem);
+    line-height: 1.05;
   }
 
   .journey-tab-trigger:hover {
@@ -502,15 +508,18 @@
   }
 
   .journey-panel {
-    @apply mt-10;
+    @apply mt-8 sm:mt-10;
   }
 
   .journey-list {
-    @apply flex flex-col gap-10;
+    @apply flex flex-col;
+    gap: clamp(1.6rem, 3vw, 2.5rem);
   }
 
   .journey-item {
-    @apply grid gap-5 md:grid-cols-[4.5rem_minmax(0,1fr)] md:gap-8;
+    @apply grid items-start;
+    gap: clamp(0.9rem, 2vw, 1.5rem);
+    grid-template-columns: clamp(3rem, 8vw, 4.5rem) minmax(0, 1fr);
   }
 
   .journey-marker {
@@ -518,32 +527,43 @@
   }
 
   .journey-step {
-    @apply flex h-14 w-14 items-center justify-center rounded-full text-2xl font-bold;
+    @apply flex items-center justify-center rounded-full font-bold;
     background: oklch(0.95 0.03 24);
     color: oklch(0.54 0.19 25);
+    width: clamp(2.7rem, 7vw, 3.5rem);
+    height: clamp(2.7rem, 7vw, 3.5rem);
+    font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+    line-height: 1;
   }
 
   .journey-line {
-    @apply mt-3 w-px flex-1;
+    @apply mt-2 w-px flex-1 sm:mt-3;
     background: var(--color-border);
-    min-height: 2rem;
+    min-height: clamp(1.5rem, 5vw, 2.5rem);
   }
 
   .journey-content {
-    @apply max-w-[70rem] pt-1;
+    @apply max-w-[70rem];
+    padding-top: clamp(0.1rem, 0.5vw, 0.25rem);
   }
 
   .journey-item-title {
-    @apply text-balance text-[1.125rem] leading-[1.3] text-foreground sm:text-[1.75rem] lg:text-[2rem];
+    @apply text-foreground;
     font-family: var(--font-body);
+    font-size: clamp(1rem, 2.4vw, 2rem);
     font-weight: 800;
+    line-height: 1.2;
+    text-wrap: balance;
   }
 
   .journey-item-body {
-    @apply mt-3 max-w-[62rem] text-pretty text-base leading-[1.6] sm:text-xl lg:text-[1.38rem];
+    @apply mt-2 max-w-[62rem] sm:mt-3;
     color: var(--hero-copy);
     font-family: var(--font-body);
     font-weight: 400;
+    font-size: clamp(0.95rem, 1.8vw, 1.38rem);
+    line-height: 1.58;
+    text-wrap: pretty;
   }
 
   .feature-grid {
