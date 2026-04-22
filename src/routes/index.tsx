@@ -90,7 +90,7 @@ function Index() {
           <h2 className="display-section text-center">
             <span className="lg:whitespace-nowrap">Concurența ta nu are un site mai bun.</span>
             <br />
-            <span className="hero-accent">Doar are un site mai bine optimizat.</span>
+            <span className="hero-accent lg:whitespace-nowrap">Doar are un site mai bine optimizat.</span>
           </h2>
 
           <div className="feature-grid">
