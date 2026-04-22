@@ -300,11 +300,15 @@
   }
 
   .journey-heading-title {
-    @apply max-w-5xl text-balance;
+    @apply mx-auto max-w-5xl text-balance text-center;
     font-family: var(--font-display);
     font-size: clamp(1.9rem, 4.8vw, 3.8rem);
     line-height: 1.15;
     text-transform: uppercase;
+  }
+
+  .journey-heading-accent {
+    color: var(--color-primary);
   }
 
   .journey-eyebrow {

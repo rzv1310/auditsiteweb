@@ -172,7 +172,9 @@ function Index() {
         <div className="section-shell">
           <Tabs defaultValue="services" className="journey-tabs">
             <div className="journey-heading-wrap">
-              <h2 className="journey-heading-title">Traseul unui vizitator pe un site neoptimizat</h2>
+              <h2 className="journey-heading-title">
+                Traseul unui vizitator pe un site <span className="journey-heading-accent">ne</span>optimizat
+              </h2>
               <TabsList className="journey-tabs-list" aria-label="Tipuri de site-uri auditate">
                 {journeyTabs.map(({ value, label }) => (
                   <TabsTrigger key={value} value={value} className="journey-tab-trigger">
