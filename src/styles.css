@@ -411,9 +411,9 @@
   }
 
   .feature-title {
-    @apply max-w-[16ch] text-xl leading-tight sm:text-[2rem];
+    @apply max-w-[16ch] text-base leading-[1.6] sm:text-xl lg:text-[1.38rem];
     font-family: var(--font-body);
-    font-weight: 800;
+    font-weight: 400;
   }
 
   .mid-callout {
