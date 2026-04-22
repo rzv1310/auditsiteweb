@@ -299,6 +299,14 @@
     border-color: var(--color-border);
   }
 
+  .journey-heading-title {
+    @apply max-w-5xl text-balance;
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4.8vw, 3.8rem);
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
   .journey-eyebrow {
     @apply text-sm font-semibold uppercase tracking-[0.14em] sm:text-base;
     color: var(--hero-copy);
@@ -360,7 +368,7 @@
   }
 
   .journey-item-title {
-    @apply text-balance text-3xl leading-tight text-foreground sm:text-[2.35rem];
+    @apply text-balance text-2xl leading-tight text-foreground sm:text-[1.75rem] lg:text-[2rem];
     font-family: var(--font-body);
     font-weight: 800;
   }
