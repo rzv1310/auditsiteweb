@@ -218,8 +218,7 @@
   }
 
   .hero-frame {
-    @apply relative flex h-full min-h-[520px] w-full items-center justify-center overflow-hidden border p-6 xl:p-8;
-    border-color: var(--color-border);
+    @apply relative flex h-full min-h-[520px] w-full items-center justify-center overflow-hidden p-6 xl:p-8;
     background:
       linear-gradient(180deg, oklch(0.16 0 0 / 0.1), oklch(0.12 0 0 / 0.7)),
       linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
@@ -249,19 +248,35 @@
   }
 
   .audit-preview-card {
-    @apply relative z-10 w-full max-w-[830px] border px-5 py-6 sm:px-8 sm:py-10;
-    border-color: var(--color-border);
+    @apply relative z-10 w-full max-w-[830px] px-5 py-6 sm:px-8 sm:py-10;
     background: color-mix(in oklab, var(--color-card) 92%, black);
     box-shadow: 0 18px 70px oklch(0 0 0 / 0.34);
   }
 
+  .audit-preview-topbar {
+    @apply mb-5 flex items-start justify-between gap-4 sm:mb-6;
+  }
+
   .audit-preview-badge {
-    @apply mb-5 inline-flex items-center border px-3 py-2 text-xs font-semibold uppercase sm:mb-6 sm:text-sm;
-    border-color: color-mix(in oklab, var(--color-primary) 40%, var(--color-border));
-    background: color-mix(in oklab, var(--color-primary) 12%, transparent);
-    color: var(--color-primary-foreground);
+    @apply text-xs font-semibold uppercase sm:text-sm;
+    color: var(--muted-foreground);
     font-family: var(--font-body);
     letter-spacing: 0.08em;
+    text-wrap: balance;
+  }
+
+  .audit-preview-nav {
+    @apply flex items-center gap-2;
+  }
+
+  .audit-preview-nav-button {
+    @apply inline-flex h-8 w-8 items-center justify-center transition duration-200 ease-out sm:h-9 sm:w-9;
+    color: var(--foreground);
+  }
+
+  .audit-preview-nav-button:hover {
+    color: var(--color-primary);
+    transform: translateY(-1px);
   }
 
   .audit-preview-header {

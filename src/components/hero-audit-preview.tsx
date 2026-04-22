@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ const metricLabels = {
 const demoAudits = [
   {
     id: "local-services",
-    label: "Audit • București • 2026",
+    label: "Audit Stomatolog • București • 2026",
     metrics: {
       seo: 85,
       cro: 39,
@@ -36,7 +37,7 @@ const demoAudits = [
   },
   {
     id: "online-store",
-    label: "Audit • Cluj-Napoca • 2026",
+    label: "Audit Magazin Online • Cluj-Napoca • 2026",
     metrics: {
       seo: 84,
       cro: 58,
@@ -52,7 +53,7 @@ const demoAudits = [
   },
   {
     id: "lead-gen",
-    label: "Audit • Timișoara • 2026",
+    label: "Audit Studio Pilates • Timișoara • 2026",
     metrics: {
       seo: 81,
       cro: 44,
@@ -79,8 +80,10 @@ function getMetricColor(value: number) {
 }
 
 export function HeroAuditPreview() {
+  const [selectedAuditIndex, setSelectedAuditIndex] = React.useState(0);
+
   const { label, metrics, overallScore } = React.useMemo(() => {
-    const selectedAudit = demoAudits[Math.floor(Math.random() * demoAudits.length)] ?? demoAudits[0];
+    const selectedAudit = demoAudits[selectedAuditIndex] ?? demoAudits[0];
     const selectedMetrics = Object.entries(selectedAudit.metrics).map(([key, value]) => {
       return {
         key,
@@ -99,19 +102,55 @@ export function HeroAuditPreview() {
       metrics: selectedMetrics,
       overallScore,
     };
-  }, []);
+  }, [selectedAuditIndex]);
 
   const [activeMetric, setActiveMetric] = React.useState(metrics[1].key);
   const [animatedScore, setAnimatedScore] = React.useState(0);
 
+  const changeAudit = React.useCallback((direction: "prev" | "next") => {
+    setSelectedAuditIndex((current) => {
+      if (direction === "prev") {
+        return current === 0 ? demoAudits.length - 1 : current - 1;
+      }
+
+      return current === demoAudits.length - 1 ? 0 : current + 1;
+    });
+  }, []);
+
   React.useEffect(() => {
+    setActiveMetric(metrics[1]?.key ?? metrics[0]?.key ?? "seo");
+  }, [metrics]);
+
+  React.useEffect(() => {
+    setAnimatedScore(0);
     const frame = window.requestAnimationFrame(() => setAnimatedScore(overallScore));
     return () => window.cancelAnimationFrame(frame);
-  }, []);
+  }, [overallScore]);
 
   return (
     <div className="audit-preview-card" role="img" aria-label="Previzualizare audit website cu scor general și trei metrici cheie">
-      <div className="audit-preview-badge">{label}</div>
+      <div className="audit-preview-topbar">
+        <div className="audit-preview-badge">{label}</div>
+
+        <div className="audit-preview-nav" aria-label="Schimbă auditul demo">
+          <button
+            type="button"
+            className="audit-preview-nav-button"
+            onClick={() => changeAudit("prev")}
+            aria-label="Auditul anterior"
+          >
+            <ChevronLeft className="size-5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            className="audit-preview-nav-button"
+            onClick={() => changeAudit("next")}
+            aria-label="Auditul următor"
+          >
+            <ChevronRight className="size-5" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
 
       <div className="audit-preview-header">
         <div
