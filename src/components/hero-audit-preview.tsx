@@ -238,6 +238,7 @@ export function HeroAuditPreview() {
             className="audit-preview-nav-button"
             onClick={() => changeAudit("prev")}
             aria-label="Auditul anterior"
+            title="Auditul anterior"
           >
             <ChevronLeft className="size-5" aria-hidden="true" />
           </button>
@@ -247,6 +248,7 @@ export function HeroAuditPreview() {
             className="audit-preview-nav-button"
             onClick={() => changeAudit("next")}
             aria-label="Auditul următor"
+            title="Auditul următor"
           >
             <ChevronRight className="size-5" aria-hidden="true" />
           </button>
