@@ -245,7 +245,7 @@
   .display-hero {
     font-family: var(--font-display);
     font-size: clamp(2.7rem, 7.2vw, 6.3rem);
-    line-height: 1.14;
+    line-height: 1.22;
     text-transform: uppercase;
     text-wrap: balance;
   }
