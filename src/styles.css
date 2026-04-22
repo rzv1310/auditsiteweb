@@ -695,6 +695,49 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: 100svh;
+    padding-block: clamp(1.25rem, 2.8vh, 2.5rem);
+  }
+
+  .hero-stack {
+    min-height: calc(100svh - clamp(2.5rem, 5.6vh, 5rem));
+    align-items: center;
+  }
+
+  .hero-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-side {
+    min-height: 0;
+    height: min(68vh, 640px);
+    align-self: center;
+  }
+
+  .hero-frame {
+    min-height: 0;
+    height: 100%;
+    max-height: min(68vh, 640px);
+  }
+
+  .display-hero {
+    font-size: clamp(2.6rem, 5vw, 5.35rem);
+    line-height: 1.04;
+  }
+
+  .hero-copy {
+    margin-top: clamp(1rem, 2vh, 1.5rem);
+  }
+
+  .cta-row {
+    margin-top: clamp(1.5rem, 2.6vh, 2rem);
+  }
+}
+
 @media (max-width: 639px) {
   .hero-frame {
     @apply p-4;
