@@ -1,7 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import * as React from "react";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
 import { HeroAuditPreview } from "@/components/hero-audit-preview";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const Route = createFileRoute("/")({
@@ -125,6 +132,38 @@ const journeyTabs = [
 ];
 
 function Index() {
+  const [activeJourney, setActiveJourney] = React.useState(journeyTabs[0]?.value ?? "services");
+  const [carouselApi, setCarouselApi] = React.useState<CarouselApi>();
+
+  React.useEffect(() => {
+    if (!carouselApi) return;
+
+    const onSelect = () => {
+      const selectedTab = journeyTabs[carouselApi.selectedScrollSnap()];
+      if (selectedTab) {
+        setActiveJourney(selectedTab.value);
+      }
+    };
+
+    onSelect();
+    carouselApi.on("select", onSelect);
+    carouselApi.on("reInit", onSelect);
+
+    return () => {
+      carouselApi.off("select", onSelect);
+      carouselApi.off("reInit", onSelect);
+    };
+  }, [carouselApi]);
+
+  React.useEffect(() => {
+    if (!carouselApi) return;
+
+    const nextIndex = journeyTabs.findIndex(({ value }) => value === activeJourney);
+    if (nextIndex >= 0 && carouselApi.selectedScrollSnap() !== nextIndex) {
+      carouselApi.scrollTo(nextIndex);
+    }
+  }, [activeJourney, carouselApi]);
+
   return (
     <main className="audit-page">
       <section className="grid-stage hero-section">
@@ -173,18 +212,41 @@ function Index() {
 
       <section className="section-block bg-background">
         <div className="section-shell">
-          <Tabs defaultValue="services" className="journey-tabs">
+          <Tabs value={activeJourney} onValueChange={setActiveJourney} className="journey-tabs">
             <div className="journey-heading-wrap">
               <h2 className="journey-heading-title">
                 Traseul unui vizitator pe un site <span className="journey-heading-accent">ne</span>optimizat
               </h2>
-              <TabsList className="journey-tabs-list" aria-label="Tipuri de site-uri auditate">
+              <TabsList className="journey-tabs-list journey-tabs-list-desktop" aria-label="Tipuri de site-uri auditate">
                 {journeyTabs.map(({ value, label }) => (
                   <TabsTrigger key={value} value={value} className="journey-tab-trigger">
                     {label}
                   </TabsTrigger>
                 ))}
               </TabsList>
+
+              <div className="journey-tabs-carousel" aria-label="Tipuri de site-uri auditate">
+                <Carousel
+                  setApi={setCarouselApi}
+                  opts={{ align: "start", loop: false }}
+                  className="journey-carousel-shell"
+                >
+                  <CarouselContent className="journey-carousel-track">
+                    {journeyTabs.map(({ value, label }) => (
+                      <CarouselItem key={value} className="journey-carousel-item basis-[78%]">
+                        <button
+                          type="button"
+                          className="journey-carousel-chip"
+                          onClick={() => setActiveJourney(value)}
+                          aria-pressed={activeJourney === value}
+                        >
+                          {label}
+                        </button>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                </Carousel>
+              </div>
             </div>
 
             {journeyTabs.map(({ value, items }) => (
