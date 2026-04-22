@@ -21,52 +21,49 @@ const demoAudits = [
   {
     id: "local-services",
     label: "Audit • București • 2026",
-    overallScore: 45,
-    profile: {
-      seo: 4,
-      cro: -5,
-      accessibility: -1,
-      performance: -10,
-      security: 8,
-      content: 2,
-      technical: -4,
-      legal: -3,
-      mobile: -6,
-      ux: 1,
+    metrics: {
+      seo: 85,
+      cro: 39,
+      accessibility: 38,
+      performance: 30,
+      security: 82,
+      content: 40,
+      technical: 37,
+      legal: 31,
+      mobile: 33,
+      ux: 35,
     },
   },
   {
     id: "online-store",
     label: "Audit • Cluj-Napoca • 2026",
-    overallScore: 62,
-    profile: {
-      seo: 8,
-      cro: -2,
-      accessibility: 3,
-      performance: -8,
-      security: 7,
-      content: 2,
-      technical: -1,
-      legal: -4,
-      mobile: -6,
-      ux: 1,
+    metrics: {
+      seo: 84,
+      cro: 58,
+      accessibility: 61,
+      performance: 45,
+      security: 80,
+      content: 68,
+      technical: 66,
+      legal: 49,
+      mobile: 53,
+      ux: 56,
     },
   },
   {
     id: "lead-gen",
     label: "Audit • Timișoara • 2026",
-    overallScore: 48,
-    profile: {
-      seo: 6,
-      cro: -4,
-      accessibility: 0,
-      performance: -9,
-      security: 9,
-      content: 3,
-      technical: -3,
-      legal: -2,
-      mobile: -5,
-      ux: 5,
+    metrics: {
+      seo: 81,
+      cro: 44,
+      accessibility: 42,
+      performance: 33,
+      security: 80,
+      content: 46,
+      technical: 41,
+      legal: 36,
+      mobile: 38,
+      ux: 39,
     },
   },
 ];
@@ -81,29 +78,26 @@ function getMetricColor(value: number) {
   return "high" as const;
 }
 
-function clampMetric(value: number) {
-  return Math.max(18, Math.min(96, value));
-}
-
 export function HeroAuditPreview() {
   const { label, metrics, overallScore } = React.useMemo(() => {
     const selectedAudit = demoAudits[Math.floor(Math.random() * demoAudits.length)] ?? demoAudits[0];
-    const selectedMetrics = Object.entries(selectedAudit.profile).map(([key, offset]) => {
-      const value = clampMetric(selectedAudit.overallScore + offset);
-
+    const selectedMetrics = Object.entries(selectedAudit.metrics).map(([key, value]) => {
       return {
-      key,
-      label: metricLabels[key as keyof typeof metricLabels],
-      value,
-      tone: getMetricTone(value),
-      color: getMetricColor(value),
+        key,
+        label: metricLabels[key as keyof typeof metricLabels],
+        value,
+        tone: getMetricTone(value),
+        color: getMetricColor(value),
       };
     });
+    const overallScore = Math.round(
+      selectedMetrics.reduce((sum, metric) => sum + metric.value, 0) / selectedMetrics.length,
+    );
 
     return {
       label: selectedAudit.label,
       metrics: selectedMetrics,
-      overallScore: selectedAudit.overallScore,
+      overallScore,
     };
   }, []);
 
