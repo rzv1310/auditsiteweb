@@ -228,7 +228,7 @@
   }
 
   .hero-frame::before {
-    content: "";
+    content: none;
     position: absolute;
     inset: auto 12% 14% auto;
     width: clamp(180px, 22vw, 320px);
@@ -238,7 +238,7 @@
   }
 
   .hero-frame::after {
-    content: "";
+    content: none;
     position: absolute;
     inset: 10% auto auto 12%;
     width: clamp(120px, 14vw, 200px);
@@ -372,8 +372,7 @@
   }
 
   .audit-meter-track {
-    @apply h-2.5 w-full overflow-hidden;
-    background: oklch(0.24 0 0);
+    display: none;
   }
 
   .audit-meter-fill {
@@ -406,8 +405,7 @@
   }
 
   .audit-preview-divider {
-    @apply mt-6 h-px w-full sm:mt-8;
-    background: color-mix(in oklab, var(--color-border) 88%, transparent);
+    display: none;
   }
 
   .display-hero {
