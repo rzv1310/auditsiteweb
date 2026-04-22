@@ -481,6 +481,35 @@
     gap: clamp(0.65rem, 1.4vw, 1rem);
   }
 
+  .journey-tabs-carousel {
+    display: none;
+  }
+
+  .journey-carousel-shell {
+    @apply mt-4 w-full;
+  }
+
+  .journey-carousel-track {
+    @apply -ml-3;
+  }
+
+  .journey-carousel-item {
+    @apply pl-3;
+  }
+
+  .journey-carousel-chip {
+    @apply w-full rounded-[1.1rem] border text-center font-extrabold;
+    min-height: 3rem;
+    padding-inline: 0.9rem;
+    padding-block: 0.65rem;
+    font-size: 0.95rem;
+    line-height: 1.05;
+    border-color: oklch(0.98 0 0);
+    background: var(--color-primary);
+    color: oklch(0.98 0 0);
+    font-family: var(--font-body);
+  }
+
   .journey-tab-trigger {
     @apply rounded-[1.1rem] border text-center font-extrabold text-foreground transition duration-200 ease-out sm:text-left;
     border-color: oklch(0.98 0 0);
@@ -676,17 +705,12 @@
      @apply pb-6;
    }
 
-   .journey-tabs-list {
-    @apply mt-4 flex flex-wrap justify-start gap-2;
+   .journey-tabs-list-desktop {
+     display: none;
    }
 
-   .journey-tab-trigger {
-    @apply w-auto text-center;
-    min-height: 3rem;
-    max-width: 100%;
-    padding-inline: 0.9rem;
-    padding-block: 0.65rem;
-    font-size: 0.95rem;
+   .journey-tabs-carousel {
+     display: block;
    }
 
    .journey-panel {
