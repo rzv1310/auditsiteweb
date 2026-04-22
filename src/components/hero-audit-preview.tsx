@@ -3,19 +3,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const metricLabels = {
-  seo: "SEO",
-  cro: "CRO (Rata de conversie)",
-  accessibility: "Accesibilitate",
-  performance: "Performanță",
-  security: "Securitate",
-  content: "Conținut",
-  technical: "Tehnic",
-  legal: "Conformitate juridică",
-  mobile: "Experiență mobilă",
-  ux: "UX și design",
-} as const;
-
 const demoAudits = [
   {
     id: "local-services",
@@ -151,7 +138,7 @@ export function HeroAuditPreview() {
   const previewRef = React.useRef<HTMLDivElement | null>(null);
   const [selectedAuditIndex, setSelectedAuditIndex] = React.useState(0);
 
-  const { label, metrics, overallScore } = React.useMemo(() => {
+  const { label, overallScore } = React.useMemo(() => {
     const selectedAudit = demoAudits[selectedAuditIndex] ?? demoAudits[0];
     const selectedMetrics = Object.entries(selectedAudit.metrics).map(([, value]) => value);
     const overallScore = Math.round(
@@ -173,7 +160,6 @@ export function HeroAuditPreview() {
       return current === demoAudits.length - 1 ? 0 : current + 1;
     });
   }, []);
-
 
   return (
     <div
