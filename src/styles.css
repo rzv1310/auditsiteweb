@@ -671,4 +671,46 @@
   .audit-meter-track {
     @apply h-3;
   }
+
+   .journey-heading-wrap {
+     @apply pb-6;
+   }
+
+   .journey-tabs-list {
+     @apply mt-4 flex-col items-stretch gap-3;
+   }
+
+   .journey-tab-trigger {
+     @apply w-full text-center;
+     min-height: 3.75rem;
+   }
+
+   .journey-panel {
+     @apply mt-6;
+   }
+
+   .journey-item {
+     grid-template-columns: 2.75rem minmax(0, 1fr);
+     gap: 0.9rem;
+   }
+
+   .journey-step {
+     width: 2.6rem;
+     height: 2.6rem;
+     font-size: 1.1rem;
+   }
+
+   .journey-line {
+     min-height: 1.5rem;
+   }
+
+   .journey-item-title {
+     font-size: 1.05rem;
+     line-height: 1.22;
+   }
+
+   .journey-item-body {
+     font-size: 0.95rem;
+     line-height: 1.5;
+   }
 }
