@@ -160,6 +160,7 @@ function getMetricColor(value: number) {
 }
 
 export function HeroAuditPreview() {
+  const previewRef = React.useRef<HTMLDivElement | null>(null);
   const [selectedAuditIndex, setSelectedAuditIndex] = React.useState(0);
 
   const { label, metrics, overallScore } = React.useMemo(() => {
@@ -185,7 +186,7 @@ export function HeroAuditPreview() {
   }, [selectedAuditIndex]);
 
   const [activeMetric, setActiveMetric] = React.useState(metrics[1].key);
-  const [animatedScore, setAnimatedScore] = React.useState(0);
+  const [hasEnteredViewport, setHasEnteredViewport] = React.useState(false);
 
   const changeAudit = React.useCallback((direction: "prev" | "next") => {
     setSelectedAuditIndex((current) => {
@@ -202,13 +203,34 @@ export function HeroAuditPreview() {
   }, [metrics]);
 
   React.useEffect(() => {
-    setAnimatedScore(0);
-    const frame = window.requestAnimationFrame(() => setAnimatedScore(overallScore));
-    return () => window.cancelAnimationFrame(frame);
-  }, [overallScore]);
+    const node = previewRef.current;
+
+    if (!node || hasEnteredViewport) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setHasEnteredViewport(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.35,
+      },
+    );
+
+    observer.observe(node);
+
+    return () => observer.disconnect();
+  }, [hasEnteredViewport]);
 
   return (
-    <div className="audit-preview-card" role="img" aria-label="Previzualizare audit website cu scor general și trei metrici cheie">
+    <div
+      ref={previewRef}
+      className="audit-preview-card"
+      role="img"
+      aria-label="Previzualizare audit website cu scor general și trei metrici cheie"
+    >
       <div className="audit-preview-topbar">
         <div className="audit-preview-badge">{label}</div>
 
@@ -241,10 +263,10 @@ export function HeroAuditPreview() {
             overallScore > 79 && "is-high",
           )}
           style={{
-            ["--score-value" as string]: `${animatedScore}`,
+            ["--score-value" as string]: `${overallScore}`,
           } as React.CSSProperties}
         >
-          <div className="audit-score-ring-inner">{animatedScore}</div>
+          <div className="audit-score-ring-inner">{overallScore}</div>
         </div>
 
         <div className="audit-score-copy">
@@ -278,7 +300,7 @@ export function HeroAuditPreview() {
                   metric.color === "high" && "is-high",
                 )}
                 style={{
-                  ["--meter-value" as string]: `${metric.value}%`,
+                  ["--meter-value" as string]: `${hasEnteredViewport ? metric.value : 0}%`,
                 } as React.CSSProperties}
               />
             </div>
