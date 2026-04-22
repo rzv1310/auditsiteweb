@@ -2,15 +2,48 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const overallScore = 72;
+type DemoMetricTone = "good" | "alert";
 
-const metrics = [
-  { key: "seo", label: "SEO", value: 85, tone: "good" as const },
-  { key: "performance", label: "Performanță", value: 45, tone: "alert" as const },
-  { key: "security", label: "Securitate", value: 90, tone: "good" as const },
+const demoAudits = [
+  {
+    id: "local-services",
+    metrics: [
+      { key: "seo", label: "SEO", value: 83, tone: "good" as DemoMetricTone },
+      { key: "performance", label: "Performanță", value: 58, tone: "alert" as DemoMetricTone },
+      { key: "security", label: "Securitate", value: 91, tone: "good" as DemoMetricTone },
+    ],
+  },
+  {
+    id: "online-store",
+    metrics: [
+      { key: "seo", label: "SEO", value: 76, tone: "good" as DemoMetricTone },
+      { key: "performance", label: "Performanță", value: 49, tone: "alert" as DemoMetricTone },
+      { key: "security", label: "Securitate", value: 87, tone: "good" as DemoMetricTone },
+    ],
+  },
+  {
+    id: "lead-gen",
+    metrics: [
+      { key: "seo", label: "SEO", value: 88, tone: "good" as DemoMetricTone },
+      { key: "performance", label: "Performanță", value: 54, tone: "alert" as DemoMetricTone },
+      { key: "security", label: "Securitate", value: 93, tone: "good" as DemoMetricTone },
+    ],
+  },
 ];
 
 export function HeroAuditPreview() {
+  const { metrics, overallScore } = React.useMemo(() => {
+    const selectedAudit = demoAudits[Math.floor(Math.random() * demoAudits.length)] ?? demoAudits[0];
+    const score = Math.round(
+      selectedAudit.metrics.reduce((sum, metric) => sum + metric.value, 0) / selectedAudit.metrics.length,
+    );
+
+    return {
+      metrics: selectedAudit.metrics,
+      overallScore: score,
+    };
+  }, []);
+
   const [activeMetric, setActiveMetric] = React.useState(metrics[1].key);
   const [animatedScore, setAnimatedScore] = React.useState(0);
 
@@ -28,7 +61,7 @@ export function HeroAuditPreview() {
             ["--score-value" as string]: `${animatedScore}`,
           } as React.CSSProperties}
         >
-          <div className="audit-score-ring-inner">{overallScore}</div>
+          <div className="audit-score-ring-inner">{animatedScore}</div>
         </div>
 
         <div className="audit-score-copy">
