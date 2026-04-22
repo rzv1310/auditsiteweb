@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -37,6 +39,87 @@ const auditPillars = [
   {
     icon: Eye,
     title: "Ei au conținut accesibil",
+  },
+];
+
+const journeyTabs = [
+  {
+    value: "services",
+    label: "Website de servicii",
+    items: [
+      {
+        step: "1",
+        title: "Caută serviciul pe Google",
+        body: "Site-ul apare pe pagina 3. Fără meta description, fără titlu optimizat, fără fișă LocalBusiness în Google Maps. Concurenții cu site-uri mai slabe îl depășesc.",
+      },
+      {
+        step: "2",
+        title: "Aterizează pe homepage",
+        body: "Hero-ul descrie compania, nu problema clientului. Lipsesc o propoziție clară de valoare, dovezi sociale și un CTA vizibil fără scroll.",
+      },
+      {
+        step: "3",
+        title: "Deschide site-ul pe telefon",
+        body: "Formularul de contact nu funcționează pe iOS. Numărul de telefon nu e clickabil. LCP de 8 secunde. Jumătate din vizitatori pleacă înainte să citească o propoziție.",
+      },
+      {
+        step: "4",
+        title: "Sună concurența",
+        body: "Nu a găsit recenzii, nu a înțeles rapid ce oferi, nu a avut încredere. Tu nu știi că a fost — nicio urmă a vizitei.",
+      },
+    ],
+  },
+  {
+    value: "store",
+    label: "Magazin online",
+    items: [
+      {
+        step: "1",
+        title: "Caută produsul pe Google",
+        body: "Site-ul apare în rezultate, dar produsele lipsesc din Google Shopping — nu există date structurate Schema.org. Concurenții cu stocuri mai mici îl depășesc pentru că au rezolvat elementele de bază.",
+      },
+      {
+        step: "2",
+        title: "Ajunge pe fișa de produs",
+        body: "Nu vede prețul sau vede „Cere ofertă”. Nu știe dacă produsul e pe stoc. Nu găsește recenzii. Nu există un buton clar de cumpărare.",
+      },
+      {
+        step: "3",
+        title: "Încearcă să cumpere",
+        body: "Checkout-ul îl forțează să creeze cont. 14 câmpuri de completat. Interfața e pe jumătate în engleză. Abandonează înainte de a introduce cardul.",
+      },
+      {
+        step: "4",
+        title: "Cumpără de la concurență",
+        body: "Tu nu știi că a fost pe site, că a abandonat coșul sau de unde a venit — nu există GA4 și niciun sistem de recuperare.",
+      },
+    ],
+  },
+  {
+    value: "showcase",
+    label: "Site de prezentare",
+    items: [
+      {
+        step: "1",
+        title: "Vine din reclamă plătită",
+        body: "Pagina de destinație nu se potrivește cu mesajul din reclamă. Scorul de relevanță e scăzut, costul per click crește, bugetul se consumă fără conversii.",
+      },
+      {
+        step: "2",
+        title: "Citește pagina, pare interesat",
+        body: "Nu găsește suficiente argumente să acționeze acum. Lipsesc urgență, dovezi sociale, răspunsuri la obiecții și o ofertă clară de intrare.",
+      },
+      {
+        step: "3",
+        title: "Încearcă să completeze formularul",
+        body: "9 câmpuri obligatorii, fără confirmare vizuală, fără email automat. Rata de abandon a formularului e 70% — dar nimeni nu a măsurat-o vreodată.",
+      },
+      {
+        step: "4",
+        title: "Lead-ul se răcește înainte să fie contactat",
+        body: "Fără notificare în timp real, fără integrare CRM, fără follow-up automatizat. Lead-urile vin în inbox și se pierd printre alte mailuri.",
+      },
+    ],
   },
 ];
 
@@ -82,6 +165,43 @@ function Index() {
               <div className="hero-frame" />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section-block bg-background">
+        <div className="section-shell">
+          <Tabs defaultValue="services" className="journey-tabs">
+            <div className="journey-heading-wrap">
+              <p className="journey-eyebrow">Traseul unui vizitator pe un site neoptimizat</p>
+              <TabsList className="journey-tabs-list" aria-label="Tipuri de site-uri auditate">
+                {journeyTabs.map(({ value, label }) => (
+                  <TabsTrigger key={value} value={value} className="journey-tab-trigger">
+                    {label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
+
+            {journeyTabs.map(({ value, items }) => (
+              <TabsContent key={value} value={value} className="journey-panel">
+                <div className="journey-list">
+                  {items.map(({ step, title, body }, index) => (
+                    <article key={title} className="journey-item">
+                      <div className="journey-marker" aria-hidden="true">
+                        <div className="journey-step">{step}</div>
+                        {index < items.length - 1 ? <div className="journey-line" /> : null}
+                      </div>
+
+                      <div className="journey-content">
+                        <h3 className="journey-item-title">{title}</h3>
+                        <p className="journey-item-body">{body}</p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </TabsContent>
+            ))}
+          </Tabs>
         </div>
       </section>
 
