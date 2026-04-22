@@ -271,6 +271,7 @@
 
   .audit-preview-nav-button {
     @apply inline-flex h-8 w-8 items-center justify-center transition duration-200 ease-out sm:h-9 sm:w-9;
+    background: var(--audit-low);
     color: var(--foreground);
   }
 
