@@ -399,6 +399,12 @@
     filter: brightness(1.05);
   }
 
+  .hero-side .audit-preview-card {
+    width: min(100%, 88%);
+    transform: scale(0.84);
+    transform-origin: center;
+  }
+
   .audit-preview-divider {
     @apply mt-6 h-px w-full sm:mt-8;
     background: color-mix(in oklab, var(--color-border) 88%, transparent);
@@ -739,6 +745,11 @@
     max-width: 640px;
     padding-inline: clamp(0.9rem, 1.4vw, 1.25rem);
     padding-block: clamp(0.9rem, 1.5vw, 1.25rem);
+  }
+
+  .hero-side .audit-preview-card {
+    width: min(100%, 84%);
+    transform: scale(0.78);
   }
 
   .display-hero {
