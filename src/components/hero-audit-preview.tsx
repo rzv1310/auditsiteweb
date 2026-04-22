@@ -3,21 +3,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-type DemoMetricTone = "good" | "alert";
-
-const metricLabels = {
-  seo: "SEO",
-  cro: "CRO (Rata de conversie)",
-  accessibility: "Accesibilitate",
-  performance: "Performanță",
-  security: "Securitate",
-  content: "Conținut",
-  technical: "Tehnic",
-  legal: "Conformitate juridică",
-  mobile: "Experiență mobilă",
-  ux: "UX și design",
-} as const;
-
 const demoAudits = [
   {
     id: "local-services",
@@ -149,44 +134,22 @@ const demoAudits = [
   },
 ];
 
-function getMetricTone(value: number): DemoMetricTone {
-  return value >= 80 ? "good" : "alert";
-}
-
-function getMetricColor(value: number) {
-  if (value < 50) return "low" as const;
-  if (value <= 79) return "medium" as const;
-  return "high" as const;
-}
-
 export function HeroAuditPreview() {
   const previewRef = React.useRef<HTMLDivElement | null>(null);
   const [selectedAuditIndex, setSelectedAuditIndex] = React.useState(0);
 
-  const { label, metrics, overallScore } = React.useMemo(() => {
+  const { label, overallScore } = React.useMemo(() => {
     const selectedAudit = demoAudits[selectedAuditIndex] ?? demoAudits[0];
-    const selectedMetrics = Object.entries(selectedAudit.metrics).map(([key, value]) => {
-      return {
-        key,
-        label: metricLabels[key as keyof typeof metricLabels],
-        value,
-        tone: getMetricTone(value),
-        color: getMetricColor(value),
-      };
-    });
+    const selectedMetrics = Object.entries(selectedAudit.metrics).map(([, value]) => value);
     const overallScore = Math.round(
-      selectedMetrics.reduce((sum, metric) => sum + metric.value, 0) / selectedMetrics.length,
+      selectedMetrics.reduce((sum, metricValue) => sum + metricValue, 0) / selectedMetrics.length,
     );
 
     return {
       label: selectedAudit.label,
-      metrics: selectedMetrics,
       overallScore,
     };
   }, [selectedAuditIndex]);
-
-  const [activeMetric, setActiveMetric] = React.useState(metrics[1].key);
-  const [hasEnteredViewport, setHasEnteredViewport] = React.useState(false);
 
   const changeAudit = React.useCallback((direction: "prev" | "next") => {
     setSelectedAuditIndex((current) => {
@@ -197,32 +160,6 @@ export function HeroAuditPreview() {
       return current === demoAudits.length - 1 ? 0 : current + 1;
     });
   }, []);
-
-  React.useEffect(() => {
-    setActiveMetric(metrics[1]?.key ?? metrics[0]?.key ?? "seo");
-  }, [metrics]);
-
-  React.useEffect(() => {
-    const node = previewRef.current;
-
-    if (!node || hasEnteredViewport) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-          setHasEnteredViewport(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.35,
-      },
-    );
-
-    observer.observe(node);
-
-    return () => observer.disconnect();
-  }, [hasEnteredViewport]);
 
   return (
     <div
@@ -276,40 +213,6 @@ export function HeroAuditPreview() {
         </div>
       </div>
 
-      <div className="audit-metrics" role="list" aria-label="Metrici audit website">
-        {metrics.map((metric) => (
-          <button
-            key={metric.key}
-            type="button"
-            className={cn("audit-metric-row", activeMetric === metric.key && "is-active")}
-            onMouseEnter={() => setActiveMetric(metric.key)}
-            onFocus={() => setActiveMetric(metric.key)}
-            onClick={() => setActiveMetric(metric.key)}
-          >
-            <div className="audit-metric-head">
-              <span className="audit-metric-label">{metric.label}</span>
-              <span className="audit-metric-value">{metric.value}</span>
-            </div>
-
-            <div className="audit-meter-track" aria-hidden="true">
-              <div
-                className={cn(
-                  "audit-meter-fill",
-                  metric.tone === "alert" && "is-alert",
-                  metric.color === "low" && "is-low",
-                  metric.color === "medium" && "is-medium",
-                  metric.color === "high" && "is-high",
-                )}
-                style={{
-                  ["--meter-value" as string]: `${hasEnteredViewport ? metric.value : 0}%`,
-                } as React.CSSProperties}
-              />
-            </div>
-          </button>
-        ))}
-      </div>
-
-      <div className="audit-preview-divider" aria-hidden="true" />
     </div>
   );
 }
