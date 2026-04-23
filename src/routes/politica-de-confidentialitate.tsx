@@ -30,7 +30,15 @@ const privacySections = [
   {
     title: "1. Conformitate GDPR",
     paragraphs: [
-      "SEO Doctor SRL respectă Regulamentul General privind Protecția Datelor (GDPR) al Uniunii Europene, care a intrat în vigoare la 25 mai 2018. Această secțiune GDPR face parte din Politica noastră de Confidențialitate și explică drepturile dumneavoastră în ceea ce privește datele dumneavoastră personale și modul în care ne conformăm acestor reglementări.",
+      <>
+        <Link to="/" className="legal-contact-link">
+          SEO Doctor
+        </Link>{" "}
+        SRL respectă Regulamentul General privind Protecția Datelor (GDPR) al Uniunii Europene,
+        care a intrat în vigoare la 25 mai 2018. Această secțiune GDPR face parte din Politica
+        noastră de Confidențialitate și explică drepturile dumneavoastră în ceea ce privește
+        datele dumneavoastră personale și modul în care ne conformăm acestor reglementări.
+      </>,
     ],
   },
   {
@@ -181,8 +189,8 @@ function PrivacyPolicyPage() {
                   {title}
                 </h2>
 
-                {paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="legal-paragraph">
+                {paragraphs.map((paragraph, index) => (
+                  <p key={`${title}-paragraph-${index}`} className="legal-paragraph">
                     {paragraph}
                   </p>
                 ))}
