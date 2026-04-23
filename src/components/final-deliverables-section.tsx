@@ -1,6 +1,6 @@
 const deliverables = [
   {
-    title: "Raport de 15+ pagini",
+    title: "Raport audit de 15+ pagini",
     body: "Scor detaliat pe 10 categorii, top probleme în funcție de severitate și impact comercial.",
   },
   {
