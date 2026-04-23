@@ -792,9 +792,61 @@
   }
 
   .journey-line {
-    @apply mt-2 w-px flex-1 sm:mt-3;
+    @apply relative mt-2 w-px flex-1 overflow-hidden sm:mt-3;
     background: var(--color-border);
     min-height: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .journey-line-dot {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: oklch(0.66 0.26 25);
+    transform: translate(-50%, -120%);
+    box-shadow:
+      0 0 0.45rem oklch(0.66 0.26 25 / 0.95),
+      0 0 1rem oklch(0.66 0.26 25 / 0.7),
+      0 0 1.5rem oklch(0.66 0.26 25 / 0.5);
+    animation: journey-dot-travel 3.6s ease-in-out infinite;
+  }
+
+  .journey-item:nth-child(1) .journey-line-dot {
+    animation-delay: 0s;
+  }
+
+  .journey-item:nth-child(2) .journey-line-dot {
+    animation-delay: 1.2s;
+  }
+
+  .journey-item:nth-child(3) .journey-line-dot {
+    animation-delay: 2.4s;
+  }
+
+  @keyframes journey-dot-travel {
+    0%,
+    18% {
+      opacity: 0;
+      transform: translate(-50%, -120%) scale(0.8);
+    }
+
+    28% {
+      opacity: 1;
+      transform: translate(-50%, -10%) scale(1);
+    }
+
+    72% {
+      opacity: 1;
+      transform: translate(-50%, calc(100% - 0.4rem)) scale(1);
+    }
+
+    82%,
+    100% {
+      opacity: 0;
+      transform: translate(-50%, calc(100% + 0.5rem)) scale(0.82);
+    }
   }
 
   .journey-content {
