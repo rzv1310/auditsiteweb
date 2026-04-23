@@ -779,7 +779,7 @@
   }
 
   .journey-marker {
-    @apply flex flex-col items-center;
+    @apply flex flex-col items-center self-stretch;
   }
 
   .journey-step {
