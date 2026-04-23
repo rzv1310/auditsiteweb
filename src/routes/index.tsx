@@ -176,7 +176,7 @@ function Index() {
                   <br />
                   pierde clienți.
                 </span>
-                <span className="mt-[10px] block">
+                <span className="mt-[15px] block">
                   Noi îți spunem
                   <br />
                   de ce.
