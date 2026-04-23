@@ -708,12 +708,21 @@
   }
 
   .findings-showcase {
-    @apply mx-auto w-full max-w-6xl;
+    @apply mx-auto w-full;
+  }
+
+  .findings-section-block {
+    @apply py-0;
+  }
+
+  .findings-section-shell {
+    @apply max-w-none px-0;
   }
 
   .findings-showcase-image {
     @apply block h-auto w-full;
-    box-shadow: 0 22px 70px oklch(0 0 0 / 0.28);
+    margin-inline: auto;
+    object-fit: contain;
   }
 }
 
