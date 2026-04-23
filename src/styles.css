@@ -763,6 +763,14 @@
     line-height: 1;
   }
 
+  .findings-item-medium-mark {
+    color: var(--finding-accent);
+    font-family: var(--font-body);
+    font-size: clamp(1.05rem, 2.45vw, 1.2rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+
   .findings-item-icon {
     width: clamp(0.79rem, 2.07vw, 0.94rem);
     height: clamp(0.79rem, 2.07vw, 0.94rem);
@@ -809,6 +817,10 @@
 
     .findings-item-critical-mark {
       font-size: clamp(1.06rem, 2.5vw, 1.28rem);
+    }
+
+    .findings-item-medium-mark {
+      font-size: clamp(1.1rem, 2.55vw, 1.3rem);
     }
 
     .findings-item-icon {
