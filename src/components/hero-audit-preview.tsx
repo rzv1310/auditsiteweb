@@ -25,9 +25,9 @@ const demoAudits = [
     metrics: {
       seo: 80,
       cro: 18,
-      accessibility: 27,
+      accessibility: 80,
       performance: 50,
-      security: 80,
+      security: 27,
       content: 41,
       technical: 36,
       legal: 22,
