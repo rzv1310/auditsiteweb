@@ -1177,7 +1177,7 @@
     color: var(--foreground);
     font-family: var(--font-body);
     font-size: clamp(1.44rem, 2.7vw, 2.16rem);
-    font-weight: 800;
+    font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
     transition: background 180ms ease;
