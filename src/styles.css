@@ -1047,6 +1047,18 @@
     padding-block: clamp(1.25rem, 2.8vh, 2.5rem);
   }
 
+  .journey-step {
+    font-size: clamp(0.792rem, 1.872vw, 1.08rem);
+  }
+
+  .journey-item-title {
+    font-size: clamp(0.81rem, 1.944vw, 1.62rem);
+  }
+
+  .journey-item-body {
+    font-size: clamp(0.77rem, 1.458vw, 1.118rem);
+  }
+
   .hero-stack {
     --hero-desktop-rail-height: clamp(41rem, 82svh, 54rem);
     min-height: calc(100svh - clamp(2.5rem, 5.6vh, 5rem));
