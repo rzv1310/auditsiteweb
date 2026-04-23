@@ -753,6 +753,122 @@
     text-wrap: pretty;
   }
 
+  .audit-request-section {
+    @apply bg-background pt-0 pb-20 sm:pb-24;
+  }
+
+  .audit-request-shell {
+    @apply max-w-[1120px];
+  }
+
+  .audit-request-header {
+    @apply text-center;
+  }
+
+  .audit-request-title {
+    color: var(--foreground);
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 8.5rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    text-wrap: balance;
+  }
+
+  .audit-request-subtitle {
+    @apply mx-auto mt-4 max-w-[18ch];
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: clamp(1.55rem, 3.8vw, 3.3rem);
+    font-weight: 400;
+    line-height: 1.18;
+    text-wrap: balance;
+  }
+
+  .audit-request-form {
+    @apply mx-auto mt-10 w-full max-w-[860px] px-5 py-6 sm:mt-14 sm:px-8 sm:py-8;
+    border: 1px solid color-mix(in oklab, var(--color-border) 92%, transparent);
+    background: color-mix(in oklab, var(--color-card) 88%, black);
+  }
+
+  .audit-request-field + .audit-request-field {
+    @apply mt-6;
+  }
+
+  .audit-request-label {
+    @apply mb-3 block;
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 2vw, 1.8rem);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .audit-request-required {
+    color: var(--color-primary);
+  }
+
+  .audit-request-input {
+    @apply w-full px-4 py-4 sm:px-6 sm:py-5;
+    border: 1px solid color-mix(in oklab, var(--color-border) 92%, transparent);
+    background: oklch(0 0 0 / 0.48);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: clamp(1.2rem, 2.3vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .audit-request-input::placeholder {
+    color: color-mix(in oklab, var(--muted-foreground) 70%, transparent);
+  }
+
+  .audit-request-input:focus-visible,
+  .audit-request-checkbox:focus-visible,
+  .audit-request-button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .audit-request-consent {
+    @apply mt-7 flex items-start gap-3;
+  }
+
+  .audit-request-checkbox {
+    @apply mt-1 shrink-0;
+    width: 1.4rem;
+    height: 1.4rem;
+    accent-color: var(--color-primary);
+  }
+
+  .audit-request-consent-copy {
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.9vw, 1.4rem);
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
+  .audit-request-linkish {
+    color: var(--foreground);
+    text-decoration: underline;
+    text-underline-offset: 0.14em;
+  }
+
+  .audit-request-button {
+    @apply mt-8 flex min-h-16 w-full items-center justify-center px-6 py-4;
+    background: color-mix(in oklab, var(--color-primary) 68%, black);
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    transition: background 180ms ease;
+  }
+
+  .audit-request-button:hover {
+    background: color-mix(in oklab, var(--color-primary) 78%, black);
+  }
+
   .findings-header {
     @apply relative mb-4 px-1 sm:mb-5;
   }
