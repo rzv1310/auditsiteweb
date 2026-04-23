@@ -173,7 +173,7 @@ function Index() {
     <>
       <header className="site-header">
         <div className="section-shell site-header-shell">
-          <a className="site-contact-link" href="#contact-form">
+          <a className="site-contact-link" href="#contact-form" aria-label="Mergi la formularul de contact">
             Contact
           </a>
         </div>
@@ -210,7 +210,7 @@ function Index() {
               </div>
 
               <div className="cta-row">
-                <a className="cta-primary" href="#contact-form">
+                 <a className="cta-primary" href="#contact-form" aria-label="Mergi la formularul de contact pentru audit gratuit">
                   Vreau audit gratuit
                   <ArrowRight className="size-6" aria-hidden="true" />
                 </a>
@@ -296,7 +296,7 @@ function Index() {
                 </div>
 
                 <div className="cta-row journey-cta-row">
-                  <a className="cta-primary" href="#contact-form">
+                  <a className="cta-primary" href="#contact-form" aria-label="Mergi la formularul de contact pentru audit gratuit">
                     Vreau audit gratuit
                     <ArrowRight className="size-6" aria-hidden="true" />
                   </a>

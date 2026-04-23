@@ -10,25 +10,42 @@ export function SiteFooter() {
           href="https://wa.me/40742702982"
           target="_blank"
           rel="noreferrer"
+          aria-label="Deschide conversația WhatsApp cu SEO Doctor"
         >
           WhatsApp: +40 742 702 982
         </a>
-        <a className="site-footer-text site-footer-email" href="mailto:hello@seo-doctor.ro">
+        <a
+          className="site-footer-text site-footer-email"
+          href="mailto:hello@seo-doctor.ro"
+          aria-label="Trimite email către SEO Doctor"
+        >
           hello@seo-doctor.ro
         </a>
-        <p className="site-footer-text site-footer-legal">
-          <Link to="/termeni-si-conditii" className="site-footer-inline-link">
-            Termeni și condiții
-          </Link>{" "}
-          |{" "}
-          <Link to="/politica-de-confidentialitate" className="site-footer-inline-link">
-            GDPR
-          </Link>{" "}
-          |{" "}
-          <Link to="/politica-cookies" className="site-footer-inline-link">
-            Cookies
-          </Link>
-        </p>
+        <nav className="site-footer-legal" aria-label="Navigație legală">
+          <ul className="site-footer-legal-list">
+            <li>
+              <Link to="/termeni-si-conditii" className="site-footer-inline-link">
+                Termeni și condiții
+              </Link>
+            </li>
+            <li aria-hidden="true" className="site-footer-separator">
+              |
+            </li>
+            <li>
+              <Link to="/politica-de-confidentialitate" className="site-footer-inline-link">
+                GDPR
+              </Link>
+            </li>
+            <li aria-hidden="true" className="site-footer-separator">
+              |
+            </li>
+            <li>
+              <Link to="/politica-cookies" className="site-footer-inline-link">
+                Cookies
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </footer>
   );
