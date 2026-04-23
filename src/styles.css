@@ -180,6 +180,32 @@
     @apply bg-background text-foreground;
   }
 
+  .site-header {
+    @apply sticky top-0 z-50 w-full;
+    background: oklch(0.12 0 0 / 0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-border) 82%, transparent);
+  }
+
+  .site-header-shell {
+    @apply flex min-h-16 items-center justify-end;
+  }
+
+  .site-contact-link {
+    @apply inline-flex min-h-11 items-center justify-center px-5 font-extrabold uppercase transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+    background: var(--cta-bg);
+    color: var(--cta-foreground);
+    box-shadow: var(--shadow-accent);
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    line-height: 1;
+  }
+
+  .site-contact-link:hover {
+    background: var(--cta-bg-hover);
+    transform: translateY(-1px);
+  }
+
   .grid-stage {
     position: relative;
     overflow: hidden;
@@ -869,6 +895,7 @@
 
   .audit-request-section {
     @apply bg-background pt-[50px] pb-20 sm:pb-24;
+    scroll-margin-top: 6.5rem;
   }
 
   .audit-request-shell {

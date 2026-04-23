@@ -169,7 +169,16 @@ function Index() {
   }, [activeJourney, carouselApi]);
 
   return (
-    <main className="audit-page">
+    <>
+      <header className="site-header">
+        <div className="section-shell site-header-shell">
+          <a className="site-contact-link" href="#contact-form">
+            Contact
+          </a>
+        </div>
+      </header>
+
+      <main className="audit-page">
       <section className="grid-stage hero-section">
         <div className="section-shell">
           <div className="hero-stack">
@@ -200,7 +209,7 @@ function Index() {
               </div>
 
               <div className="cta-row">
-                <a className="cta-primary" href="#audit-focus">
+                <a className="cta-primary" href="#contact-form">
                   Vreau audit gratuit
                   <ArrowRight className="size-6" aria-hidden="true" />
                 </a>
@@ -286,7 +295,7 @@ function Index() {
                 </div>
 
                 <div className="cta-row journey-cta-row">
-                  <a className="cta-primary" href="#audit-focus">
+                  <a className="cta-primary" href="#contact-form">
                     Vreau audit gratuit
                     <ArrowRight className="size-6" aria-hidden="true" />
                   </a>
@@ -335,6 +344,7 @@ function Index() {
       <FinalDeliverablesSection />
       <AuditRequestSection />
       <FaqSection />
-    </main>
+      </main>
+    </>
   );
 }
