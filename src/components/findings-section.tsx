@@ -22,12 +22,6 @@ const findings = [
   {
     level: "high",
     label: "RIDICAT",
-    title: "O singură pagină de servicii în loc de pagini dedicate –",
-    body: "zero trafic organic pe servicii individuale",
-  },
-  {
-    level: "high",
-    label: "RIDICAT",
     title: "LCP peste 4s pe mobil –",
     body: "jumătate din vizitatori pleacă înainte să citească o propoziție",
   },
