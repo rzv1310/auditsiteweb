@@ -193,16 +193,17 @@
 
   .site-contact-link {
     @apply inline-flex min-h-11 items-center justify-center px-5 font-extrabold uppercase transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
-    background: var(--cta-bg);
-    color: var(--cta-foreground);
-    box-shadow: var(--shadow-accent);
+    background: transparent;
+    color: var(--audit-high);
+    border: 1px solid color-mix(in oklab, var(--audit-high) 72%, white 10%);
+    box-shadow: none;
     font-family: var(--font-body);
     font-size: 0.98rem;
     line-height: 1;
   }
 
   .site-contact-link:hover {
-    background: var(--cta-bg-hover);
+    background: color-mix(in oklab, var(--audit-high) 14%, transparent);
     transform: translateY(-1px);
   }
 
