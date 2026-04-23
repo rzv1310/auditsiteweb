@@ -1,7 +1,15 @@
+import type { ReactNode } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { SiteFooter } from "@/components/site-footer";
+
+type CookieSection = {
+  title: string;
+  paragraphs: ReactNode[];
+  list?: ReactNode[];
+  contact?: boolean;
+};
 
 export const Route = createFileRoute("/politica-cookies")({
   head: () => ({
@@ -10,55 +18,88 @@ export const Route = createFileRoute("/politica-cookies")({
       {
         name: "description",
         content:
-          "Află cum folosește SEO Doctor cookie-uri și tehnologii similare pentru funcționarea, analiza și îmbunătățirea site-ului.",
+          "Află ce tipuri de cookie-uri folosește SEO Doctor, cum sunt utilizate și cum le poți gestiona.",
       },
       { property: "og:title", content: "Politica Cookies — SEO Doctor" },
       {
         property: "og:description",
         content:
-          "Detalii despre tipurile de cookie-uri folosite de SEO Doctor, scopul lor și opțiunile tale de control.",
+          "Detalii despre cookie-urile esențiale, Stripe, Google Analytics și Google Ads, plus opțiunile tale de control.",
       },
     ],
   }),
   component: CookiesPolicyPage,
 });
 
-const cookieSections = [
+const cookieSections: CookieSection[] = [
   {
-    title: "1. Ce sunt cookie-urile",
+    title: "1. Ce sunt cookie-urile?",
     paragraphs: [
-      "Cookie-urile sunt fișiere text de mici dimensiuni stocate pe dispozitivul dumneavoastră atunci când vizitați un site. Acestea ajută la funcționarea corectă a site-ului, la memorarea preferințelor și la înțelegerea modului în care vizitatorii folosesc paginile noastre.",
+      "Cookie-urile sunt fișiere text mici care sunt plasate pe computerul sau dispozitivul dumneavoastră mobil atunci când vizitați un site web. Cookie-urile sunt utilizate pe scară largă pentru a face site-urile web să funcționeze mai eficient și pentru a furniza informații proprietarilor site-ului.",
     ],
   },
   {
-    title: "2. Cum folosim cookie-urile",
+    title: "2. Cookie-urile pe care le utilizăm",
     paragraphs: [
-      "SEO Doctor utilizează cookie-uri strict necesare pentru funcționarea site-ului, cookie-uri de analiză pentru a înțelege comportamentul utilizatorilor și, dacă este cazul, cookie-uri funcționale pentru a îmbunătăți experiența de navigare.",
-      "Nu folosim cookie-uri într-un mod care să permită identificarea directă a unei persoane fără un temei legal și fără informarea corespunzătoare.",
+      "Site-ul nostru utilizează următoarele tipuri de cookie-uri:",
+    ],
+    list: [
+      <>
+        <strong>Cookie-uri esențiale</strong>
+      </>,
+      "Aceste cookie-uri sunt necesare pentru funcționarea site-ului nostru. Includ cookie-uri care vă permit să vă conectați în zonele securizate ale site-ului nostru sau să utilizați coșul de cumpărături.",
+      <>
+        <strong>Cookie-uri de la terți</strong>
+      </>,
+      "Stripe – pentru procesarea securizată a plăților. Stripe utilizează cookie-uri pentru a preveni fraudele și pentru a asigura securitatea tranzacțiilor.",
+      "Google Analytics – pentru a înțelege cum utilizatorii interacționează cu site-ul nostru. Aceste cookie-uri colectează informații în mod anonim.",
+      "Google Ads – pentru măsurarea conversiilor din campaniile publicitare și remarketing.",
     ],
   },
   {
-    title: "3. Tipuri de cookie-uri utilizate",
+    title: "3. Utilizarea cookie-urilor de publicitate",
     paragraphs: [
-      "Pe site-ul nostru pot fi utilizate cookie-uri de sesiune, care expiră la închiderea browserului, și cookie-uri persistente, care rămân pe dispozitiv pentru o perioadă limitată sau până la ștergerea lor manuală.",
+      "Utilizăm Google Ads ca unic serviciu de publicitate pentru a măsura eficiența campaniilor noastre și pentru remarketing. Nu vindem și nu partajăm datele dumneavoastră cu alte companii. În afara serviciilor menționate mai sus, nu utilizăm niciun alt cookie de la terți.",
     ],
   },
   {
-    title: "4. Controlul cookie-urilor",
+    title: "4. Gestionarea cookie-urilor",
     paragraphs: [
-      "Puteți controla sau șterge cookie-urile din setările browserului dumneavoastră. Dezactivarea anumitor cookie-uri poate afecta funcționarea unor secțiuni ale site-ului sau calitatea experienței de utilizare.",
+      "Majoritatea browser-elor web vă permit să controlați cookie-urile prin setările lor. Rețineți că:",
+    ],
+    list: [
+      "Dacă dezactivați cookie-urile esențiale, este posibil să nu puteți utiliza anumite funcții ale site-ului.",
+      "Dacă dezactivați cookie-urile Stripe, nu veți putea efectua plăți pe site.",
+      "Dacă dezactivați cookie-urile Google Analytics, nu vom putea îmbunătăți experiența dumneavoastră.",
+      "Dacă dezactivați cookie-urile Google Ads, reclamele nu vor fi personalizate.",
     ],
   },
   {
-    title: "5. Cookie-uri terțe",
+    title: "5. Mai multe informații",
     paragraphs: [
-      "Este posibil să folosim servicii furnizate de terți, precum platforme de analiză sau instrumente de marketing, care pot seta propriile cookie-uri conform politicilor lor de confidențialitate.",
+      <>
+        Pentru mai multe informații despre cookie-uri: {" "}
+        <a className="legal-contact-link" href="https://www.allaboutcookies.org" target="_blank" rel="noreferrer">
+          www.allaboutcookies.org
+        </a>
+      </>,
     ],
   },
   {
-    title: "6. Contact",
-    paragraphs: [
-      "Pentru întrebări legate de utilizarea cookie-urilor pe site-ul SEO Doctor, ne puteți contacta la adresa de email hello@seo-doctor.ro sau pe WhatsApp la +40 742 702 982.",
+    title: "6. Contactați-ne",
+    paragraphs: ["Dacă aveți întrebări despre utilizarea cookie-urilor pe site-ul nostru:"],
+    contact: true,
+  },
+  {
+    title: "Vezi și:",
+    paragraphs: [],
+    list: [
+      <Link to="/termeni-si-conditii" className="legal-contact-link">
+        Termeni și Condiții
+      </Link>,
+      <Link to="/politica-de-confidentialitate" className="legal-contact-link">
+        GDPR - Protecția Datelor
+      </Link>,
     ],
   },
 ];
@@ -78,17 +119,36 @@ function CookiesPolicyPage() {
           </header>
 
           <div className="legal-copy">
-            {cookieSections.map(({ title, paragraphs }) => (
+            {cookieSections.map(({ title, paragraphs, list, contact }) => (
               <section key={title} className="legal-section" aria-labelledby={title}>
                 <h2 id={title} className="legal-section-title">
                   {title}
                 </h2>
 
-                {paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="legal-paragraph">
+                {paragraphs.map((paragraph, index) => (
+                  <p key={`${title}-paragraph-${index}`} className="legal-paragraph">
                     {paragraph}
                   </p>
                 ))}
+
+                {contact ? (
+                  <p className="legal-contact-line">
+                    Telefon:{" "}
+                    <a className="legal-contact-link" href="https://wa.me/40742702982" target="_blank" rel="noreferrer">
+                      +40 742 702 982
+                    </a>
+                  </p>
+                ) : null}
+
+                {list ? (
+                  <ul className="legal-list">
+                    {list.map((item, index) => (
+                      <li key={`${title}-list-${index}`} className="legal-list-item">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </section>
             ))}
           </div>
