@@ -295,7 +295,7 @@
     --ring-track: oklch(0.24 0 0);
     --ring-fill: var(--audit-low);
     @apply relative grid shrink-0 place-items-center rounded-full;
-    width: clamp(92px, 9vw, 148px);
+    width: clamp(83px, 8.1vw, 133px);
     aspect-ratio: 1;
     background: conic-gradient(var(--ring-fill) calc(var(--score-value) * 1%), var(--ring-track) 0);
   }
@@ -801,7 +801,7 @@
   }
 
   .hero-side .audit-score-ring {
-    width: clamp(74px, 6.4vw, 96px);
+    width: clamp(67px, 5.8vw, 86px);
   }
 
   .hero-side .audit-score-ring-inner {
