@@ -462,8 +462,8 @@
   }
 
   .journey-heading-wrap {
-    @apply border-b pb-8 sm:pb-10;
-    border-color: var(--color-border);
+    @apply pb-8 sm:pb-10;
+    border-color: transparent;
   }
 
   .journey-heading-title {
