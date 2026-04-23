@@ -317,7 +317,11 @@ function Index() {
                     <article key={title} className="journey-item">
                       <div className="journey-marker" aria-hidden="true">
                         <div className="journey-step">{step}</div>
-                        {index < items.length - 1 ? <div className="journey-line" /> : null}
+                        {index < items.length - 1 ? (
+                          <div className="journey-line" aria-hidden="true">
+                            <span className="journey-line-dot" />
+                          </div>
+                        ) : null}
                       </div>
 
                       <div className="journey-content">
