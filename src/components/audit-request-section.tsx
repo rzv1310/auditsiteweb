@@ -16,7 +16,10 @@ export function AuditRequestSection() {
           <h2 id="audit-request-heading" className="audit-request-title">
             Vreau Audit Gratuit
           </h2>
-          <p className="audit-request-subtitle">Completează formularul și primești rezultatul astăzi !</p>
+          <p className="audit-request-subtitle">
+            <span className="block sm:inline">Completează formularul</span>
+            <span className="block sm:inline sm:ml-1">și primești rezultatul astăzi !</span>
+          </p>
         </div>
 
         <form className="audit-request-form" onSubmit={handleSubmit}>
