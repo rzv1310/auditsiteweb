@@ -780,6 +780,7 @@
   .findings-item-badge {
     @apply inline-flex min-h-8 items-center justify-center px-3 text-[0.88rem] font-extrabold uppercase sm:min-h-0 sm:w-full sm:px-2.5 sm:py-1.5 sm:text-[0.84rem];
     font-family: var(--font-body);
+    width: 5.7rem;
     background: var(--finding-accent);
     color: oklch(0.98 0 0);
   }
