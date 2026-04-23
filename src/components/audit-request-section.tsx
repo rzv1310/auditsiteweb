@@ -22,6 +22,24 @@ function normalizePhone(value: string) {
   return `${hasPlusPrefix ? "+" : ""}${digitsOnly}`;
 }
 
+function validatePhoneField(field: HTMLInputElement) {
+  const trimmedPhone = field.value.trim();
+  const normalizedPhone = normalizePhone(trimmedPhone);
+
+  if (!PHONE_PATTERN.test(trimmedPhone)) {
+    field.setCustomValidity("Numărul poate conține doar cifre, spații și prefixul +.");
+    return false;
+  }
+
+  if (normalizedPhone.replace(/^\+/, "").length < 10) {
+    field.setCustomValidity("Numărul de telefon trebuie să conțină cel puțin 10 cifre.");
+    return false;
+  }
+
+  field.setCustomValidity("");
+  return true;
+}
+
 export function AuditRequestSection() {
   const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -46,16 +64,7 @@ export function AuditRequestSection() {
     }
 
     if (field.name === "phone") {
-      const trimmedPhone = field.value.trim();
-      const normalizedPhone = normalizePhone(trimmedPhone);
-
-      if (!PHONE_PATTERN.test(trimmedPhone)) {
-        field.setCustomValidity("Numărul poate conține doar cifre, spații și prefixul +.");
-        return;
-      }
-
-      if (normalizedPhone.replace(/^\+/, "").length < 10) {
-        field.setCustomValidity("Numărul de telefon trebuie să conțină cel puțin 10 cifre.");
+      if (!validatePhoneField(field)) {
         return;
       }
     }
@@ -71,6 +80,13 @@ export function AuditRequestSection() {
     event.preventDefault();
 
     const form = event.currentTarget;
+    const phoneField = form.elements.namedItem("phone");
+
+    if (phoneField instanceof HTMLInputElement && !validatePhoneField(phoneField)) {
+      phoneField.reportValidity();
+      return;
+    }
+
     const formData = new FormData(form);
 
     setIsSubmitting(true);
