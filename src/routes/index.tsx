@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import * as React from "react";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
@@ -360,7 +360,12 @@ function Index() {
           <a className="site-footer-text site-footer-email" href="mailto:hello@seo-doctor.ro">
             hello@seo-doctor.ro
           </a>
-          <p className="site-footer-text site-footer-legal">Termeni și condiții | GDPR | Cookies</p>
+          <p className="site-footer-text site-footer-legal">
+            <Link to="/termeni-si-conditii" className="site-footer-inline-link">
+              Termeni și condiții
+            </Link>{" "}
+            | GDPR | Cookies
+          </p>
         </div>
       </footer>
     </>

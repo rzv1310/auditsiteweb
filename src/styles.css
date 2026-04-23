@@ -232,6 +232,15 @@
     text-underline-offset: 0.16em;
   }
 
+  .site-footer-inline-link {
+    color: inherit;
+  }
+
+  .site-footer-inline-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+  }
+
   .site-footer-phone {
     color: var(--foreground);
   }
@@ -500,6 +509,76 @@
     line-height: 1.14;
     text-transform: uppercase;
     text-wrap: balance;
+  }
+
+  .legal-page {
+    @apply min-h-screen bg-background text-foreground;
+  }
+
+  .legal-page-shell {
+    @apply mx-auto flex w-full max-w-[900px] flex-col gap-10 px-6 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-16;
+  }
+
+  .legal-back-link {
+    @apply inline-flex w-fit items-center gap-2 transition-opacity duration-200 ease-out;
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: var(--body-text-size);
+    line-height: 1.4;
+  }
+
+  .legal-back-link:hover {
+    opacity: 0.82;
+  }
+
+  .legal-header {
+    @apply flex flex-col gap-4;
+  }
+
+  .legal-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 6vw, 4.2rem);
+    line-height: 1.08;
+    text-transform: uppercase;
+  }
+
+  .legal-copy {
+    @apply flex flex-col gap-8;
+  }
+
+  .legal-section {
+    @apply flex flex-col gap-4;
+  }
+
+  .legal-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 3vw, 2.1rem);
+    line-height: 1.08;
+    text-transform: uppercase;
+  }
+
+  .legal-paragraph,
+  .legal-list,
+  .legal-list-item,
+  .legal-contact-line {
+    color: var(--hero-copy);
+    font-family: var(--font-body);
+    font-size: var(--body-text-size);
+    line-height: 1.75;
+  }
+
+  .legal-list {
+    @apply flex flex-col gap-4 pl-5;
+    list-style: disc;
+  }
+
+  .legal-contact-link {
+    color: var(--foreground);
+  }
+
+  .legal-contact-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
   }
 
   .hero-accent {
