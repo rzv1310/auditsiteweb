@@ -708,11 +708,11 @@
   }
 
   .findings-section {
-    @apply bg-background pt-10 pb-20 sm:pt-12 sm:pb-24;
+    @apply bg-background pt-6 pb-14 sm:pt-8 sm:pb-18;
   }
 
   .findings-header {
-    @apply relative mb-10 px-1 sm:mb-12;
+    @apply relative mb-6 px-1 sm:mb-8;
   }
 
   .findings-title {
@@ -724,16 +724,16 @@
   }
 
   .findings-list {
-    @apply flex flex-col gap-4 sm:gap-5;
+    @apply flex flex-col gap-3 sm:gap-4;
   }
 
   .findings-item {
-    @apply grid items-center gap-4 rounded-[1.9rem] px-5 py-5 sm:grid-cols-[12rem_1px_minmax(0,1fr)] sm:gap-7 sm:px-8 sm:py-7 lg:px-10;
+    @apply grid items-center gap-3 rounded-[1.6rem] px-4 py-4 sm:grid-cols-[10.5rem_1px_minmax(0,1fr)] sm:gap-5 sm:px-6 sm:py-5 lg:px-8;
     background: color-mix(in oklab, var(--color-card) 94%, black);
   }
 
   .findings-item-status {
-    @apply flex items-center gap-4 sm:flex-col sm:items-center sm:justify-center sm:gap-5;
+    @apply flex items-center gap-3 sm:flex-col sm:items-center sm:justify-center sm:gap-3.5;
   }
 
   .findings-item[data-level="critical"] {
@@ -786,7 +786,7 @@
   }
 
   .findings-item-body {
-    @apply mt-2 sm:mt-3;
+    @apply mt-1.5 sm:mt-2;
     color: var(--muted-foreground);
     font-family: var(--font-body);
     font-size: clamp(0.8rem, 1.76vw, 1.56rem);
