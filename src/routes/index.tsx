@@ -263,7 +263,16 @@ function Index() {
                       </div>
 
                       <div className="journey-content">
-                        <h3 className="journey-item-title">{title}</h3>
+                        <h3 className="journey-item-title">
+                          {title === "Lead-ul se răcește înainte să fie contactat" ? (
+                            <>
+                              <span className="sm:hidden">Lead-ul nu e contactat la timp</span>
+                              <span className="hidden sm:inline">{title}</span>
+                            </>
+                          ) : (
+                            title
+                          )}
+                        </h3>
                         <p className="journey-item-body">{body}</p>
                       </div>
                     </article>
