@@ -39,9 +39,9 @@ const demoAudits = [
     id: "online-store",
     label: "Audit Magazin Online • Cluj-Napoca • 2026",
     metrics: {
-      seo: 84,
+      seo: 61,
       cro: 58,
-      accessibility: 61,
+      accessibility: 84,
       performance: 45,
       security: 80,
       content: 68,
