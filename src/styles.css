@@ -750,14 +750,14 @@
 
   .findings-item-icon-wrap {
     @apply grid shrink-0 place-items-center rounded-full;
-    width: clamp(2.94rem, 7.68vw, 3.46rem);
+    width: clamp(2.35rem, 6.14vw, 2.77rem);
     aspect-ratio: 1;
     border: 3px solid var(--finding-accent);
   }
 
   .findings-item-icon {
-    width: clamp(1.22rem, 3.2vw, 1.44rem);
-    height: clamp(1.22rem, 3.2vw, 1.44rem);
+    width: clamp(0.98rem, 2.56vw, 1.15rem);
+    height: clamp(0.98rem, 2.56vw, 1.15rem);
     color: var(--finding-accent);
   }
 
@@ -792,6 +792,29 @@
     font-size: clamp(0.8rem, 1.76vw, 1.56rem);
     line-height: 1.14;
     text-wrap: balance;
+  }
+
+  @media (min-width: 64rem) {
+    .findings-item-icon-wrap {
+      width: clamp(2.65rem, 6.91vw, 3.11rem);
+    }
+
+    .findings-item-icon {
+      width: clamp(1.1rem, 2.88vw, 1.3rem);
+      height: clamp(1.1rem, 2.88vw, 1.3rem);
+    }
+
+    .findings-item-badge {
+      font-size: 0.79rem;
+    }
+
+    .findings-item-title {
+      font-size: clamp(0.97rem, 2.16vw, 2.34rem);
+    }
+
+    .findings-item-body {
+      font-size: clamp(0.72rem, 1.58vw, 1.4rem);
+    }
   }
 }
 
