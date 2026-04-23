@@ -750,14 +750,14 @@
 
   .findings-item-icon-wrap {
     @apply grid shrink-0 place-items-center rounded-full;
-    width: clamp(2.35rem, 6.14vw, 2.77rem);
+    width: clamp(2.12rem, 5.53vw, 2.49rem);
     aspect-ratio: 1;
     border: 3px solid var(--finding-accent);
   }
 
   .findings-item-icon {
-    width: clamp(0.98rem, 2.56vw, 1.15rem);
-    height: clamp(0.98rem, 2.56vw, 1.15rem);
+    width: clamp(0.88rem, 2.3vw, 1.04rem);
+    height: clamp(0.88rem, 2.3vw, 1.04rem);
     color: var(--finding-accent);
   }
 
@@ -779,7 +779,7 @@
 
   .findings-item-title {
     font-family: var(--font-body);
-    font-size: clamp(1.08rem, 2.4vw, 2.6rem);
+    font-size: clamp(0.97rem, 2.16vw, 2.34rem);
     font-weight: 800;
     line-height: 1.06;
     text-wrap: balance;
@@ -796,20 +796,20 @@
 
   @media (min-width: 64rem) {
     .findings-item-icon-wrap {
-      width: clamp(2.65rem, 6.91vw, 3.11rem);
+      width: clamp(2.39rem, 6.22vw, 2.8rem);
     }
 
     .findings-item-icon {
-      width: clamp(1.1rem, 2.88vw, 1.3rem);
-      height: clamp(1.1rem, 2.88vw, 1.3rem);
+      width: clamp(0.99rem, 2.59vw, 1.17rem);
+      height: clamp(0.99rem, 2.59vw, 1.17rem);
     }
 
     .findings-item-badge {
-      font-size: 0.79rem;
+      font-size: 0.71rem;
     }
 
     .findings-item-title {
-      font-size: clamp(0.97rem, 2.16vw, 2.34rem);
+      font-size: clamp(0.87rem, 1.94vw, 2.11rem);
     }
 
     .findings-item-body {
