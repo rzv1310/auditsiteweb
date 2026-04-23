@@ -269,6 +269,13 @@ function Index() {
                     </article>
                   ))}
                 </div>
+
+                <div className="cta-row journey-cta-row">
+                  <a className="cta-primary" href="#audit-focus">
+                    Vreau audit gratuit
+                    <ArrowRight className="size-6" aria-hidden="true" />
+                  </a>
+                </div>
               </TabsContent>
             ))}
           </Tabs>

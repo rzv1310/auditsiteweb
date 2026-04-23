@@ -512,7 +512,7 @@
   }
 
   .journey-carousel-chip {
-    @apply w-full rounded-[1.1rem] border text-center font-extrabold;
+    @apply w-full rounded-none border text-center font-extrabold;
     min-height: 2.3rem;
     padding-inline: 0.65rem;
     padding-block: 0.4rem;
@@ -532,7 +532,7 @@
   }
 
   .journey-tab-trigger {
-    @apply rounded-[1.1rem] border text-center font-extrabold text-foreground transition duration-200 ease-out sm:text-left;
+    @apply rounded-none border text-center font-extrabold text-foreground transition duration-200 ease-out sm:text-left;
     border-color: transparent;
     background: var(--color-primary);
     color: oklch(0.98 0 0);
@@ -560,6 +560,10 @@
 
   .journey-panel {
     @apply mt-8 sm:mt-10;
+  }
+
+  .journey-cta-row {
+    @apply mt-10;
   }
 
   .journey-list {
