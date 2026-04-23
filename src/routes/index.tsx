@@ -140,6 +140,38 @@ function Index() {
   const [activeJourney, setActiveJourney] = React.useState(journeyTabs[0]?.value ?? "services");
   const [carouselApi, setCarouselApi] = React.useState<CarouselApi>();
 
+  const handleContactScroll = React.useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    const target = document.getElementById("contact-form");
+    if (!target) return;
+
+    const startPosition = window.scrollY;
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - 24;
+    const distance = targetPosition - startPosition;
+    const duration = 1100;
+    let startTime: number | null = null;
+
+    const easeInOutCubic = (progress: number) =>
+      progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+    const animateScroll = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+
+      window.scrollTo({ top: startPosition + distance * easedProgress, behavior: "auto" });
+
+      if (progress < 1) {
+        window.requestAnimationFrame(animateScroll);
+      }
+    };
+
+    window.requestAnimationFrame(animateScroll);
+  }, []);
+
   React.useEffect(() => {
     if (!carouselApi) return;
 
@@ -173,7 +205,12 @@ function Index() {
     <>
       <header className="site-header">
         <div className="section-shell site-header-shell">
-          <a className="site-contact-link" href="#contact-form" aria-label="Mergi la formularul de contact">
+          <a
+            className="site-contact-link"
+            href="#contact-form"
+            aria-label="Mergi la formularul de contact"
+            onClick={handleContactScroll}
+          >
             Contact
           </a>
         </div>
@@ -210,7 +247,12 @@ function Index() {
               </div>
 
               <div className="cta-row">
-                 <a className="cta-primary" href="#contact-form" aria-label="Mergi la formularul de contact pentru audit gratuit">
+                 <a
+                   className="cta-primary"
+                   href="#contact-form"
+                   aria-label="Mergi la formularul de contact pentru audit gratuit"
+                   onClick={handleContactScroll}
+                 >
                   Vreau audit gratuit
                   <ArrowRight className="size-6" aria-hidden="true" />
                 </a>
@@ -296,7 +338,12 @@ function Index() {
                 </div>
 
                 <div className="cta-row journey-cta-row">
-                  <a className="cta-primary" href="#contact-form" aria-label="Mergi la formularul de contact pentru audit gratuit">
+                  <a
+                    className="cta-primary"
+                    href="#contact-form"
+                    aria-label="Mergi la formularul de contact pentru audit gratuit"
+                    onClick={handleContactScroll}
+                  >
                     Vreau audit gratuit
                     <ArrowRight className="size-6" aria-hidden="true" />
                   </a>
