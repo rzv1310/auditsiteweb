@@ -213,6 +213,15 @@
     @apply max-w-[780px];
   }
 
+  .hero-badge {
+    @apply mb-5 inline-flex min-w-0 text-left font-semibold uppercase;
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: clamp(0.7rem, 1vw, 0.92rem);
+    letter-spacing: 0.08em;
+    text-wrap: balance;
+  }
+
   .hero-side {
     @apply hidden lg:flex min-h-[72vh] items-end justify-end;
   }

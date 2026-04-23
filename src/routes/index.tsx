@@ -174,6 +174,7 @@ function Index() {
         <div className="section-shell">
           <div className="hero-stack">
             <div className="hero-panel">
+              <div className="hero-badge">AUDIT SITE WEB GRATUIT</div>
               <h1 className="display-hero">
                 <span className="hero-accent block">
                   Site-ul tău
