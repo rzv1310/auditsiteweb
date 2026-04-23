@@ -10,8 +10,8 @@ const findings = [
   {
     level: "critical",
     label: "CRITIC",
-    title: "Banner cookie ilegal - consimțământ implicit, tracking activ înainte de acceptare",
-    body: "",
+    title: "Banner cookie ilegal -",
+    body: "consimțământ implicit, tracking activ înainte de acceptare",
   },
   {
     level: "critical",
