@@ -1,7 +1,15 @@
 import { ArrowLeft } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
-const sections = [
+type TermsSection = {
+  title: string;
+  paragraphs: string[];
+  list?: string[];
+  closing?: string;
+  contact?: boolean;
+};
+
+const sections: TermsSection[] = [
   {
     title: "1. Introducere",
     paragraphs: [
@@ -117,7 +125,7 @@ const sections = [
     closing:
       "Prin acceptarea acestor Termeni și Condiții, confirmați că ați citit și înțeles toate politicile menționate mai sus.",
   },
-] as const;
+];
 
 export const Route = createFileRoute("/termeni-si-conditii")({
   head: () => ({
