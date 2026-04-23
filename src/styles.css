@@ -813,16 +813,16 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 0.38rem;
-    height: 0.38rem;
+    width: 0.24rem;
+    height: 0.24rem;
     border-radius: 999px;
     background: oklch(0.66 0.26 25);
     opacity: 0;
     transform: translate3d(-999px, -999px, 0) translate(-50%, -50%);
     box-shadow:
-      0 0 0.18rem oklch(0.66 0.26 25 / 0.95),
-      0 0 0.48rem oklch(0.66 0.26 25 / 0.7),
-      0 0 0.82rem oklch(0.66 0.26 25 / 0.5);
+      0 0 0.1rem oklch(0.66 0.26 25 / 0.95),
+      0 0 0.28rem oklch(0.66 0.26 25 / 0.7),
+      0 0 0.52rem oklch(0.66 0.26 25 / 0.5);
     will-change: transform, opacity;
   }
 
