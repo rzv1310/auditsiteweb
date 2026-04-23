@@ -327,8 +327,8 @@ function Index() {
         </div>
       </section>
 
-      <section className="section-block bg-background">
-        <div className="section-shell">
+      <section className="section-block bg-background findings-section-block">
+        <div className="section-shell findings-section-shell">
           <div className="findings-showcase">
             <img
               src={problemeIdentificateImage}
