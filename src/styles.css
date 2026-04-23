@@ -768,10 +768,10 @@
   .audit-request-title {
     color: var(--foreground);
     font-family: var(--font-display);
-    font-size: clamp(3rem, 10vw, 8.5rem);
-    line-height: 0.95;
+    font-size: clamp(1.75rem, 5vw, 4.8rem);
+    line-height: 1.14;
     text-transform: uppercase;
-    text-wrap: balance;
+    white-space: nowrap;
   }
 
   .audit-request-subtitle {
