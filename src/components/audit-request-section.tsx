@@ -10,9 +10,9 @@ export function AuditRequestSection() {
       <div className="section-shell audit-request-shell">
         <div className="audit-request-header">
           <h2 id="audit-request-heading" className="audit-request-title">
-            Vreau un audit
+            Vreau Audit Gratuit
           </h2>
-          <p className="audit-request-subtitle">Completează formularul și te sunăm imediat.</p>
+          <p className="audit-request-subtitle">Completează formularul și primești auditul astăzi !</p>
         </div>
 
         <form className="audit-request-form" onSubmit={handleSubmit}>
