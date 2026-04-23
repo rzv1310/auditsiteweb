@@ -14,6 +14,14 @@ const NETLIFY_FORM_NAME = "audit-request";
 const WEBSITE_PATTERN = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,63}(\/[^\s]*)?$/;
 const PHONE_PATTERN = /^\+?[0-9 ]+$/;
 
+function normalizePhone(value: string) {
+  const trimmedValue = value.trim();
+  const hasPlusPrefix = trimmedValue.startsWith("+");
+  const digitsOnly = trimmedValue.replace(/\s+/g, "").replace(/^\+/, "");
+
+  return `${hasPlusPrefix ? "+" : ""}${digitsOnly}`;
+}
+
 export function AuditRequestSection() {
   const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -38,10 +46,16 @@ export function AuditRequestSection() {
     }
 
     if (field.name === "phone") {
-      const normalizedPhone = field.value.replace(/\s+/g, "").trim();
+      const trimmedPhone = field.value.trim();
+      const normalizedPhone = normalizePhone(trimmedPhone);
 
-      if (!PHONE_PATTERN.test(field.value.trim()) || normalizedPhone.replace(/^\+/, "").length < 10) {
-        field.setCustomValidity("Te rugăm introdu un număr de telefon valid.");
+      if (!PHONE_PATTERN.test(trimmedPhone)) {
+        field.setCustomValidity("Numărul poate conține doar cifre, spații și prefixul +.");
+        return;
+      }
+
+      if (normalizedPhone.replace(/^\+/, "").length < 10) {
+        field.setCustomValidity("Numărul de telefon trebuie să conțină cel puțin 10 cifre.");
         return;
       }
     }
@@ -64,6 +78,9 @@ export function AuditRequestSection() {
 
     try {
       const encodedFormData = new URLSearchParams();
+      const normalizedPhone = normalizePhone(formData.get("phone")?.toString() ?? "");
+
+      formData.set("phone", normalizedPhone);
 
       formData.forEach((value, key) => {
         if (typeof value === "string") {
@@ -129,6 +146,7 @@ export function AuditRequestSection() {
                 name="phone"
                 type="tel"
                 inputMode="tel"
+                autoComplete="tel"
                 placeholder="07XX XXX XXX"
                 className="audit-request-input"
                 required
