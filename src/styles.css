@@ -801,9 +801,9 @@
 
   .faq-question {
     font-family: var(--font-body);
-    font-size: clamp(1.17rem, 2.7vw, 3.06rem);
+    font-size: clamp(1.18rem, 2.15vw, 1.9rem);
     font-weight: 800;
-    line-height: 1.08;
+    line-height: 1.18;
     text-wrap: balance;
   }
 

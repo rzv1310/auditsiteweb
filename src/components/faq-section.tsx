@@ -47,7 +47,7 @@ export function FaqSection() {
             <AccordionPrimitive.Item key={value} value={value} className="faq-item">
               <AccordionPrimitive.Header>
                 <AccordionPrimitive.Trigger className="faq-trigger">
-                  <span className="faq-question">{question}</span>
+                  <h3 className="faq-question">{question}</h3>
                   <span className="faq-icon-wrap" aria-hidden="true">
                     <Plus className="faq-icon faq-icon-plus" />
                     <Minus className="faq-icon faq-icon-minus" />
