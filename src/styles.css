@@ -707,22 +707,170 @@
     animation: signal-sweep 4s linear infinite;
   }
 
-  .findings-showcase {
-    @apply mx-auto w-full;
+  .findings-section {
+    @apply bg-background pt-8 pb-20 sm:pt-12 sm:pb-24;
   }
 
-  .findings-section-block {
-    @apply py-0;
+  .findings-header {
+    @apply relative mb-8 flex items-start justify-between gap-6 sm:mb-10;
   }
 
-  .findings-section-shell {
-    @apply max-w-none px-0;
+  .findings-title {
+    @apply max-w-[12ch];
+    font-family: var(--font-body);
+    font-size: clamp(3.2rem, 8vw, 6.3rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: 0;
   }
 
-  .findings-showcase-image {
-    @apply block h-auto w-full;
-    margin-inline: auto;
-    object-fit: contain;
+  .findings-title span {
+    @apply block;
+  }
+
+  .findings-lens {
+    @apply relative hidden shrink-0 sm:block;
+    width: clamp(8rem, 14vw, 12rem);
+    aspect-ratio: 1;
+  }
+
+  .findings-lens-ring {
+    position: absolute;
+    top: 0.55rem;
+    left: 0.2rem;
+    width: 70%;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    border: 4px solid transparent;
+    background:
+      linear-gradient(var(--background), var(--background)) padding-box,
+      linear-gradient(135deg, oklch(0.76 0.24 0), oklch(0.67 0.27 334), oklch(0.84 0.14 255)) border-box;
+    box-shadow: inset 0 0 28px oklch(0.2 0.03 300 / 0.85);
+  }
+
+  .findings-lens-glow {
+    position: absolute;
+    top: 1.2rem;
+    left: 0.85rem;
+    width: 50%;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background:
+      radial-gradient(circle at 30% 30%, oklch(0.35 0.08 310 / 0.5), transparent 45%),
+      radial-gradient(circle at 65% 65%, oklch(0.2 0.02 280 / 0.8), oklch(0.12 0.01 280) 68%);
+    box-shadow: inset 0 0 16px oklch(0.5 0.09 300 / 0.25);
+  }
+
+  .findings-lens-handle {
+    position: absolute;
+    right: 0.35rem;
+    bottom: 0.9rem;
+    width: 3.9rem;
+    height: 1.2rem;
+    border-radius: 9999px;
+    border: 3px solid oklch(0.84 0.18 55);
+    transform: rotate(45deg);
+    transform-origin: center;
+    box-shadow: inset 0 0 0 1px oklch(0.61 0.2 32 / 0.5);
+  }
+
+  .findings-lens-spark {
+    position: absolute;
+    right: -0.2rem;
+    top: -0.15rem;
+    width: 0.22rem;
+    border-radius: 9999px;
+    background: oklch(0.78 0.19 55);
+  }
+
+  .findings-lens-spark-one {
+    height: 2rem;
+    transform: rotate(18deg);
+  }
+
+  .findings-lens-spark-two {
+    right: 0.95rem;
+    top: 0.12rem;
+    height: 1.85rem;
+    transform: rotate(52deg);
+  }
+
+  .findings-lens-spark-three {
+    right: 1.9rem;
+    top: 0.68rem;
+    height: 1.55rem;
+    transform: rotate(82deg);
+  }
+
+  .findings-list {
+    @apply flex flex-col gap-4 sm:gap-5;
+  }
+
+  .findings-item {
+    @apply grid items-center gap-4 rounded-[1.9rem] px-5 py-5 sm:grid-cols-[12rem_1px_minmax(0,1fr)] sm:gap-7 sm:px-8 sm:py-7 lg:px-10;
+    background: color-mix(in oklab, var(--color-card) 94%, black);
+  }
+
+  .findings-item-status {
+    @apply flex items-center gap-4 sm:flex-col sm:items-center sm:justify-center sm:gap-5;
+  }
+
+  .findings-item[data-level="critical"] {
+    --finding-accent: oklch(0.65 0.27 25);
+  }
+
+  .findings-item[data-level="high"] {
+    --finding-accent: oklch(0.76 0.19 55);
+  }
+
+  .findings-item[data-level="medium"] {
+    --finding-accent: oklch(0.84 0.17 95);
+  }
+
+  .findings-item-icon-wrap {
+    @apply grid shrink-0 place-items-center rounded-full;
+    width: clamp(4.8rem, 16vw, 7.8rem);
+    aspect-ratio: 1;
+    border: 4px solid var(--finding-accent);
+  }
+
+  .findings-item-icon {
+    width: clamp(2rem, 7vw, 3.45rem);
+    height: clamp(2rem, 7vw, 3.45rem);
+    color: var(--finding-accent);
+  }
+
+  .findings-item-badge {
+    @apply inline-flex min-h-12 items-center justify-center rounded-[1.1rem] px-5 text-[1.15rem] font-extrabold uppercase sm:min-h-0 sm:w-full sm:px-4 sm:py-3 sm:text-[1.1rem];
+    font-family: var(--font-body);
+    background: var(--finding-accent);
+    color: oklch(0.98 0 0);
+  }
+
+  .findings-item-divider {
+    @apply hidden h-full w-px sm:block;
+    background: color-mix(in oklab, var(--color-border) 85%, transparent);
+  }
+
+  .findings-item-copy {
+    @apply min-w-0;
+  }
+
+  .findings-item-title {
+    font-family: var(--font-body);
+    font-size: clamp(1.35rem, 3vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  .findings-item-body {
+    @apply mt-2 sm:mt-3;
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.2vw, 1.95rem);
+    line-height: 1.14;
+    text-wrap: balance;
   }
 }
 
