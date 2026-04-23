@@ -3,6 +3,7 @@ import * as React from "react";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
 import { FindingsSection } from "@/components/findings-section";
+import { FinalDeliverablesSection } from "@/components/final-deliverables-section";
 import { HeroAuditPreview } from "@/components/hero-audit-preview";
 import {
   Carousel,
@@ -328,6 +329,7 @@ function Index() {
       </section>
 
       <FindingsSection />
+      <FinalDeliverablesSection />
     </main>
   );
 }

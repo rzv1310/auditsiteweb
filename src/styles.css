@@ -711,6 +711,48 @@
     @apply bg-background pt-3 pb-[50px] sm:pt-5 sm:pb-[50px];
   }
 
+  .final-deliverables-section {
+    @apply bg-background pt-0 pb-20 sm:pb-24;
+  }
+
+  .final-deliverables-header {
+    @apply mb-8 text-center sm:mb-10;
+  }
+
+  .final-deliverables-title {
+    font-size: clamp(1.45rem, 4.2vw, 4.15rem);
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  .final-deliverables-grid {
+    @apply grid gap-4 md:grid-cols-3 md:gap-5;
+  }
+
+  .final-deliverable-card {
+    @apply min-h-[220px] px-5 py-5 sm:px-6 sm:py-6;
+    border: 1px solid var(--cta-bg);
+    background: transparent;
+  }
+
+  .final-deliverable-card-title {
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: clamp(1.18rem, 2.15vw, 1.9rem);
+    font-weight: 800;
+    line-height: 1.18;
+    text-wrap: balance;
+  }
+
+  .final-deliverable-card-body {
+    @apply mt-4;
+    color: var(--muted-foreground);
+    font-family: var(--font-body);
+    font-size: clamp(0.95rem, 1.5vw, 1.14rem);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
   .findings-header {
     @apply relative mb-4 px-1 sm:mb-5;
   }
