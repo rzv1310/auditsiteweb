@@ -6,7 +6,11 @@ export function AuditRequestSection() {
   }, []);
 
   return (
-    <section className="section-block audit-request-section" aria-labelledby="audit-request-heading">
+    <section
+      id="contact-form"
+      className="section-block audit-request-section"
+      aria-labelledby="audit-request-heading"
+    >
       <div className="section-shell audit-request-shell">
         <div className="audit-request-header">
           <h2 id="audit-request-heading" className="audit-request-title">
