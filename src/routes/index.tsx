@@ -295,9 +295,15 @@ function Index() {
       <section id="audit-focus" className="section-block bg-background">
         <div className="section-shell">
           <h2 className="display-section text-center">
-            <span className="block lg:whitespace-nowrap">Concurența ta nu are un site mai bun.</span>
+            <span className="block lg:whitespace-nowrap">
+              <span className="block sm:hidden">Concurența ta nu are</span>
+              <span className="block sm:hidden">un site mai bun.</span>
+              <span className="hidden sm:inline">Concurența ta nu are un site mai bun.</span>
+            </span>
             <span className="hero-accent mt-[10px] block lg:whitespace-nowrap">
-              Doar are un site mai bine optimizat.
+              <span className="block sm:hidden">Doar are un site</span>
+              <span className="block sm:hidden">mai bine optimizat.</span>
+              <span className="hidden sm:inline">Doar are un site mai bine optimizat.</span>
             </span>
           </h2>
 
