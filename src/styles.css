@@ -778,9 +778,9 @@
     @apply mx-auto mt-4 max-w-[18ch];
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    font-size: clamp(1.55rem, 3.8vw, 3.3rem);
+    font-size: clamp(1rem, 1.8vw, 1.45rem);
     font-weight: 400;
-    line-height: 1.18;
+    line-height: 1.35;
     text-wrap: balance;
   }
 
