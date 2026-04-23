@@ -364,7 +364,14 @@ function Index() {
             <Link to="/termeni-si-conditii" className="site-footer-inline-link">
               Termeni și condiții
             </Link>{" "}
-            | GDPR | Cookies
+            |{" "}
+            <Link to="/politica-de-confidentialitate" className="site-footer-inline-link">
+              GDPR
+            </Link>{" "}
+            |{" "}
+            <Link to="/politica-cookies" className="site-footer-inline-link">
+              Cookies
+            </Link>
           </p>
         </div>
       </footer>
