@@ -769,6 +769,8 @@
   .journey-list {
     @apply flex flex-col;
     --journey-gap: clamp(1.6rem, 3vw, 2.5rem);
+    --journey-segment-duration: 1.6s;
+    --journey-cycle-duration: calc(var(--journey-segment-duration) * 3);
     gap: var(--journey-gap);
   }
 
@@ -812,7 +814,7 @@
       0 0 0.45rem oklch(0.66 0.26 25 / 0.95),
       0 0 1rem oklch(0.66 0.26 25 / 0.7),
       0 0 1.5rem oklch(0.66 0.26 25 / 0.5);
-    animation: journey-dot-travel 3.6s ease-in-out infinite;
+    animation: journey-dot-travel var(--journey-cycle-duration) linear infinite;
   }
 
   .journey-item:nth-child(1) .journey-line-dot {
@@ -820,34 +822,34 @@
   }
 
   .journey-item:nth-child(2) .journey-line-dot {
-    animation-delay: 1.2s;
+    animation-delay: var(--journey-segment-duration);
   }
 
   .journey-item:nth-child(3) .journey-line-dot {
-    animation-delay: 2.4s;
+    animation-delay: calc(var(--journey-segment-duration) * 2);
   }
 
   @keyframes journey-dot-travel {
     0%,
-    18% {
+    8% {
       opacity: 0;
-      transform: translate(-50%, -120%) scale(0.8);
+      transform: translate(-50%, 0%) scale(0.82);
     }
 
-    28% {
+    14% {
       opacity: 1;
-      transform: translate(-50%, -10%) scale(1);
+      transform: translate(-50%, 0%) scale(1);
     }
 
-    72% {
+    86% {
       opacity: 1;
-      transform: translate(-50%, calc(100% - 0.4rem)) scale(1);
+      transform: translate(-50%, calc(100% - 100%)) scale(1);
     }
 
-    82%,
+    92%,
     100% {
       opacity: 0;
-      transform: translate(-50%, calc(100% + 0.5rem)) scale(0.82);
+      transform: translate(-50%, calc(100% - 100%)) scale(0.82);
     }
   }
 
