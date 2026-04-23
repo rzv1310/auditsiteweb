@@ -16,8 +16,8 @@ const findings = [
   {
     level: "critical",
     label: "CRITIC",
-    title: "Lipsă date structurate LocalBusiness / Service –",
-    body: "invizibili în Google Maps și Knowledge Panel",
+    title: "Lipsă date structurate LocalBusiness / Product –",
+    body: "invizibili în Google Maps / Knowledge Panel / Google Shopping",
   },
   {
     level: "high",
@@ -28,7 +28,7 @@ const findings = [
   {
     level: "medium",
     label: "MEDIU",
-    title: "Fără recenzii, testimoniale sau studii de caz –",
+    title: "Fără recenzii sau studii de caz –",
     body: "lipsa dovezii sociale blochează decizia",
   },
 ] as const;
