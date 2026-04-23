@@ -706,6 +706,16 @@
     background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
     animation: signal-sweep 4s linear infinite;
   }
+
+  .findings-showcase {
+    @apply mx-auto w-full max-w-6xl;
+  }
+
+  .findings-showcase-image {
+    @apply block h-auto w-full;
+    border: 1px solid color-mix(in oklab, var(--color-border) 72%, transparent);
+    box-shadow: 0 22px 70px oklch(0 0 0 / 0.28);
+  }
 }
 
 @keyframes signal-sweep {

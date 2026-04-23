@@ -3,6 +3,7 @@ import * as React from "react";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
 import { HeroAuditPreview } from "@/components/hero-audit-preview";
+import problemeIdentificateImage from "@/assets/probleme-identificate.png";
 import {
   Carousel,
   CarouselContent,
@@ -322,6 +323,19 @@ function Index() {
             <div className="mid-callout-chip">în timp ce</div>
             <p className="mid-callout-text">tu nu știi ce nu funcționează.</p>
             <div className="signal-divider" aria-hidden="true" />
+          </div>
+        </div>
+      </section>
+
+      <section className="section-block bg-background">
+        <div className="section-shell">
+          <div className="findings-showcase">
+            <img
+              src={problemeIdentificateImage}
+              alt="Exemplu de probleme identificate frecvent într-un audit de website"
+              className="findings-showcase-image"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
