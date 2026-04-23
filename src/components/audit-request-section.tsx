@@ -10,6 +10,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+const AUDIT_REQUEST_RECIPIENT = "hello@seo-doctor.ro";
+
 export function AuditRequestSection() {
   const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
 
@@ -36,7 +38,23 @@ export function AuditRequestSection() {
   const handleSubmit = React.useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    event.currentTarget.reset();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const phone = formData.get("phone")?.toString().trim() ?? "";
+    const website = formData.get("website")?.toString().trim() ?? "";
+    const subject = "Cerere audit gratuit";
+    const body = [
+      "Salut,",
+      "",
+      "Vreau un audit gratuit pentru website-ul meu.",
+      "",
+      `Telefon: ${phone}`,
+      `Website: ${website}`,
+    ].join("\n");
+
+    window.location.href = `mailto:${AUDIT_REQUEST_RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    form.reset();
     setIsSuccessOpen(true);
   }, []);
 
