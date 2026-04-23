@@ -855,7 +855,7 @@
 
   .audit-request-button {
     @apply mt-8 flex min-h-16 w-full items-center justify-center px-6 py-4;
-    background: color-mix(in oklab, var(--color-primary) 68%, black);
+    background: var(--color-primary);
     color: var(--muted-foreground);
     font-family: var(--font-body);
     font-size: clamp(1.6rem, 3vw, 2.4rem);
@@ -866,7 +866,7 @@
   }
 
   .audit-request-button:hover {
-    background: color-mix(in oklab, var(--color-primary) 78%, black);
+    background: color-mix(in oklab, var(--color-primary) 88%, black);
   }
 
   .findings-header {
