@@ -173,7 +173,7 @@ function PrivacyPolicyPage() {
     <>
       <main className="legal-page">
         <div className="legal-page-shell">
-          <Link to="/" className="legal-back-link">
+          <Link to="/" className="legal-back-link" aria-label="Înapoi la pagina principală">
             <ArrowLeft className="size-4" aria-hidden="true" />
             Înapoi la pagina principală
           </Link>
@@ -198,7 +198,13 @@ function PrivacyPolicyPage() {
                 {contact ? (
                   <p className="legal-contact-line">
                     Telefon:{" "}
-                    <a className="legal-contact-link" href="https://wa.me/40742702982" target="_blank" rel="noreferrer">
+                    <a
+                      className="legal-contact-link"
+                      href="https://wa.me/40742702982"
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="Deschide conversația WhatsApp cu SEO Doctor"
+                    >
                       +40 742 702 982
                     </a>
                   </p>

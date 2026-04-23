@@ -227,18 +227,24 @@
     color: var(--muted-foreground);
   }
 
-  .site-footer-email:hover {
-    text-decoration: underline;
+  .site-footer-email,
+  .site-footer-inline-link,
+  .site-footer-phone,
+  .legal-back-link,
+  .legal-contact-link {
     text-underline-offset: 0.16em;
   }
 
+  .site-footer-email:hover {
+    text-decoration: underline;
+  }
+
   .site-footer-inline-link {
-    color: inherit;
+    color: var(--foreground);
   }
 
   .site-footer-inline-link:hover {
     text-decoration: underline;
-    text-underline-offset: 0.16em;
   }
 
   .site-footer-phone {
@@ -247,7 +253,25 @@
 
   .site-footer-phone:hover {
     text-decoration: underline;
-    text-underline-offset: 0.16em;
+  }
+
+  .site-footer-email:focus-visible,
+  .site-footer-inline-link:focus-visible,
+  .site-footer-phone:focus-visible,
+  .legal-back-link:focus-visible,
+  .legal-contact-link:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    text-decoration: underline;
+  }
+
+  .site-footer-legal-list {
+    @apply flex w-full flex-wrap items-center justify-center gap-2;
+    color: var(--muted-foreground);
+  }
+
+  .site-footer-separator {
+    color: var(--muted-foreground);
   }
 
   .grid-stage {
@@ -521,7 +545,7 @@
 
   .legal-back-link {
     @apply inline-flex w-fit items-center gap-2 transition-opacity duration-200 ease-out;
-    color: var(--muted-foreground);
+    color: var(--foreground);
     font-family: var(--font-body);
     font-size: var(--body-text-size);
     line-height: 1.4;
@@ -578,7 +602,6 @@
 
   .legal-contact-link:hover {
     text-decoration: underline;
-    text-underline-offset: 0.16em;
   }
 
   .hero-accent {
