@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import * as React from "react";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
@@ -136,9 +136,91 @@ const journeyTabs = [
   },
 ];
 
+const JOURNEY_MARKER_SPEED = 180;
+const JOURNEY_MIN_SEGMENT_MS = 1200;
+const JOURNEY_RESET_PAUSE_MS = 220;
+
+type JourneyTabValue = (typeof journeyTabs)[number]["value"];
+
+type JourneyMarkerMetrics = {
+  bottom: number;
+  points: number[];
+  ready: boolean;
+  top: number;
+  x: number;
+};
+
 function Index() {
   const [activeJourney, setActiveJourney] = React.useState(journeyTabs[0]?.value ?? "services");
   const [carouselApi, setCarouselApi] = React.useState<CarouselApi>();
+  const [journeyMarkerMetrics, setJourneyMarkerMetrics] = React.useState<JourneyMarkerMetrics>({
+    bottom: 0,
+    points: [],
+    ready: false,
+    top: 0,
+    x: 0,
+  });
+  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(false);
+  const journeyListRef = React.useRef<HTMLDivElement | null>(null);
+  const journeyMarkerRef = React.useRef<HTMLSpanElement | null>(null);
+  const journeyStepRefs = React.useRef<Record<JourneyTabValue, Array<HTMLDivElement | null>>>({
+    services: [],
+    showcase: [],
+    store: [],
+  });
+
+  const setJourneyStepRef = React.useCallback(
+    (tabValue: JourneyTabValue, index: number) => (node: HTMLDivElement | null) => {
+      journeyStepRefs.current[tabValue][index] = node;
+    },
+    [],
+  );
+
+  const measureJourneyMarker = React.useCallback(() => {
+    const listNode = journeyListRef.current;
+    const stepNodes = (journeyStepRefs.current[activeJourney] ?? []).filter(
+      (node): node is HTMLDivElement => node !== null,
+    );
+
+    if (!listNode || stepNodes.length < 2) {
+      setJourneyMarkerMetrics((current) =>
+        current.ready
+          ? { bottom: 0, points: [], ready: false, top: 0, x: 0 }
+          : current,
+      );
+      return;
+    }
+
+    const listRect = listNode.getBoundingClientRect();
+    const markerPoints = stepNodes.map((stepNode) => {
+      const stepRect = stepNode.getBoundingClientRect();
+
+      return {
+        x: stepRect.left - listRect.left + stepRect.width / 2,
+        y: stepRect.top - listRect.top + stepRect.height / 2,
+      };
+    });
+
+    const nextMetrics = {
+      bottom: markerPoints[markerPoints.length - 1]?.y ?? 0,
+      points: markerPoints.map(({ y }) => y),
+      ready: true,
+      top: markerPoints[0]?.y ?? 0,
+      x: markerPoints.reduce((total, point) => total + point.x, 0) / markerPoints.length,
+    } satisfies JourneyMarkerMetrics;
+
+    setJourneyMarkerMetrics((current) => {
+      const isSame =
+        current.ready === nextMetrics.ready &&
+        current.top === nextMetrics.top &&
+        current.bottom === nextMetrics.bottom &&
+        current.x === nextMetrics.x &&
+        current.points.length === nextMetrics.points.length &&
+        current.points.every((point, index) => point === nextMetrics.points[index]);
+
+      return isSame ? current : nextMetrics;
+    });
+  }, [activeJourney]);
 
   const handleContactScroll = React.useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
@@ -200,6 +282,119 @@ function Index() {
       carouselApi.scrollTo(nextIndex);
     }
   }, [activeJourney, carouselApi]);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    updatePreference();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", updatePreference);
+
+      return () => mediaQuery.removeEventListener("change", updatePreference);
+    }
+
+    mediaQuery.addListener(updatePreference);
+
+    return () => mediaQuery.removeListener(updatePreference);
+  }, []);
+
+  React.useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let frameId = window.requestAnimationFrame(measureJourneyMarker);
+    const handleResize = () => {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(measureJourneyMarker);
+    };
+
+    const resizeObserver = new ResizeObserver(handleResize);
+    const listNode = journeyListRef.current;
+    const stepNodes = (journeyStepRefs.current[activeJourney] ?? []).filter(
+      (node): node is HTMLDivElement => node !== null,
+    );
+
+    if (listNode) {
+      resizeObserver.observe(listNode);
+    }
+
+    stepNodes.forEach((stepNode) => resizeObserver.observe(stepNode));
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [activeJourney, measureJourneyMarker]);
+
+  React.useEffect(() => {
+    const markerNode = journeyMarkerRef.current;
+
+    if (!markerNode) return;
+
+    if (!journeyMarkerMetrics.ready || journeyMarkerMetrics.points.length < 2 || prefersReducedMotion) {
+      markerNode.style.opacity = "0";
+      markerNode.style.transform = "translate3d(-999px, -999px, 0) translate(-50%, -50%)";
+      return;
+    }
+
+    const segmentDistances = journeyMarkerMetrics.points
+      .slice(1)
+      .map((point, index) => Math.abs(point - journeyMarkerMetrics.points[index]));
+
+    const segmentDurations = segmentDistances.map((distance) =>
+      Math.max(JOURNEY_MIN_SEGMENT_MS, (distance / JOURNEY_MARKER_SPEED) * 1000),
+    );
+
+    const travelDuration = segmentDurations.reduce((total, duration) => total + duration, 0);
+    const cycleDuration = travelDuration + JOURNEY_RESET_PAUSE_MS;
+    let animationFrameId = 0;
+    let startTime: number | null = null;
+
+    const renderMarker = (timestamp: number) => {
+      if (startTime === null) {
+        startTime = timestamp;
+      }
+
+      const elapsed = (timestamp - startTime) % cycleDuration;
+
+      if (elapsed >= travelDuration) {
+        markerNode.style.opacity = "0";
+        markerNode.style.transform = `translate3d(${journeyMarkerMetrics.x}px, ${journeyMarkerMetrics.points[0]}px, 0) translate(-50%, -50%)`;
+        animationFrameId = window.requestAnimationFrame(renderMarker);
+        return;
+      }
+
+      let accumulatedDuration = 0;
+      let currentSegmentIndex = 0;
+
+      while (
+        currentSegmentIndex < segmentDurations.length - 1 &&
+        elapsed >= accumulatedDuration + segmentDurations[currentSegmentIndex]
+      ) {
+        accumulatedDuration += segmentDurations[currentSegmentIndex];
+        currentSegmentIndex += 1;
+      }
+
+      const segmentDuration = segmentDurations[currentSegmentIndex] ?? JOURNEY_MIN_SEGMENT_MS;
+      const segmentProgress = segmentDuration === 0 ? 0 : (elapsed - accumulatedDuration) / segmentDuration;
+      const segmentStart = journeyMarkerMetrics.points[currentSegmentIndex] ?? 0;
+      const segmentEnd = journeyMarkerMetrics.points[currentSegmentIndex + 1] ?? segmentStart;
+      const currentY = segmentStart + (segmentEnd - segmentStart) * segmentProgress;
+
+      markerNode.style.opacity = "1";
+      markerNode.style.transform = `translate3d(${journeyMarkerMetrics.x}px, ${currentY}px, 0) translate(-50%, -50%)`;
+      animationFrameId = window.requestAnimationFrame(renderMarker);
+    };
+
+    animationFrameId = window.requestAnimationFrame(renderMarker);
+
+    return () => window.cancelAnimationFrame(animationFrameId);
+  }, [journeyMarkerMetrics, prefersReducedMotion]);
 
   return (
     <>
@@ -312,16 +507,22 @@ function Index() {
 
             {journeyTabs.map(({ value, items }) => (
               <TabsContent key={value} value={value} className="journey-panel">
-                <div className="journey-list">
+                <div ref={journeyListRef} className="journey-list">
+                  <div className="journey-rail-overlay" aria-hidden="true">
+                    <span
+                      className="journey-rail"
+                      style={{
+                        ["--journey-rail-height" as string]: `${Math.max(journeyMarkerMetrics.bottom - journeyMarkerMetrics.top, 0)}px`,
+                        ["--journey-rail-left" as string]: `${journeyMarkerMetrics.x}px`,
+                        ["--journey-rail-top" as string]: `${journeyMarkerMetrics.top}px`,
+                      }}
+                    />
+                    <span ref={journeyMarkerRef} className="journey-travel-dot" />
+                  </div>
                   {items.map(({ step, title, body }, index) => (
                     <article key={title} className="journey-item">
                       <div className="journey-marker" aria-hidden="true">
-                        <div className="journey-step">{step}</div>
-                        {index < items.length - 1 ? (
-                          <div className="journey-line" aria-hidden="true">
-                            <span className="journey-line-dot" />
-                          </div>
-                        ) : null}
+                        <div ref={setJourneyStepRef(value, index)} className="journey-step">{step}</div>
                       </div>
 
                       <div className="journey-content">
