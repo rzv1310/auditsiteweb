@@ -4,7 +4,7 @@ import { Minus, Plus } from "lucide-react";
 const faqItems = [
   {
     value: "what-is-audit",
-    question: "Ce este un audit al site-ului?",
+    question: "Ce este un audit al site-ului web?",
     answer:
       "Un audit complet verifică site-ul tău pe 10 categorii (SEO, accesibilitate, performanță, securitate etc.) - și îți oferă un raport cu probleme, scoruri și recomandări concrete.",
   },
