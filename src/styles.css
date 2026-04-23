@@ -811,6 +811,16 @@
     margin-top: 1rem;
   }
 
+  .journey-item-title {
+    font-size: clamp(0.98rem, 1.2vw, 1.22rem);
+    line-height: 1.18;
+  }
+
+  .journey-item-body {
+    font-size: clamp(0.86rem, 0.98vw, 1rem);
+    line-height: 1.48;
+  }
+
   .display-hero {
     font-size: clamp(2.6rem, 5vw, 5.35rem);
     line-height: 1.04;
