@@ -355,10 +355,12 @@ function Index() {
             target="_blank"
             rel="noreferrer"
           >
-            +40 742 702 982
+            WhatsApp: +40 742 702 982
           </a>
-          <p className="site-footer-text">hello@seo-doctor.ro</p>
-          <p className="site-footer-text">Termeni și condiții | GDPR | Cookies</p>
+          <a className="site-footer-text site-footer-email" href="mailto:hello@seo-doctor.ro">
+            hello@seo-doctor.ro
+          </a>
+          <p className="site-footer-text site-footer-legal">Termeni și condiții | GDPR | Cookies</p>
         </div>
       </footer>
     </>
