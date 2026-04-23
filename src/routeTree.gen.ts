@@ -10,11 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermeniSiConditiiRouteImport } from './routes/termeni-si-conditii'
+import { Route as PoliticaDeConfidentialitateRouteImport } from './routes/politica-de-confidentialitate'
+import { Route as PoliticaCookiesRouteImport } from './routes/politica-cookies'
 import { Route as IndexRouteImport } from './routes/index'
 
 const TermeniSiConditiiRoute = TermeniSiConditiiRouteImport.update({
   id: '/termeni-si-conditii',
   path: '/termeni-si-conditii',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDeConfidentialitateRoute =
+  PoliticaDeConfidentialitateRouteImport.update({
+    id: '/politica-de-confidentialitate',
+    path: '/politica-de-confidentialitate',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PoliticaCookiesRoute = PoliticaCookiesRouteImport.update({
+  id: '/politica-cookies',
+  path: '/politica-cookies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +38,48 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/politica-cookies': typeof PoliticaCookiesRoute
+  '/politica-de-confidentialitate': typeof PoliticaDeConfidentialitateRoute
   '/termeni-si-conditii': typeof TermeniSiConditiiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/politica-cookies': typeof PoliticaCookiesRoute
+  '/politica-de-confidentialitate': typeof PoliticaDeConfidentialitateRoute
   '/termeni-si-conditii': typeof TermeniSiConditiiRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/politica-cookies': typeof PoliticaCookiesRoute
+  '/politica-de-confidentialitate': typeof PoliticaDeConfidentialitateRoute
   '/termeni-si-conditii': typeof TermeniSiConditiiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/termeni-si-conditii'
+  fullPaths:
+    | '/'
+    | '/politica-cookies'
+    | '/politica-de-confidentialitate'
+    | '/termeni-si-conditii'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/termeni-si-conditii'
-  id: '__root__' | '/' | '/termeni-si-conditii'
+  to:
+    | '/'
+    | '/politica-cookies'
+    | '/politica-de-confidentialitate'
+    | '/termeni-si-conditii'
+  id:
+    | '__root__'
+    | '/'
+    | '/politica-cookies'
+    | '/politica-de-confidentialitate'
+    | '/termeni-si-conditii'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PoliticaCookiesRoute: typeof PoliticaCookiesRoute
+  PoliticaDeConfidentialitateRoute: typeof PoliticaDeConfidentialitateRoute
   TermeniSiConditiiRoute: typeof TermeniSiConditiiRoute
 }
 
@@ -56,6 +90,20 @@ declare module '@tanstack/react-router' {
       path: '/termeni-si-conditii'
       fullPath: '/termeni-si-conditii'
       preLoaderRoute: typeof TermeniSiConditiiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-confidentialitate': {
+      id: '/politica-de-confidentialitate'
+      path: '/politica-de-confidentialitate'
+      fullPath: '/politica-de-confidentialitate'
+      preLoaderRoute: typeof PoliticaDeConfidentialitateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-cookies': {
+      id: '/politica-cookies'
+      path: '/politica-cookies'
+      fullPath: '/politica-cookies'
+      preLoaderRoute: typeof PoliticaCookiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +118,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PoliticaCookiesRoute: PoliticaCookiesRoute,
+  PoliticaDeConfidentialitateRoute: PoliticaDeConfidentialitateRoute,
   TermeniSiConditiiRoute: TermeniSiConditiiRoute,
 }
 export const routeTree = rootRouteImport

@@ -1,10 +1,11 @@
+import type { ReactNode } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 type TermsSection = {
   title: string;
-  paragraphs: string[];
-  list?: string[];
+  paragraphs: ReactNode[];
+  list?: ReactNode[];
   closing?: string;
   contact?: boolean;
 };
@@ -13,7 +14,12 @@ const sections: TermsSection[] = [
   {
     title: "1. Introducere",
     paragraphs: [
-      "Bine ați venit la SEO Doctor. Acești Termeni și Condiții guvernează utilizarea de către dumneavoastră a serviciului nostru, operat de SEO Doctor SRL, Cod Unic de Înregistrare 49345207, cu sediul în Str. Campia Libertății 33, sector 3, București.",
+      <>
+        Bine ați venit la <Link to="/" className="legal-contact-link">SEO Doctor</Link>. Acești
+        Termeni și Condiții guvernează utilizarea de către dumneavoastră a serviciului nostru,
+        operat de SEO Doctor SRL, Cod Unic de Înregistrare 49345207, cu sediul în Str. Campia
+        Libertății 33, sector 3, București.
+      </>,
       "Prin accesarea sau utilizarea Serviciului, sunteți de acord să respectați acești Termeni. Dacă nu sunteți de acord cu vreo parte a termenilor, atunci nu aveți permisiunea de a accesa Serviciul.",
     ],
   },
@@ -119,8 +125,19 @@ const sections: TermsSection[] = [
       "Acești Termeni și Condiții trebuie citiți împreună cu următoarele politici ale SEO Doctor, care fac parte integrantă din prezentul acord:",
     ],
     list: [
-      "Politica de Cookies – descrie modul în care utilizăm cookie-urile și tehnologiile similare pe site-ul nostru.",
-      "Politica de Confidențialitate (GDPR) – detaliază modul în care colectăm, utilizăm și protejăm datele dumneavoastră personale, în conformitate cu Regulamentul General privind Protecția Datelor.",
+      <>
+        <Link to="/politica-cookies" className="legal-contact-link">
+          Politica de Cookies
+        </Link>{" "}
+        – descrie modul în care utilizăm cookie-urile și tehnologiile similare pe site-ul nostru.
+      </>,
+      <>
+        <Link to="/politica-de-confidentialitate" className="legal-contact-link">
+          Politica de Confidențialitate (GDPR)
+        </Link>{" "}
+        – detaliază modul în care colectăm, utilizăm și protejăm datele dumneavoastră personale,
+        în conformitate cu Regulamentul General privind Protecția Datelor.
+      </>,
     ],
     closing:
       "Prin acceptarea acestor Termeni și Condiții, confirmați că ați citit și înțeles toate politicile menționate mai sus.",
@@ -130,17 +147,17 @@ const sections: TermsSection[] = [
 export const Route = createFileRoute("/termeni-si-conditii")({
   head: () => ({
     meta: [
-      { title: "Termeni și Condiții — Auditor" },
+      { title: "Termeni și Condiții — SEO Doctor" },
       {
         name: "description",
         content:
-          "Citește Termenii și Condițiile Auditor pentru utilizarea serviciilor de audit website și consultanță digitală.",
+          "Citește Termenii și Condițiile SEO Doctor pentru utilizarea serviciilor de audit website și consultanță digitală.",
       },
-      { property: "og:title", content: "Termeni și Condiții — Auditor" },
+      { property: "og:title", content: "Termeni și Condiții — SEO Doctor" },
       {
         property: "og:description",
         content:
-          "Detalii despre utilizarea serviciilor Auditor, condițiile comerciale, confidențialitate și contact.",
+          "Detalii despre utilizarea serviciilor SEO Doctor, condițiile comerciale, confidențialitate și contact.",
       },
     ],
   }),
@@ -167,8 +184,8 @@ function TermsPage() {
                 {title}
               </h2>
 
-              {paragraphs.map((paragraph) => (
-                <p key={paragraph} className="legal-paragraph">
+              {paragraphs.map((paragraph, index) => (
+                <p key={`${title}-paragraph-${index}`} className="legal-paragraph">
                   {paragraph}
                 </p>
               ))}
@@ -184,8 +201,8 @@ function TermsPage() {
 
               {list ? (
                 <ul className="legal-list">
-                  {list.map((item) => (
-                    <li key={item} className="legal-list-item">
+                  {list.map((item, index) => (
+                    <li key={`${title}-list-${index}`} className="legal-list-item">
                       {item}
                     </li>
                   ))}
