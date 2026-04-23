@@ -60,15 +60,6 @@ export function FindingsSection() {
             <span>Ce identificăm</span>
             <span>în mod frecvent</span>
           </h2>
-
-          <div className="findings-lens" aria-hidden="true">
-            <div className="findings-lens-ring" />
-            <div className="findings-lens-glow" />
-            <div className="findings-lens-handle" />
-            <span className="findings-lens-spark findings-lens-spark-one" />
-            <span className="findings-lens-spark findings-lens-spark-two" />
-            <span className="findings-lens-spark findings-lens-spark-three" />
-          </div>
         </div>
 
         <div className="findings-list">
