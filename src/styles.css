@@ -601,7 +601,7 @@
   .journey-item-title {
     @apply text-foreground;
     font-family: var(--font-body);
-    font-size: clamp(1rem, 2.4vw, 2rem);
+    font-size: clamp(0.9rem, 2.16vw, 1.8rem);
     font-weight: 800;
     line-height: 1.2;
     text-wrap: balance;
@@ -612,7 +612,7 @@
     color: var(--hero-copy);
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: clamp(0.95rem, 1.8vw, 1.38rem);
+    font-size: clamp(0.855rem, 1.62vw, 1.242rem);
     line-height: 1.58;
     text-wrap: pretty;
   }
@@ -884,12 +884,12 @@
    }
 
    .journey-item-title {
-     font-size: 1.05rem;
+      font-size: 0.945rem;
      line-height: 1.22;
    }
 
    .journey-item-body {
-     font-size: 0.95rem;
+      font-size: 0.855rem;
      line-height: 1.5;
    }
 }
