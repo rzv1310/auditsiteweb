@@ -767,15 +767,20 @@
   }
 
   .journey-list {
-    @apply flex flex-col;
+    @apply relative flex flex-col;
     --journey-gap: clamp(1.6rem, 3vw, 2.5rem);
-    --journey-segment-duration: 1.6s;
-    --journey-cycle-duration: calc(var(--journey-segment-duration) * 3);
     gap: var(--journey-gap);
   }
 
+  .journey-rail-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .journey-item {
-    @apply grid items-start;
+    @apply relative z-10 grid items-start;
     gap: clamp(0.9rem, 2vw, 1.5rem);
     grid-template-columns: clamp(3rem, 8vw, 4.5rem) minmax(0, 1fr);
   }
@@ -784,8 +789,18 @@
     @apply flex flex-col items-center self-stretch;
   }
 
+  .journey-rail {
+    position: absolute;
+    left: var(--journey-rail-left, 0px);
+    top: var(--journey-rail-top, 0px);
+    width: 1px;
+    height: var(--journey-rail-height, 0px);
+    transform: translateX(-50%);
+    background: var(--color-border);
+  }
+
   .journey-step {
-    @apply flex items-center justify-center rounded-full font-bold;
+    @apply relative z-10 flex items-center justify-center rounded-full font-bold;
     background: oklch(0.95 0.03 24);
     color: oklch(0.54 0.19 25);
     width: clamp(2.16rem, 5.6vw, 2.8rem);
@@ -794,63 +809,21 @@
     line-height: 1;
   }
 
-  .journey-line {
-    @apply relative mt-2 w-px flex-1 overflow-hidden sm:mt-3;
-    background: var(--color-border);
-    min-height: calc(clamp(1.5rem, 5vw, 2.5rem) + var(--journey-gap));
-    margin-bottom: calc(var(--journey-gap) * -1);
-  }
-
-  .journey-line-dot {
+  .journey-travel-dot {
     position: absolute;
-    left: 50%;
+    left: 0;
     top: 0;
-    width: 0.55rem;
-    height: 0.55rem;
+    width: 0.7rem;
+    height: 0.7rem;
     border-radius: 999px;
     background: oklch(0.66 0.26 25);
-    transform: translate(-50%, -120%);
+    opacity: 0;
+    transform: translate3d(-999px, -999px, 0) translate(-50%, -50%);
     box-shadow:
       0 0 0.45rem oklch(0.66 0.26 25 / 0.95),
       0 0 1rem oklch(0.66 0.26 25 / 0.7),
       0 0 1.5rem oklch(0.66 0.26 25 / 0.5);
-    animation: journey-dot-travel var(--journey-cycle-duration) linear infinite;
-  }
-
-  .journey-item:nth-child(1) .journey-line-dot {
-    animation-delay: 0s;
-  }
-
-  .journey-item:nth-child(2) .journey-line-dot {
-    animation-delay: var(--journey-segment-duration);
-  }
-
-  .journey-item:nth-child(3) .journey-line-dot {
-    animation-delay: calc(var(--journey-segment-duration) * 2);
-  }
-
-  @keyframes journey-dot-travel {
-    0%,
-    8% {
-      opacity: 0;
-      transform: translate(-50%, 0%) scale(0.82);
-    }
-
-    14% {
-      opacity: 1;
-      transform: translate(-50%, 0%) scale(1);
-    }
-
-    86% {
-      opacity: 1;
-      transform: translate(-50%, calc(100% - 100%)) scale(1);
-    }
-
-    92%,
-    100% {
-      opacity: 0;
-      transform: translate(-50%, calc(100% - 100%)) scale(0.82);
-    }
+    will-change: transform, opacity;
   }
 
   .journey-content {
@@ -1378,6 +1351,10 @@
     transition: none !important;
     transform: none !important;
   }
+
+  .journey-travel-dot {
+    opacity: 0 !important;
+  }
 }
 
 @media (max-width: 1023px) {
@@ -1590,10 +1567,6 @@
       width: 2.08rem;
       height: 2.08rem;
       font-size: 0.88rem;
-   }
-
-   .journey-line {
-     min-height: 1.5rem;
    }
 
    .journey-item-title {
