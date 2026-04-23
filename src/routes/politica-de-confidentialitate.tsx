@@ -189,8 +189,8 @@ function PrivacyPolicyPage() {
                   {title}
                 </h2>
 
-                {paragraphs.map((paragraph) => (
-                  <p key={paragraph} className="legal-paragraph">
+                {paragraphs.map((paragraph, index) => (
+                  <p key={`${title}-paragraph-${index}`} className="legal-paragraph">
                     {paragraph}
                   </p>
                 ))}
