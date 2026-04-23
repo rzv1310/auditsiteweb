@@ -247,7 +247,7 @@
   }
 
   .site-footer-inline-link {
-    color: var(--foreground);
+    color: var(--muted-foreground);
   }
 
   .site-footer-inline-link:hover {
