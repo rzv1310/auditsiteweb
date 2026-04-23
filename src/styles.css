@@ -579,7 +579,7 @@
   }
 
   .journey-cta-row {
-    @apply mt-10;
+    @apply mt-10 justify-center;
   }
 
   .journey-list {
