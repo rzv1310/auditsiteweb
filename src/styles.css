@@ -728,12 +728,12 @@
   }
 
   .findings-item {
-    @apply grid items-center gap-2 rounded-[1.2rem] px-3 py-2.5 sm:grid-cols-[9rem_1px_minmax(0,1fr)] sm:gap-3.5 sm:px-4.5 sm:py-3 lg:px-5;
+    @apply grid items-center gap-2 rounded-[1.2rem] px-3 py-2 sm:grid-cols-[8.5rem_1px_minmax(0,1fr)] sm:gap-3 sm:px-4 sm:py-2.5 lg:px-4.5;
     background: color-mix(in oklab, var(--color-card) 94%, black);
   }
 
   .findings-item-status {
-    @apply flex items-center gap-2.5 sm:flex-col sm:items-center sm:justify-center sm:gap-3;
+    @apply flex items-center gap-2 sm:flex-col sm:items-center sm:justify-center sm:gap-2.5;
   }
 
   .findings-item[data-level="critical"] {
@@ -750,19 +750,27 @@
 
   .findings-item-icon-wrap {
     @apply grid shrink-0 place-items-center rounded-full;
-    width: clamp(2.12rem, 5.53vw, 2.49rem);
+    width: clamp(1.91rem, 4.98vw, 2.24rem);
     aspect-ratio: 1;
     border: 3px solid var(--finding-accent);
   }
 
+  .findings-item-critical-mark {
+    color: var(--finding-accent);
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 2.4vw, 1.18rem);
+    font-weight: 800;
+    line-height: 1;
+  }
+
   .findings-item-icon {
-    width: clamp(0.88rem, 2.3vw, 1.04rem);
-    height: clamp(0.88rem, 2.3vw, 1.04rem);
+    width: clamp(0.79rem, 2.07vw, 0.94rem);
+    height: clamp(0.79rem, 2.07vw, 0.94rem);
     color: var(--finding-accent);
   }
 
   .findings-item-badge {
-    @apply inline-flex min-h-9 items-center justify-center rounded-[0.95rem] px-3.5 text-[0.88rem] font-extrabold uppercase sm:min-h-0 sm:w-full sm:px-3 sm:py-2 sm:text-[0.84rem];
+    @apply inline-flex min-h-8 items-center justify-center px-3 text-[0.88rem] font-extrabold uppercase sm:min-h-0 sm:w-full sm:px-2.5 sm:py-1.5 sm:text-[0.84rem];
     font-family: var(--font-body);
     background: var(--finding-accent);
     color: oklch(0.98 0 0);
@@ -786,7 +794,7 @@
   }
 
   .findings-item-body {
-    @apply mt-1 sm:mt-1.5;
+    @apply mt-0.5 sm:mt-1;
     color: var(--muted-foreground);
     font-family: var(--font-body);
     font-size: clamp(0.8rem, 1.76vw, 1.56rem);
@@ -796,12 +804,16 @@
 
   @media (min-width: 64rem) {
     .findings-item-icon-wrap {
-      width: clamp(2.39rem, 6.22vw, 2.8rem);
+      width: clamp(2.15rem, 5.6vw, 2.52rem);
+    }
+
+    .findings-item-critical-mark {
+      font-size: clamp(1.06rem, 2.5vw, 1.28rem);
     }
 
     .findings-item-icon {
-      width: clamp(0.99rem, 2.59vw, 1.17rem);
-      height: clamp(0.99rem, 2.59vw, 1.17rem);
+      width: clamp(0.89rem, 2.33vw, 1.05rem);
+      height: clamp(0.89rem, 2.33vw, 1.05rem);
     }
 
     .findings-item-badge {

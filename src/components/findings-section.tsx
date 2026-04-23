@@ -1,4 +1,4 @@
-import { AlertCircle, MinusCircle, TrendingUp } from "lucide-react";
+import { MinusCircle, TrendingUp } from "lucide-react";
 
 const findings = [
   {
@@ -35,7 +35,7 @@ const findings = [
 
 function FindingIcon({ level }: { level: (typeof findings)[number]["level"] }) {
   if (level === "critical") {
-    return <AlertCircle className="findings-item-icon" strokeWidth={1.8} aria-hidden="true" />;
+    return <span className="findings-item-critical-mark" aria-hidden="true">!</span>;
   }
 
   if (level === "medium") {
