@@ -708,15 +708,15 @@
   }
 
   .findings-section {
-    @apply bg-background pt-8 pb-20 sm:pt-12 sm:pb-24;
+    @apply bg-background pt-10 pb-20 sm:pt-12 sm:pb-24;
   }
 
   .findings-header {
-    @apply relative mb-8 sm:mb-10;
+    @apply relative mb-10 px-1 sm:mb-12;
   }
 
   .findings-title {
-    @apply text-center;
+    @apply mx-auto text-center;
     font-size: clamp(1.45rem, 4.2vw, 4.15rem);
     line-height: 1.08;
     white-space: nowrap;
