@@ -574,9 +574,9 @@
     @apply flex items-center justify-center rounded-full font-bold;
     background: oklch(0.95 0.03 24);
     color: oklch(0.54 0.19 25);
-    width: clamp(2.7rem, 7vw, 3.5rem);
-    height: clamp(2.7rem, 7vw, 3.5rem);
-    font-size: clamp(1.1rem, 2.6vw, 1.5rem);
+    width: clamp(2.16rem, 5.6vw, 2.8rem);
+    height: clamp(2.16rem, 5.6vw, 2.8rem);
+    font-size: clamp(0.88rem, 2.08vw, 1.2rem);
     line-height: 1;
   }
 
@@ -867,9 +867,9 @@
    }
 
    .journey-step {
-     width: 2.6rem;
-     height: 2.6rem;
-     font-size: 1.1rem;
+      width: 2.08rem;
+      height: 2.08rem;
+      font-size: 0.88rem;
    }
 
    .journey-line {
