@@ -897,7 +897,7 @@
   }
 
   .final-deliverables-section {
-    @apply bg-background pt-[50px] pb-20 sm:pb-24;
+    @apply bg-background pt-[100px] pb-20 sm:pb-24;
   }
 
   .final-deliverables-header {
@@ -939,7 +939,7 @@
   }
 
   .faq-section {
-    @apply bg-background pt-[100px] pb-20 sm:pb-24;
+    @apply bg-background pt-[100px] pb-[130px] sm:pb-[146px];
   }
 
   .faq-shell {
