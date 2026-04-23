@@ -708,15 +708,15 @@
   }
 
   .findings-section {
-    @apply bg-background pt-3 pb-[50px] sm:pt-5 sm:pb-[50px];
+    @apply bg-background pt-[50px] pb-[50px];
   }
 
   .final-deliverables-section {
-    @apply bg-background pt-0 pb-20 sm:pb-24;
+    @apply bg-background pt-[50px] pb-20 sm:pb-24;
   }
 
   .final-deliverables-header {
-    @apply mt-[50px] mb-8 text-center sm:mb-10;
+    @apply mb-8 text-center sm:mb-10;
   }
 
   .final-deliverables-title {
@@ -754,7 +754,7 @@
   }
 
   .faq-section {
-    @apply bg-background pt-0 pb-20 sm:pb-24;
+    @apply bg-background pt-[100px] pb-20 sm:pb-24;
   }
 
   .faq-shell {
@@ -767,8 +767,8 @@
 
   .faq-title {
     font-family: var(--font-display);
-    font-size: clamp(2.4rem, 7vw, 7rem);
-    line-height: 0.92;
+    font-size: clamp(1.45rem, 4.2vw, 4.15rem);
+    line-height: 1.08;
     text-transform: uppercase;
     text-wrap: balance;
     color: var(--foreground);
@@ -801,7 +801,7 @@
 
   .faq-question {
     font-family: var(--font-body);
-    font-size: clamp(1.3rem, 3vw, 3.4rem);
+    font-size: clamp(1.17rem, 2.7vw, 3.06rem);
     font-weight: 800;
     line-height: 1.08;
     text-wrap: balance;
@@ -847,13 +847,13 @@
     max-width: 58rem;
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    font-size: clamp(1rem, 2vw, 1.28rem);
+    font-size: clamp(0.9rem, 1.8vw, 1.15rem);
     line-height: 1.6;
     text-wrap: pretty;
   }
 
   .audit-request-section {
-    @apply bg-background pt-0 pb-20 sm:pb-24;
+    @apply bg-background pt-[50px] pb-20 sm:pb-24;
   }
 
   .audit-request-shell {
