@@ -171,15 +171,16 @@ function Index() {
           <div className="hero-stack">
             <div className="hero-panel">
               <h1 className="display-hero">
-                <span className="hero-accent">
+                <span className="hero-accent block">
                   Site-ul tău
                   <br />
                   pierde clienți.
                 </span>
-                <br />
-                Noi îți spunem
-                <br />
-                de ce.
+                <span className="mt-[10px] block">
+                  Noi îți spunem
+                  <br />
+                  de ce.
+                </span>
               </h1>
 
               <div className="hero-copy">
