@@ -313,7 +313,7 @@ function Index() {
           </div>
 
           <div className="mid-callout">
-            <div className="mid-callout-chip">În timp ce</div>
+            <div className="mid-callout-chip">în timp ce</div>
             <p className="mid-callout-text">tu nu știi ce nu funcționează.</p>
             <div className="signal-divider" aria-hidden="true" />
           </div>
