@@ -266,7 +266,7 @@ function Index() {
                         <h3 className="journey-item-title">
                           {title === "Lead-ul se răcește înainte să fie contactat" ? (
                             <>
-                              <span className="sm:hidden">Lead-ul nu e contactat la timp</span>
+                              <span className="sm:hidden">Clientul nu e contactat la timp</span>
                               <span className="hidden sm:inline">{title}</span>
                             </>
                           ) : (
