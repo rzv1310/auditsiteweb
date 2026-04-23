@@ -5,6 +5,7 @@ import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 import { FindingsSection } from "@/components/findings-section";
 import { AuditRequestSection } from "@/components/audit-request-section";
 import { FinalDeliverablesSection } from "@/components/final-deliverables-section";
+import { FaqSection } from "@/components/faq-section";
 import { HeroAuditPreview } from "@/components/hero-audit-preview";
 import {
   Carousel,
@@ -332,6 +333,7 @@ function Index() {
       <FindingsSection />
       <FinalDeliverablesSection />
       <AuditRequestSection />
+      <FaqSection />
     </main>
   );
 }
