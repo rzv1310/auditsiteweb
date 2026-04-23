@@ -217,7 +217,10 @@ function Index() {
               <h2 className="journey-heading-title">
                 Traseul unui vizitator pe un site <span className="journey-heading-accent">ne</span>optimizat
               </h2>
-              <TabsList className="journey-tabs-list journey-tabs-list-desktop" aria-label="Tipuri de site-uri auditate">
+              <TabsList
+                className="journey-tabs-list journey-tabs-list-desktop !h-auto !rounded-none !bg-transparent !p-0 !shadow-none"
+                aria-label="Tipuri de site-uri auditate"
+              >
                 {journeyTabs.map(({ value, label }) => (
                   <TabsTrigger key={value} value={value} className="journey-tab-trigger">
                     {label}
