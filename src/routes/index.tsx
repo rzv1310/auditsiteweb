@@ -3,7 +3,7 @@ import * as React from "react";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
 import { HeroAuditPreview } from "@/components/hero-audit-preview";
-import problemeIdentificateImage from "@/assets/probleme-identificate.png";
+import problemeIdentificateImage from "@/assets/probleme-identificate.webp";
 import {
   Carousel,
   CarouselContent,
