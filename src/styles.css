@@ -219,12 +219,17 @@
   .site-footer-text,
   .site-footer-phone {
     font-family: var(--font-body);
-    font-size: var(--body-text-size);
+    font-size: calc(var(--body-text-size) * 0.8);
     line-height: 1.4;
   }
 
   .site-footer-text {
     color: var(--muted-foreground);
+  }
+
+  .site-footer-email:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
   }
 
   .site-footer-phone {
@@ -1354,9 +1359,14 @@
   .site-footer-shell {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1.25rem;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+  }
+
+  .site-footer-legal {
+    width: 100%;
+    text-align: center;
   }
 }
 
