@@ -2,27 +2,16 @@ import { ArrowLeft } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { SiteFooter } from "@/components/site-footer";
+import { buildPageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/politica-de-confidentialitate")({
-  head: () => ({
-    meta: [
-      { title: "GDPR - Protecția Datelor — SEO Doctor" },
-      {
-        name: "description",
-        content:
-          "Află cum respectă SEO Doctor cerințele GDPR, ce date personale prelucrează și care sunt drepturile tale.",
-      },
-      {
-        property: "og:title",
-        content: "GDPR - Protecția Datelor — SEO Doctor",
-      },
-      {
-        property: "og:description",
-        content:
-          "Detalii despre conformitatea GDPR, drepturile persoanelor vizate și modul în care SEO Doctor prelucrează datele personale.",
-      },
-    ],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "GDPR - Protecția Datelor — SEO Doctor",
+      description:
+        "Află cum respectă SEO Doctor cerințele GDPR, ce date personale prelucrează și care sunt drepturile tale.",
+      path: "/politica-de-confidentialitate",
+    }),
   component: PrivacyPolicyPage,
 });
 

@@ -1,7 +1,7 @@
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { Minus, Plus } from "lucide-react";
 
-const faqItems = [
+export const faqItems = [
   {
     value: "what-is-audit",
     question: "Ce este un audit al site-ului web?",

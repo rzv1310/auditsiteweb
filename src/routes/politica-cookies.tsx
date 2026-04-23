@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { SiteFooter } from "@/components/site-footer";
+import { buildPageHead } from "@/lib/seo";
 
 type CookieSection = {
   title: string;
@@ -12,22 +13,13 @@ type CookieSection = {
 };
 
 export const Route = createFileRoute("/politica-cookies")({
-  head: () => ({
-    meta: [
-      { title: "Politica Cookies — SEO Doctor" },
-      {
-        name: "description",
-        content:
-          "Află ce tipuri de cookie-uri folosește SEO Doctor, cum sunt utilizate și cum le poți gestiona.",
-      },
-      { property: "og:title", content: "Politica Cookies — SEO Doctor" },
-      {
-        property: "og:description",
-        content:
-          "Detalii despre cookie-urile esențiale, Stripe, Google Analytics și Google Ads, plus opțiunile tale de control.",
-      },
-    ],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "Politica Cookies — SEO Doctor",
+      description:
+        "Află ce tipuri de cookie-uri folosește SEO Doctor, cum sunt utilizate și cum le poți gestiona.",
+      path: "/politica-cookies",
+    }),
   component: CookiesPolicyPage,
 });
 

@@ -5,7 +5,7 @@ import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 import { FindingsSection } from "@/components/findings-section";
 import { AuditRequestSection } from "@/components/audit-request-section";
 import { FinalDeliverablesSection } from "@/components/final-deliverables-section";
-import { FaqSection } from "@/components/faq-section";
+import { FaqSection, faqItems } from "@/components/faq-section";
 import { HeroAuditPreview } from "@/components/hero-audit-preview";
 import { SiteFooter } from "@/components/site-footer";
 import {
@@ -15,24 +15,100 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  SEO_DEFAULT_DESCRIPTION,
+  SEO_DEFAULT_KEYWORDS,
+  SEO_DEFAULT_TITLE,
+  SEO_OG_IMAGE_PATH,
+  SEO_SITE_NAME,
+  SEO_SITE_URL,
+  buildPageHead,
+} from "@/lib/seo";
+
+const homepageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SEO_SITE_URL}/#organization`,
+      name: SEO_SITE_NAME,
+      url: SEO_SITE_URL,
+      image: `${SEO_SITE_URL}${SEO_OG_IMAGE_PATH}`,
+      email: "hello@seo-doctor.ro",
+      telephone: "+40742702982",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Str. Campia Libertății 33",
+        addressLocality: "București",
+        addressRegion: "Sector 3",
+        addressCountry: "RO",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+40742702982",
+        contactType: "customer support",
+        email: "hello@seo-doctor.ro",
+        availableLanguage: ["ro"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SEO_SITE_URL}/#website`,
+      url: SEO_SITE_URL,
+      name: SEO_DEFAULT_TITLE,
+      inLanguage: "ro-RO",
+      publisher: {
+        "@id": `${SEO_SITE_URL}/#organization`,
+      },
+    },
+    {
+      "@type": "Service",
+      "@id": `${SEO_SITE_URL}/#service`,
+      name: "Audit site web gratuit",
+      description: SEO_DEFAULT_DESCRIPTION,
+      url: SEO_SITE_URL,
+      serviceType: "Audit website",
+      provider: {
+        "@id": `${SEO_SITE_URL}/#organization`,
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "Romania",
+      },
+      availableLanguage: ["ro"],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SEO_SITE_URL}/#faq`,
+      mainEntity: faqItems.map(({ question, answer }) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: answer,
+        },
+      })),
+    },
+  ],
+};
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Audit Website — Optimizează conversiile" },
-      {
-        name: "description",
-        content:
-          "Landing page pentru serviciul de audit website: identifică rapid blocajele de SEO, viteză, securitate și accesibilitate.",
-      },
-      { property: "og:title", content: "Audit Website — Optimizează conversiile" },
-      {
-        property: "og:description",
-        content:
-          "Descoperă unde pierde clienți site-ul tău și ce trebuie reparat mai întâi, în ordinea corectă.",
-      },
-    ],
-  }),
+  head: () => {
+    const pageHead = buildPageHead({
+      title: SEO_DEFAULT_TITLE,
+      description: SEO_DEFAULT_DESCRIPTION,
+      path: "/",
+    });
+
+    return {
+      ...pageHead,
+      meta: [
+        ...pageHead.meta,
+        { name: "keywords", content: SEO_DEFAULT_KEYWORDS },
+        { "script:ld+json": homepageJsonLd },
+      ],
+    };
+  },
   component: Index,
 });
 

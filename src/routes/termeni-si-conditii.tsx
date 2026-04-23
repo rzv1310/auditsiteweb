@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { SiteFooter } from "@/components/site-footer";
+import { buildPageHead } from "@/lib/seo";
 
 type TermsSection = {
   title: string;
@@ -147,22 +148,13 @@ const sections: TermsSection[] = [
 ];
 
 export const Route = createFileRoute("/termeni-si-conditii")({
-  head: () => ({
-    meta: [
-      { title: "Termeni și Condiții — SEO Doctor" },
-      {
-        name: "description",
-        content:
-          "Citește Termenii și Condițiile SEO Doctor pentru utilizarea serviciilor de audit website și consultanță digitală.",
-      },
-      { property: "og:title", content: "Termeni și Condiții — SEO Doctor" },
-      {
-        property: "og:description",
-        content:
-          "Detalii despre utilizarea serviciilor SEO Doctor, condițiile comerciale, confidențialitate și contact.",
-      },
-    ],
-  }),
+  head: () =>
+    buildPageHead({
+      title: "Termeni și Condiții — SEO Doctor",
+      description:
+        "Citește Termenii și Condițiile SEO Doctor pentru utilizarea serviciilor de audit website și consultanță digitală.",
+      path: "/termeni-si-conditii",
+    }),
   component: TermsPage,
 });
 

@@ -1,0 +1,28 @@
+# Seo Doctor - Audit Site Web Gratuit
+
+> Audit website gratuit care identifică rapid blocajele SEO, CRO, viteză, securitate și alte probleme care afectează conversiile.
+
+## Despre serviciu
+
+Audit Site Web Gratuit este pagina SEO Doctor dedicată evaluării rapide a unui website. Scopul este identificarea clară a blocajelor tehnice și comerciale care reduc vizibilitatea în Google și pierderea de lead-uri sau vânzări.
+
+## Ce analizăm
+
+- SEO tehnic și on-page
+- CRO și claritatea mesajului
+- Viteza și experiența pe mobil
+- Securitate și bune practici
+- Formulare, tracking și accesibilitate
+
+## Contact
+
+- Website: https://auditsiteweb.seo-doctor.ro/
+- WhatsApp: +40 742 702 982
+- Email: hello@seo-doctor.ro
+
+## Pagini
+
+- [Pagina principală](https://auditsiteweb.seo-doctor.ro/)
+- [Termeni și condiții](https://auditsiteweb.seo-doctor.ro/termeni-si-conditii)
+- [Politica de confidențialitate](https://auditsiteweb.seo-doctor.ro/politica-de-confidentialitate)
+- [Politica cookies](https://auditsiteweb.seo-doctor.ro/politica-cookies)
