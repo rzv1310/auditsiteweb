@@ -12,6 +12,7 @@ import {
 
 const NETLIFY_FORM_NAME = "audit-request";
 const WEBSITE_PATTERN = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,63}(\/[^\s]*)?$/;
+const PHONE_PATTERN = /^\+?[0-9 ]+$/;
 
 export function AuditRequestSection() {
   const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
@@ -34,6 +35,15 @@ export function AuditRequestSection() {
     if (field.name === "website" && field.value.trim() && !WEBSITE_PATTERN.test(field.value.trim())) {
       field.setCustomValidity("Te rugăm introdu un website valid.");
       return;
+    }
+
+    if (field.name === "phone") {
+      const normalizedPhone = field.value.replace(/\s+/g, "").trim();
+
+      if (!PHONE_PATTERN.test(field.value.trim()) || normalizedPhone.replace(/^\+/, "").length < 10) {
+        field.setCustomValidity("Te rugăm introdu un număr de telefon valid.");
+        return;
+      }
     }
 
     field.setCustomValidity("");
@@ -122,6 +132,7 @@ export function AuditRequestSection() {
                 placeholder="07XX XXX XXX"
                 className="audit-request-input"
                 required
+                pattern="\+?[0-9 ]+"
                 onInvalid={handleInvalid}
                 onInput={resetValidationMessage}
               />
