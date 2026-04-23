@@ -13,15 +13,15 @@ const sections: TermsSection[] = [
   {
     title: "1. Introducere",
     paragraphs: [
-      "Bine ați venit la Auditor. Acești Termeni și Condiții guvernează utilizarea de către dumneavoastră a serviciului nostru, operat de Auditor SRL, Cod Unic de Înregistrare 49345207, cu sediul în Str. Campia Libertății 33, sector 3, București.",
+      "Bine ați venit la SEO Doctor. Acești Termeni și Condiții guvernează utilizarea de către dumneavoastră a serviciului nostru, operat de SEO Doctor SRL, Cod Unic de Înregistrare 49345207, cu sediul în Str. Campia Libertății 33, sector 3, București.",
       "Prin accesarea sau utilizarea Serviciului, sunteți de acord să respectați acești Termeni. Dacă nu sunteți de acord cu vreo parte a termenilor, atunci nu aveți permisiunea de a accesa Serviciul.",
     ],
   },
   {
     title: "2. Definiții",
     paragraphs: [
-      "Serviciu se referă la site-ul web și serviciile oferite de Auditor.",
-      'Termeni și Condiții (denumiți și "Termeni") reprezintă aceste Termeni și Condiții care formează întregul acord între dumneavoastră și Auditor SRL cu privire la utilizarea Serviciului.',
+      "Serviciu se referă la site-ul web și serviciile oferite de SEO Doctor.",
+      'Termeni și Condiții (denumiți și "Termeni") reprezintă aceste Termeni și Condiții care formează întregul acord între dumneavoastră și SEO Doctor SRL cu privire la utilizarea Serviciului.',
       "Conținut se referă la conținutul cum ar fi text, imagini sau alte informații care pot fi postate, încărcate, legate de sau puse la dispoziție prin Serviciu.",
     ],
   },
@@ -35,14 +35,14 @@ const sections: TermsSection[] = [
   {
     title: "4. Proprietate intelectuală",
     paragraphs: [
-      "Serviciul și conținutul său original, caracteristicile și funcționalitatea sunt și vor rămâne proprietatea exclusivă a Auditor SRL și a licențiatorilor săi. Serviciul este protejat de drepturi de autor, mărci comerciale și alte legi atât din România, cât și din străinătate.",
-      "Mărcile noastre comerciale și aspectul comercial nu pot fi utilizate în legătură cu niciun produs sau serviciu fără acordul prealabil scris al Auditor SRL.",
+      "Serviciul și conținutul său original, caracteristicile și funcționalitatea sunt și vor rămâne proprietatea exclusivă a SEO Doctor SRL și a licențiatorilor săi. Serviciul este protejat de drepturi de autor, mărci comerciale și alte legi atât din România, cât și din străinătate.",
+      "Mărcile noastre comerciale și aspectul comercial nu pot fi utilizate în legătură cu niciun produs sau serviciu fără acordul prealabil scris al SEO Doctor SRL.",
     ],
   },
   {
     title: "5. Limitarea răspunderii",
     paragraphs: [
-      "În niciun caz Auditor SRL, directorii, angajații, partenerii, agenții, furnizorii sau afiliații săi nu vor fi răspunzători pentru orice daune indirecte, incidentale, speciale, exemplare sau de consecință, inclusiv fără limitare, pierderea de profit, date, utilizare, bunăvoință sau alte pierderi intangibile, rezultate din: (i) accesul dumneavoastră la sau utilizarea sau imposibilitatea de a accesa sau utiliza Serviciul; (ii) orice conduită sau conținut al oricărei terțe părți pe Serviciu; (iii) orice conținut obținut de la Serviciu; și (iv) acces neautorizat, utilizare sau modificare a transmisiilor sau conținutului dumneavoastră.",
+      "În niciun caz SEO Doctor SRL, directorii, angajații, partenerii, agenții, furnizorii sau afiliații săi nu vor fi răspunzători pentru orice daune indirecte, incidentale, speciale, exemplare sau de consecință, inclusiv fără limitare, pierderea de profit, date, utilizare, bunăvoință sau alte pierderi intangibile, rezultate din: (i) accesul dumneavoastră la sau utilizarea sau imposibilitatea de a accesa sau utiliza Serviciul; (ii) orice conduită sau conținut al oricărei terțe părți pe Serviciu; (iii) orice conținut obținut de la Serviciu; și (iv) acces neautorizat, utilizare sau modificare a transmisiilor sau conținutului dumneavoastră.",
     ],
   },
   {
@@ -68,7 +68,7 @@ const sections: TermsSection[] = [
   {
     title: "9. Politica de rambursare",
     paragraphs: [
-      "Auditor SRL oferă servicii digitale care implică alocarea imediată de resurse și începerea muncii după procesarea plății. În consecință, toate plățile efectuate pentru serviciile noastre sunt nerambursabile.",
+      "SEO Doctor SRL oferă servicii digitale care implică alocarea imediată de resurse și începerea muncii după procesarea plății. În consecință, toate plățile efectuate pentru serviciile noastre sunt nerambursabile.",
       "După achiziționarea unui serviciu și confirmarea plății, echipa noastră începe să lucreze la implementarea soluțiilor personalizate pentru afacerea dumneavoastră. Datorită naturii acestor servicii și a resurselor dedicate, nu putem oferi rambursări pentru serviciile deja achiziționate, indiferent de stadiul implementării sau de rezultate.",
       "Vă recomandăm să analizați cu atenție descrierile serviciilor și să ne contactați pentru orice întrebări înainte de a face o achiziție. Suntem dedicați să oferim valoare reală pentru investiția dumneavoastră și vom lucra pentru a asigura satisfacția dumneavoastră în limitele serviciului achiziționat.",
     ],
@@ -88,14 +88,14 @@ const sections: TermsSection[] = [
   {
     title: "12. Descrierea serviciilor și obligațiile clientului",
     paragraphs: [
-      "Auditor SRL oferă servicii de audit al site-urilor web, analiză SEO, performanță, accesibilitate, securitate și consultanță strategică online. Serviciile sunt prestate conform specificațiilor agreate la momentul achiziției și pot include, fără a se limita la: audit tehnic complet, rapoarte detaliate cu recomandări și planuri de acțiune prioritizate.",
-      "Clientul se obligă să furnizeze accesul necesar la site-ul web și orice alte platforme relevante pentru prestarea serviciilor. Întârzierile în furnizarea accesului sau a materialelor solicitate pot afecta termenele de livrare, fără ca Auditor SRL să fie responsabil pentru aceste întârzieri.",
+      "SEO Doctor SRL oferă servicii de optimizare pentru motoare de căutare (SEO), marketing digital, audit tehnic al site-urilor web și consultanță strategică online. Serviciile sunt prestate conform specificațiilor agreate la momentul achiziției și pot include, fără a se limita la: cercetare de cuvinte cheie, optimizare on-page și off-page, creare de conținut optimizat, link building și raportare periodică.",
+      "Clientul se obligă să furnizeze accesul necesar la site-ul web, conturile de analytics, Search Console și orice alte platforme relevante pentru prestarea serviciilor. Întârzierile în furnizarea accesului sau a materialelor solicitate pot afecta termenele de livrare, fără ca SEO Doctor SRL să fie responsabil pentru aceste întârzieri.",
     ],
   },
   {
     title: "13. Condiții de plată",
     paragraphs: [
-      "Plățile pentru serviciile Auditor se efectuează conform facturii emise, prin transfer bancar sau prin intermediul platformei de plăți online Stripe. Moneda de plată este RON sau EUR, conform ofertei acceptate.",
+      "Plățile pentru serviciile SEO Doctor se efectuează conform facturii emise, prin transfer bancar sau prin intermediul platformei de plăți online Stripe. Moneda de plată este RON sau EUR, conform ofertei acceptate.",
       "Facturile sunt scadente în termen de 5 zile lucrătoare de la emitere, cu excepția cazului în care se convine altfel în scris. Neplata la termen poate duce la suspendarea temporară a serviciilor până la regularizarea situației financiare, fără ca aceasta să constituie o reziliere a contractului.",
     ],
   },
@@ -116,7 +116,7 @@ const sections: TermsSection[] = [
   {
     title: "16. Legătura cu alte politici",
     paragraphs: [
-      "Acești Termeni și Condiții trebuie citiți împreună cu următoarele politici ale Auditor, care fac parte integrantă din prezentul acord:",
+      "Acești Termeni și Condiții trebuie citiți împreună cu următoarele politici ale SEO Doctor, care fac parte integrantă din prezentul acord:",
     ],
     list: [
       "Politica de Cookies – descrie modul în care utilizăm cookie-urile și tehnologiile similare pe site-ul nostru.",
