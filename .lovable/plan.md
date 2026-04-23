@@ -1,54 +1,65 @@
 
-Obiectiv: uniformizez toate textele care nu sunt heading-uri (nu H1/H2/H3/H4/H5/H6) după aceeași scară responsive pe toată pagina.
+Obiectiv: înlocuirea animației actuale a punctelor luminoase din secțiunea „Traseul unui vizitator pe un site neoptimizat” cu o abordare robustă, care măsoară pozițiile reale ale bulinelor și animă markerul roșu exact între centrele lor, pe toată lungimea, indiferent de înălțimea fiecărui item.
 
-1. Introduc o scară tipografică unificată pentru textul de body în `src/styles.css`
-- Definesc o valoare standard pentru toate textele normale:
-  - mobil: `14.4px` (`0.9rem`)
-  - tabletă: între `14px` și `16px`
-  - desktop: `clamp(0.933rem, ..., 1.118rem)` astfel încât să rămână aproximativ între `14.93px` și `17.89px`
-- Păstrez heading-urile separate, fără să le modific.
+1. Refac structura secțiunii „journey”
+- Păstrez lista cu cele 4 etape, dar schimb sistemul de animație din „câte un dot pe fiecare segment” într-un singur overlay animat pentru întreaga coloană de buline.
+- Fiecare bulină numerotată va primi ref/identificare pentru a-i putea calcula poziția reală în DOM.
+- Linia verticală dintre buline va fi desenată ca un rail continuu, separat de markerul roșu animat.
 
-2. Aplic această scară pe toate clasele de text non-heading din pagină
-- Actualizez selectorii existenți care controlează paragrafe, descrieri, subtitluri, texte din carduri, texte din FAQ, câmpuri și etichete de formular, badge-uri informative și textele descriptive din preview-ul auditului.
-- Clasele vizate vor include în principal elemente precum:
-  - `.hero-copy`
-  - `.journey-item-body`
-  - `.feature-title`
-  - `.final-deliverable-card-body`
-  - `.faq-answer`
-  - `.audit-request-subtitle`
-  - `.audit-request-label`
-  - `.audit-request-input`
-  - `.audit-request-consent-copy`
-  - `.findings-item-body`
-  - și textele descriptive similare din secțiunea hero / findings / form / FAQ / preview audit
+2. Înlocuiesc animația CSS segmentată cu o animație bazată pe coordonate reale
+- Elimin dependența de `.journey-line-dot`, `nth-child`, delay-uri fixe și keyframe-ul care încearcă să ghicească distanța prin `100%`.
+- Adaug logică în `src/routes/index.tsx` care:
+  - măsoară centrul fiecărei buline;
+  - calculează distanțele reale 1→2, 2→3, 3→4;
+  - poziționează un singur marker roșu absolut pe aceeași axă verticală;
+  - îl animă între coordonate reale, astfel încât să parcurgă 100% din traseu.
 
-3. Păstrez separat textele care nu intră în regula „non-H”
-- Nu modific dimensiunile pentru:
-  - toate heading-urile reale (`h1`, `h2`, `h3`, etc.)
-  - titlurile stilizate care funcționează vizual ca heading-uri, chiar dacă sunt pe `div/span`, dacă trebuie să rămână ierarhia vizuală principală
-  - numerele din step circles, score-ul mare din audit, butonul CTA principal și alte elemente de accent care nu sunt body text
+3. Fac animația rezistentă la responsive și la înălțimi variabile
+- Recalculez pozițiile la:
+  - schimbarea tabului;
+  - resize de viewport;
+  - schimbări de layout pe mobil / desktop.
+- Folosesc `ResizeObserver` + listener de resize pentru a evita situațiile în care markerul rămâne calibrat pe o înălțime veche.
+- Mă asigur că animația pornește doar după ce pozițiile reale au fost măsurate.
 
-4. Curăț excepțiile inconsistente între breakpoint-uri
-- Elimin valorile izolate prea mari sau prea mici pentru textul normal, astfel încât aceleași tipuri de conținut să nu sară vizual între mobil, tabletă și desktop.
-- Unde există acum valori hardcoded diferite între secțiuni, le aliniez la noua scară comună.
+4. Sincronizez perfect mișcarea 1→2→3→4
+- Setez un ciclu unic de animație cu 3 segmente consecutive egale sau proporționale cu distanța reală.
+- Markerul va merge:
+  - din centrul bulinei 1 în centrul bulinei 2,
+  - apoi 2→3,
+  - apoi 3→4,
+  - apoi revine discret la început și reia bucla.
+- Dacă una dintre distanțe este mai mare, timpul acelui segment va fi ajustat proporțional, ca viteza vizuală să rămână constantă.
 
-5. Ajustez media queries fără să schimb layout-ul
-- Fac modificările în special în:
-  - stilurile de bază
-  - `@media (min-width: 1024px)` pentru desktop
-  - `@media (max-width: 639px)` / stilurile implicite pentru mobil
-- Păstrez layout-ul, spacing-ul și compoziția generală a paginii; schimb doar tipografia textelor non-heading.
+5. Curăț stilurile existente care interferează
+- Simplific sau elimin stilurile curente pentru:
+  - `.journey-line-dot`
+  - delay-urile `nth-child`
+  - keyframes-ul `journey-dot-travel`
+  - hack-urile cu `min-height`, `margin-bottom` și calc-uri pe gap, care nu garantează distanța reală.
+- Păstrez aspectul vizual dorit:
+  - linie neutră/subtilă;
+  - punct roșu luminos cu glow;
+  - aceeași estetică actuală.
 
-6. Verificare finală vizuală urmărită
-- Mobil: toate textele normale pornesc de la `14.4px`
-- Tabletă: textele normale rămân în intervalul `14–16px`
-- Desktop: textele normale cresc controlat între `14.93px` și `17.89px`
-- Rezultatul final trebuie să arate coerent între secțiuni, fără ca unele paragrafe să pară mai mari decât altele fără motiv.
+6. Verific compatibilitatea cu accesibilitatea și motion preferences
+- În `prefers-reduced-motion`, opresc deplasarea markerului și las doar rail-ul static plus bulinele numerotate.
+- Mă asigur că overlay-ul animat este `aria-hidden` și nu afectează conținutul textual sau ordinea de focus.
+
+Fișiere vizate
+- `src/routes/index.tsx`
+  - introduc refs pentru buline;
+  - adaug container overlay pentru traseu;
+  - mut logica de calcul și animație.
+- `src/styles.css`
+  - refac stilurile pentru rail și markerul roșu;
+  - elimin animația CSS segmentată actuală;
+  - adaug fallback pentru reduced motion.
 
 Detalii tehnice
-- Fișier principal: `src/styles.css`
-- Abordare recomandată:
-  - folosirea unei singure valori/clamp reutilizabile pentru body text
-  - apoi maparea claselor existente la această scară
-- Dacă apare un element non-heading care trebuie păstrat intenționat mai mare sau mai mic (ex. badge foarte mic sau text utilitar), îl tratez ca excepție explicită, nu ca regulă generală.
+- Abordarea nouă nu se mai bazează pe înălțimi CSS estimate, ci pe măsurători reale din DOM.
+- Pozițiile markerului vor fi calculate din `getBoundingClientRect()` relativ la containerul listei/tabului activ.
+- Animația poate fi făcută fie:
+  - cu `requestAnimationFrame` pentru control fin al poziției și sincronizării, fie
+  - cu CSS variables actualizate din React și o animație pe `transform`.
+- Recomandarea principală: un singur marker animat pe overlay, nu câte un dot per segment. Asta elimină complet problema actuală în care punctul nu traversează toată lungimea dintre buline.
