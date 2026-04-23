@@ -47,12 +47,20 @@ export function AuditRequestSection() {
     setSubmissionError("");
 
     try {
+      const encodedFormData = new URLSearchParams();
+
+      formData.forEach((value, key) => {
+        if (typeof value === "string") {
+          encodedFormData.append(key, value);
+        }
+      });
+
       const response = await fetch("/", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams(formData as Iterable<[string, string]>).toString(),
+        body: encodedFormData.toString(),
       });
 
       if (!response.ok) {
