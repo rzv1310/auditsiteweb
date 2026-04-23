@@ -222,7 +222,7 @@ function Index() {
                 aria-label="Tipuri de site-uri auditate"
               >
                 {journeyTabs.map(({ value, label }) => (
-                  <TabsTrigger key={value} value={value} className="journey-tab-trigger">
+                  <TabsTrigger key={value} value={value} className="journey-tab-trigger !rounded-none">
                     {label}
                   </TabsTrigger>
                 ))}
