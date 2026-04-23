@@ -1069,6 +1069,10 @@
     white-space: nowrap;
   }
 
+  .audit-request-subtitle-line {
+    display: inline;
+  }
+
   .audit-request-form {
     @apply mx-auto mt-9 w-full max-w-[774px] px-5 py-5 sm:mt-12 sm:px-7 sm:py-7;
     border: 1px solid color-mix(in oklab, var(--color-border) 92%, transparent);
@@ -1152,9 +1156,13 @@
 
   @media (max-width: 640px) {
     .audit-request-subtitle {
-      max-width: 18ch;
+      max-width: max-content;
       white-space: normal;
-      text-wrap: balance;
+      text-wrap: nowrap;
+    }
+
+    .audit-request-subtitle-line {
+      display: block;
     }
   }
 
