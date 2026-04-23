@@ -708,7 +708,7 @@
   }
 
   .findings-section {
-    @apply bg-background pt-3 pb-8 sm:pt-5 sm:pb-12;
+    @apply bg-background pt-3 pb-[50px] sm:pt-5 sm:pb-[50px];
   }
 
   .findings-header {
