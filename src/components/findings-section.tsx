@@ -1,4 +1,4 @@
-import { MinusCircle, TrendingUp } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 
 const findings = [
   {
@@ -39,7 +39,7 @@ function FindingIcon({ level }: { level: (typeof findings)[number]["level"] }) {
   }
 
   if (level === "medium") {
-    return <MinusCircle className="findings-item-icon" strokeWidth={1.8} aria-hidden="true" />;
+    return <span className="findings-item-medium-mark" aria-hidden="true">−</span>;
   }
 
   return <TrendingUp className="findings-item-icon" strokeWidth={1.8} aria-hidden="true" />;
