@@ -10,8 +10,8 @@ const findings = [
   {
     level: "critical",
     label: "CRITIC",
-    title: "Formular de contact nefuncțional sau fără confirmare –",
-    body: "lead-uri pierdute silențios",
+    title: "Banner cookie ilegal - consimțământ implicit, tracking activ înainte de acceptare",
+    body: "",
   },
   {
     level: "critical",
@@ -22,7 +22,7 @@ const findings = [
   {
     level: "high",
     label: "RIDICAT",
-    title: "LCP peste 4s pe mobil –",
+    title: "Viteză slabă pe mobil -",
     body: "jumătate din vizitatori pleacă înainte să citească o propoziție",
   },
   {
