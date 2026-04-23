@@ -768,7 +768,8 @@
 
   .journey-list {
     @apply flex flex-col;
-    gap: clamp(1.6rem, 3vw, 2.5rem);
+    --journey-gap: clamp(1.6rem, 3vw, 2.5rem);
+    gap: var(--journey-gap);
   }
 
   .journey-item {
@@ -794,7 +795,8 @@
   .journey-line {
     @apply relative mt-2 w-px flex-1 overflow-hidden sm:mt-3;
     background: var(--color-border);
-    min-height: clamp(1.5rem, 5vw, 2.5rem);
+    min-height: calc(clamp(1.5rem, 5vw, 2.5rem) + var(--journey-gap));
+    margin-bottom: calc(var(--journey-gap) * -1);
   }
 
   .journey-line-dot {
