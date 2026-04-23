@@ -648,19 +648,27 @@
 
   .feature-card:hover .feature-icon-box {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-accent);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--cta-bg) 50%, transparent),
+      0 18px 50px color-mix(in oklab, var(--cta-bg) 28%, transparent);
   }
 
   .feature-icon-box {
-    @apply flex h-[5.4rem] w-[5.4rem] shrink-0 items-center justify-center border transition duration-200 ease-out md:mb-6;
+    @apply flex h-[4.6rem] w-[4.6rem] shrink-0 items-center justify-center border transition duration-200 ease-out md:mb-6 md:h-[5.4rem] md:w-[5.4rem];
     border-color: var(--cta-bg);
     background: oklch(0.14 0 0 / 0.55);
   }
 
   .feature-icon {
     color: var(--cta-bg);
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  @media (min-width: 48rem) {
+    .feature-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
   }
 
   .feature-title {
