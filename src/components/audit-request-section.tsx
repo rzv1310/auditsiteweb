@@ -10,10 +10,12 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-const AUDIT_REQUEST_RECIPIENT = "hello@seo-doctor.ro";
+const NETLIFY_FORM_NAME = "audit-request";
 
 export function AuditRequestSection() {
   const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submissionError, setSubmissionError] = React.useState("");
 
   const handleInvalid = React.useCallback((event: React.FormEvent<HTMLInputElement>) => {
     const field = event.currentTarget;
@@ -35,27 +37,43 @@ export function AuditRequestSection() {
     event.currentTarget.setCustomValidity("");
   }, []);
 
-  const handleSubmit = React.useCallback((event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = React.useCallback(async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const phone = formData.get("phone")?.toString().trim() ?? "";
-    const website = formData.get("website")?.toString().trim() ?? "";
-    const subject = "Cerere audit gratuit";
-    const body = [
-      "Salut,",
-      "",
-      "Vreau un audit gratuit pentru website-ul meu.",
-      "",
-      `Telefon: ${phone}`,
-      `Website: ${website}`,
-    ].join("\n");
 
-    window.location.href = `mailto:${AUDIT_REQUEST_RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setIsSubmitting(true);
+    setSubmissionError("");
 
-    form.reset();
-    setIsSuccessOpen(true);
+    try {
+      const encodedFormData = new URLSearchParams();
+
+      formData.forEach((value, key) => {
+        if (typeof value === "string") {
+          encodedFormData.append(key, value);
+        }
+      });
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: encodedFormData.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      form.reset();
+      setIsSuccessOpen(true);
+    } catch {
+      setSubmissionError("A apărut o eroare la trimitere. Te rugăm încearcă din nou.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }, []);
 
   return (
@@ -76,7 +94,16 @@ export function AuditRequestSection() {
             </p>
           </div>
 
-          <form className="audit-request-form" onSubmit={handleSubmit}>
+          <form
+            name={NETLIFY_FORM_NAME}
+            method="POST"
+            data-netlify="true"
+            action="/"
+            className="audit-request-form"
+            onSubmit={handleSubmit}
+          >
+            <input type="hidden" name="form-name" value={NETLIFY_FORM_NAME} />
+
             <div className="audit-request-field">
               <label className="audit-request-label" htmlFor="audit-phone">
                 Telefon <span className="audit-request-required">*</span>
@@ -127,8 +154,14 @@ export function AuditRequestSection() {
               </span>
             </label>
 
-            <button type="submit" className="audit-request-button">
-              Trimite
+            {submissionError ? (
+              <p className="audit-request-consent-copy" role="alert">
+                {submissionError}
+              </p>
+            ) : null}
+
+            <button type="submit" className="audit-request-button" disabled={isSubmitting}>
+              {isSubmitting ? "Se trimite" : "Trimite"}
             </button>
           </form>
         </div>
