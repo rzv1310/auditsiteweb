@@ -713,7 +713,6 @@
 
   .findings-showcase-image {
     @apply block h-auto w-full;
-    border: 1px solid color-mix(in oklab, var(--color-border) 72%, transparent);
     box-shadow: 0 22px 70px oklch(0 0 0 / 0.28);
   }
 }
