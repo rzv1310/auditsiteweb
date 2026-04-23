@@ -775,13 +775,13 @@
   }
 
   .audit-request-subtitle {
-    @apply mx-auto mt-4 max-w-[18ch];
+    @apply mx-auto mt-4;
     color: var(--muted-foreground);
     font-family: var(--font-body);
     font-size: clamp(1rem, 1.8vw, 1.45rem);
     font-weight: 400;
     line-height: 1.35;
-    text-wrap: balance;
+    white-space: nowrap;
   }
 
   .audit-request-form {
