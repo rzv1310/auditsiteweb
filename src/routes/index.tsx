@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import * as React from "react";
 import { ArrowRight, Eye, Search, Shield, Zap } from "lucide-react";
 
+import { FindingsSection } from "@/components/findings-section";
 import { HeroAuditPreview } from "@/components/hero-audit-preview";
-import problemeIdentificateImage from "@/assets/probleme-identificate.webp";
 import {
   Carousel,
   CarouselContent,
@@ -327,18 +327,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="section-block bg-background findings-section-block">
-        <div className="section-shell findings-section-shell">
-          <div className="findings-showcase">
-            <img
-              src={problemeIdentificateImage}
-              alt="Exemplu de probleme identificate frecvent într-un audit de website"
-              className="findings-showcase-image"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
+      <FindingsSection />
     </main>
   );
 }
