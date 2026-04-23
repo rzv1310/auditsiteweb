@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
+import { SiteFooter } from "@/components/site-footer";
+
 type TermsSection = {
   title: string;
   paragraphs: ReactNode[];
@@ -166,54 +168,57 @@ export const Route = createFileRoute("/termeni-si-conditii")({
 
 function TermsPage() {
   return (
-    <main className="legal-page">
-      <div className="legal-page-shell">
-        <Link to="/" className="legal-back-link">
-          <ArrowLeft className="size-4" aria-hidden="true" />
-          Înapoi la pagina principală
-        </Link>
+    <>
+      <main className="legal-page">
+        <div className="legal-page-shell">
+          <Link to="/" className="legal-back-link">
+            <ArrowLeft className="size-4" aria-hidden="true" />
+            Înapoi la pagina principală
+          </Link>
 
-        <header className="legal-header">
-          <h1 className="legal-title">Termeni și Condiții</h1>
-        </header>
+          <header className="legal-header">
+            <h1 className="legal-title">Termeni și Condiții</h1>
+          </header>
 
-        <div className="legal-copy">
-          {sections.map(({ title, paragraphs, list, closing, contact }) => (
-            <section key={title} className="legal-section" aria-labelledby={title}>
-              <h2 id={title} className="legal-section-title">
-                {title}
-              </h2>
+          <div className="legal-copy">
+            {sections.map(({ title, paragraphs, list, closing, contact }) => (
+              <section key={title} className="legal-section" aria-labelledby={title}>
+                <h2 id={title} className="legal-section-title">
+                  {title}
+                </h2>
 
-              {paragraphs.map((paragraph, index) => (
-                <p key={`${title}-paragraph-${index}`} className="legal-paragraph">
-                  {paragraph}
-                </p>
-              ))}
+                {paragraphs.map((paragraph, index) => (
+                  <p key={`${title}-paragraph-${index}`} className="legal-paragraph">
+                    {paragraph}
+                  </p>
+                ))}
 
-              {contact ? (
-                <p className="legal-contact-line">
-                  Telefon:{" "}
-                  <a className="legal-contact-link" href="https://wa.me/40742702982" target="_blank" rel="noreferrer">
-                    +40 742 702 982
-                  </a>
-                </p>
-              ) : null}
+                {contact ? (
+                  <p className="legal-contact-line">
+                    Telefon:{" "}
+                    <a className="legal-contact-link" href="https://wa.me/40742702982" target="_blank" rel="noreferrer">
+                      +40 742 702 982
+                    </a>
+                  </p>
+                ) : null}
 
-              {list ? (
-                <ul className="legal-list">
-                  {list.map((item, index) => (
-                    <li key={`${title}-list-${index}`} className="legal-list-item">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              ) : null}
+                {list ? (
+                  <ul className="legal-list">
+                    {list.map((item, index) => (
+                      <li key={`${title}-list-${index}`} className="legal-list-item">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
 
-              {closing ? <p className="legal-paragraph">{closing}</p> : null}
-            </section>
-          ))}
+                {closing ? <p className="legal-paragraph">{closing}</p> : null}
+              </section>
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
