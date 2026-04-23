@@ -485,8 +485,14 @@
   }
 
   .journey-tabs-list {
-    @apply mt-5 flex h-auto w-full flex-wrap justify-start rounded-none bg-transparent p-0 sm:mt-6;
+    @apply mt-5 flex h-auto w-full flex-wrap justify-start rounded-none border-0 bg-transparent p-0 shadow-none sm:mt-6;
     gap: clamp(0.65rem, 1.4vw, 1rem);
+  }
+
+  .journey-tabs-list[data-orientation="horizontal"] {
+    background: transparent;
+    box-shadow: none;
+    border: 0;
   }
 
   .journey-tabs-carousel {
