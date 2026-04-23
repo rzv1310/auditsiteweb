@@ -672,14 +672,14 @@
   }
 
   .mid-callout-chip {
-    @apply inline-flex items-center justify-center px-6 py-2 text-[2.5rem] leading-none sm:text-[3.5rem];
+    @apply inline-flex items-center justify-center px-6 py-2 text-[2.25rem] leading-none sm:text-[3.15rem];
     font-family: var(--font-display);
     background: var(--color-primary);
     color: var(--color-primary-foreground);
   }
 
   .mid-callout-text {
-    @apply mt-6 max-w-4xl text-balance text-2xl leading-tight sm:text-5xl;
+    @apply mt-6 max-w-4xl text-balance text-[1.35rem] leading-tight sm:text-[2.7rem];
     color: var(--hero-copy);
   }
 
