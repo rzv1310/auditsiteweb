@@ -526,8 +526,9 @@
   }
 
   .journey-carousel-chip.is-active {
-    background: var(--color-primary);
-    box-shadow: inset 0 0 0 2px oklch(0.98 0 0 / 0.28);
+    border-color: oklch(0.98 0 0);
+    background: oklch(0.12 0 0);
+    box-shadow: none;
     color: oklch(0.98 0 0);
   }
 
@@ -552,8 +553,8 @@
   }
 
   .journey-tab-trigger[data-state="active"] {
-    border-color: transparent;
-    background: var(--color-primary);
+    border-color: oklch(0.98 0 0);
+    background: oklch(0.12 0 0);
     color: oklch(0.98 0 0);
     box-shadow: none;
   }
