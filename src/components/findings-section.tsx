@@ -56,9 +56,8 @@ export function FindingsSection() {
     <section className="section-block findings-section" aria-labelledby="findings-heading">
       <div className="section-shell">
         <div className="findings-header">
-          <h2 id="findings-heading" className="findings-title">
-            <span>Ce identificăm</span>
-            <span>în mod frecvent</span>
+          <h2 id="findings-heading" className="display-section findings-title">
+            Ce identificăm în mod frecvent
           </h2>
         </div>
 
