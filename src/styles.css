@@ -217,6 +217,12 @@
     @apply flex flex-col gap-3 py-6;
   }
 
+  .site-footer-legal {
+    font-family: var(--font-body);
+    font-size: calc(var(--body-text-size) * 0.8);
+    line-height: 1.4;
+  }
+
   .site-footer-text,
   .site-footer-phone {
     font-family: var(--font-body);
