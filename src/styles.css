@@ -110,6 +110,9 @@
   --shadow-accent: 0 0 0 1px oklch(0.64 0.25 29 / 0.35), 0 18px 50px oklch(0.64 0.25 29 / 0.18);
   --font-display: "Anton", sans-serif;
   --font-body: "Manrope", sans-serif;
+  --body-text-size: 0.9rem;
+  --body-text-tablet: clamp(0.875rem, 0.664rem + 0.527vw, 1rem);
+  --body-text-desktop: clamp(0.933rem, 0.501rem + 0.675vw, 1.118rem);
 }
 
 .dark {
@@ -341,10 +344,10 @@
   }
 
   .audit-score-label {
-    font-size: clamp(1rem, 2.1vw, 2.2rem);
+    font-size: var(--body-text-size);
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    line-height: 1.1;
+    line-height: 1.35;
   }
 
   .audit-score-value {
@@ -368,15 +371,16 @@
   }
 
   .audit-metric-label {
-    @apply text-sm sm:text-base;
     color: var(--muted-foreground);
     font-family: var(--font-body);
+    font-size: var(--body-text-size);
     line-height: 1.3;
   }
 
   .audit-metric-value {
-    @apply text-sm text-foreground sm:text-base;
+    color: var(--foreground);
     font-family: var(--font-body);
+    font-size: var(--body-text-size);
     line-height: 1;
   }
 
@@ -442,8 +446,9 @@
   }
 
   .hero-copy {
-    @apply mt-6 max-w-4xl text-pretty text-base leading-[1.6] sm:text-xl lg:text-[1.38rem];
+    @apply mt-6 max-w-4xl text-pretty leading-[1.6];
     color: var(--hero-copy);
+    font-size: var(--body-text-size);
   }
 
   .cta-row {
@@ -641,7 +646,7 @@
     color: var(--hero-copy);
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: clamp(0.855rem, 1.62vw, 1.242rem);
+    font-size: var(--body-text-size);
     line-height: 1.58;
     text-wrap: pretty;
   }
@@ -681,9 +686,10 @@
   }
 
   .feature-title {
-    @apply max-w-none text-base leading-[1.6] sm:text-xl md:max-w-[16ch] lg:text-[1.38rem];
+    @apply max-w-none leading-[1.6] md:max-w-[16ch];
     font-family: var(--font-body);
     font-weight: 400;
+    font-size: var(--body-text-size);
   }
 
   .mid-callout {
@@ -757,7 +763,7 @@
     @apply mt-4;
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    font-size: clamp(0.95rem, 1.5vw, 1.14rem);
+    font-size: var(--body-text-size);
     line-height: 1.6;
     text-wrap: pretty;
   }
@@ -856,7 +862,7 @@
     max-width: 58rem;
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    font-size: clamp(0.9rem, 1.8vw, 1.15rem);
+    font-size: var(--body-text-size);
     line-height: 1.6;
     text-wrap: pretty;
   }
@@ -886,7 +892,7 @@
     @apply mx-auto mt-4;
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    font-size: clamp(0.9rem, 1.62vw, 1.3rem);
+    font-size: var(--body-text-size);
     font-weight: 400;
     line-height: 1.35;
     white-space: nowrap;
@@ -906,7 +912,7 @@
     @apply mb-3 block;
     color: var(--foreground);
     font-family: var(--font-body);
-    font-size: clamp(1rem, 1.8vw, 1.62rem);
+    font-size: var(--body-text-size);
     font-weight: 500;
     line-height: 1.2;
   }
@@ -921,7 +927,7 @@
     background: oklch(0 0 0 / 0.48);
     color: var(--foreground);
     font-family: var(--font-body);
-    font-size: clamp(1.08rem, 2.07vw, 1.8rem);
+    font-size: var(--body-text-size);
     line-height: 1.2;
   }
 
@@ -950,7 +956,7 @@
   .audit-request-consent-copy {
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    font-size: clamp(0.86rem, 1.35vw, 1.02rem);
+    font-size: var(--body-text-size);
     line-height: 1.45;
     text-wrap: pretty;
   }
@@ -1080,7 +1086,7 @@
     @apply mt-0.5 sm:mt-1;
     color: var(--muted-foreground);
     font-family: var(--font-body);
-    font-size: clamp(0.8rem, 1.76vw, 1.56rem);
+    font-size: var(--body-text-size);
     line-height: 1.14;
     text-wrap: balance;
   }
