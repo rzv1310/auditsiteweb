@@ -1379,7 +1379,7 @@
   }
 
   .hero-section {
-    min-height: 100svh;
+    min-height: calc(100svh - 7rem);
     padding-block: clamp(1.25rem, 2.8vh, 2.5rem);
   }
 
@@ -1392,8 +1392,8 @@
   }
 
   .hero-stack {
-    --hero-desktop-rail-height: clamp(41rem, 82svh, 54rem);
-    min-height: calc(100svh - clamp(2.5rem, 5.6vh, 5rem));
+    --hero-desktop-rail-height: clamp(28rem, 56svh, 36rem);
+    min-height: calc(100svh - 7rem - clamp(2.5rem, 5.6vh, 5rem));
     align-items: stretch;
   }
 
@@ -1472,7 +1472,7 @@
   }
 
   .hero-side .audit-metrics {
-    margin-top: auto;
+    margin-top: 2.5rem;
     gap: 0.62rem;
   }
 
