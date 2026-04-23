@@ -206,6 +206,36 @@
     transform: translateY(-1px);
   }
 
+  .site-footer {
+    @apply border-t;
+    border-color: color-mix(in oklab, var(--color-border) 82%, transparent);
+    background: color-mix(in oklab, var(--color-background) 94%, black);
+  }
+
+  .site-footer-shell {
+    @apply flex flex-col gap-3 py-6;
+  }
+
+  .site-footer-text,
+  .site-footer-phone {
+    font-family: var(--font-body);
+    font-size: var(--body-text-size);
+    line-height: 1.4;
+  }
+
+  .site-footer-text {
+    color: var(--muted-foreground);
+  }
+
+  .site-footer-phone {
+    color: var(--foreground);
+  }
+
+  .site-footer-phone:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+  }
+
   .grid-stage {
     position: relative;
     overflow: hidden;
@@ -1319,6 +1349,14 @@
 
   .cta-row {
     margin-top: clamp(1.5rem, 2.6vh, 2rem);
+  }
+
+  .site-footer-shell {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    flex-wrap: nowrap;
   }
 }
 
