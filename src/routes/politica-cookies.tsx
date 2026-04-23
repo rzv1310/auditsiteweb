@@ -1,6 +1,8 @@
 import { ArrowLeft } from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
+import { SiteFooter } from "@/components/site-footer";
+
 export const Route = createFileRoute("/politica-cookies")({
   head: () => ({
     meta: [
@@ -63,33 +65,36 @@ const cookieSections = [
 
 function CookiesPolicyPage() {
   return (
-    <main className="legal-page">
-      <div className="legal-page-shell">
-        <Link to="/" className="legal-back-link">
-          <ArrowLeft className="size-4" aria-hidden="true" />
-          Înapoi la pagina principală
-        </Link>
+    <>
+      <main className="legal-page">
+        <div className="legal-page-shell">
+          <Link to="/" className="legal-back-link">
+            <ArrowLeft className="size-4" aria-hidden="true" />
+            Înapoi la pagina principală
+          </Link>
 
-        <header className="legal-header">
-          <h1 className="legal-title">Politica Cookies</h1>
-        </header>
+          <header className="legal-header">
+            <h1 className="legal-title">Politica Cookies</h1>
+          </header>
 
-        <div className="legal-copy">
-          {cookieSections.map(({ title, paragraphs }) => (
-            <section key={title} className="legal-section" aria-labelledby={title}>
-              <h2 id={title} className="legal-section-title">
-                {title}
-              </h2>
+          <div className="legal-copy">
+            {cookieSections.map(({ title, paragraphs }) => (
+              <section key={title} className="legal-section" aria-labelledby={title}>
+                <h2 id={title} className="legal-section-title">
+                  {title}
+                </h2>
 
-              {paragraphs.map((paragraph) => (
-                <p key={paragraph} className="legal-paragraph">
-                  {paragraph}
-                </p>
-              ))}
-            </section>
-          ))}
+                {paragraphs.map((paragraph) => (
+                  <p key={paragraph} className="legal-paragraph">
+                    {paragraph}
+                  </p>
+                ))}
+              </section>
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
