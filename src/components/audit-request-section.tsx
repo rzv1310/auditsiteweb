@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const NETLIFY_FORM_NAME = "audit-request";
+const WEBSITE_PATTERN = /^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,63}(\/[^\s]*)?$/;
 
 export function AuditRequestSection() {
   const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
@@ -26,6 +27,11 @@ export function AuditRequestSection() {
     }
 
     if (field.type === "url" && field.validity.typeMismatch) {
+      field.setCustomValidity("Te rugăm introdu un website valid.");
+      return;
+    }
+
+    if (field.name === "website" && field.value.trim() && !WEBSITE_PATTERN.test(field.value.trim())) {
       field.setCustomValidity("Te rugăm introdu un website valid.");
       return;
     }
@@ -128,7 +134,7 @@ export function AuditRequestSection() {
               <input
                 id="audit-website"
                 name="website"
-                type="url"
+                type="text"
                 inputMode="url"
                 placeholder="exemplu.ro"
                 className="audit-request-input"
