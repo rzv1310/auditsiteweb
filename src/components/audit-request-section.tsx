@@ -12,7 +12,7 @@ export function AuditRequestSection() {
           <h2 id="audit-request-heading" className="audit-request-title">
             Vreau Audit Gratuit
           </h2>
-          <p className="audit-request-subtitle">Completează formularul și primești auditul astăzi !</p>
+          <p className="audit-request-subtitle">Completează formularul și primești rezultatul astăzi !</p>
         </div>
 
         <form className="audit-request-form" onSubmit={handleSubmit}>
