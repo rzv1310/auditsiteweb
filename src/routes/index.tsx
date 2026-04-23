@@ -345,6 +345,22 @@ function Index() {
       <AuditRequestSection />
       <FaqSection />
       </main>
+
+      <footer className="site-footer">
+        <div className="section-shell site-footer-shell">
+          <p className="site-footer-text">© 2026 SEO Doctor</p>
+          <a
+            className="site-footer-phone"
+            href="https://wa.me/40742702982"
+            target="_blank"
+            rel="noreferrer"
+          >
+            +40 742 702 982
+          </a>
+          <p className="site-footer-text">hello@seo-doctor.ro</p>
+          <p className="site-footer-text">Termeni și condiții | GDPR | Cookies</p>
+        </div>
+      </footer>
     </>
   );
 }
