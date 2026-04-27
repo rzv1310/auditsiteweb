@@ -19,78 +19,9 @@ import {
   SEO_DEFAULT_DESCRIPTION,
   SEO_DEFAULT_KEYWORDS,
   SEO_DEFAULT_TITLE,
-  SEO_OG_IMAGE_PATH,
-  SEO_SITE_NAME,
-  SEO_SITE_URL,
   buildPageHead,
 } from "@/lib/seo";
-
-const homepageJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${SEO_SITE_URL}/#organization`,
-      name: SEO_SITE_NAME,
-      url: SEO_SITE_URL,
-      image: `${SEO_SITE_URL}${SEO_OG_IMAGE_PATH}`,
-      email: "hello@seo-doctor.ro",
-      telephone: "+40742702982",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Str. Campia Libertății 33",
-        addressLocality: "București",
-        addressRegion: "Sector 3",
-        addressCountry: "RO",
-      },
-      contactPoint: {
-        "@type": "ContactPoint",
-        telephone: "+40742702982",
-        contactType: "customer support",
-        email: "hello@seo-doctor.ro",
-        availableLanguage: ["ro"],
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${SEO_SITE_URL}/#website`,
-      url: SEO_SITE_URL,
-      name: SEO_DEFAULT_TITLE,
-      inLanguage: "ro-RO",
-      publisher: {
-        "@id": `${SEO_SITE_URL}/#organization`,
-      },
-    },
-    {
-      "@type": "Service",
-      "@id": `${SEO_SITE_URL}/#service`,
-      name: "Audit site web gratuit",
-      description: SEO_DEFAULT_DESCRIPTION,
-      url: SEO_SITE_URL,
-      serviceType: "Audit website",
-      provider: {
-        "@id": `${SEO_SITE_URL}/#organization`,
-      },
-      areaServed: {
-        "@type": "Country",
-        name: "Romania",
-      },
-      availableLanguage: ["ro"],
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${SEO_SITE_URL}/#faq`,
-      mainEntity: faqItems.map(({ question, answer }) => ({
-        "@type": "Question",
-        name: question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: answer,
-        },
-      })),
-    },
-  ],
-};
+import { buildHomepageJsonLd } from "@/lib/schema";
 
 export const Route = createFileRoute("/")({
   head: () => {
@@ -105,7 +36,7 @@ export const Route = createFileRoute("/")({
       meta: [
         ...pageHead.meta,
         { name: "keywords", content: SEO_DEFAULT_KEYWORDS },
-        { "script:ld+json": homepageJsonLd },
+        { "script:ld+json": buildHomepageJsonLd(faqItems) },
       ],
     };
   },
