@@ -34,7 +34,7 @@ export const organizationJsonLd = {
   url: SEO_SITE_URL,
   logo: {
     "@type": "ImageObject",
-    url: `${SEO_SITE_URL}/logo.ico`,
+    url: `${SEO_SITE_URL}/logo.png`,
   },
   image: `${SEO_SITE_URL}${SEO_OG_IMAGE_PATH}`,
   email: ORGANIZATION_EMAIL,
