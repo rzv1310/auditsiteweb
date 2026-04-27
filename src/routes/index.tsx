@@ -493,7 +493,7 @@ function Index() {
         <div className="section-shell">
           <div className="hero-stack">
             <div className="hero-panel">
-              <div className="hero-badge">AUDIT SITE WEB GRATUIT</div>
+              <div className="hero-badge">AUDIT WEBSITE GRATUIT</div>
               <h1 className="display-hero">
                 <span className="hero-accent block">Audit Site Gratuit</span>
                 <span className="mt-[15px] block">Află de ce pierzi clienți!</span>
@@ -501,12 +501,10 @@ function Index() {
 
               <div className="hero-copy">
                 <p>
-                  Indiferent că vinzi servicii sau produse, site-ul tău are un singur scop: să
-                  transforme vizitatorii în clienți.
+                    Indiferent că vinzi servicii sau produse, site-ul tău are un singur scop: să transforme vizitatorii în clienți.
                 </p>
                 <p className="mt-4">
-                  Auditul nostru îți arată exact unde se rupe lanțul și cum îl repari, în ordinea
-                  corectă.
+                    Analizăm SEO, viteză, UX, securitate, conținut, mobil și conformitate GDPR/ANPC, apoi îți arătăm ce trebuie reparat prima dată.
                 </p>
               </div>
 

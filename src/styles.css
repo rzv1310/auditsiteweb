@@ -1102,6 +1102,30 @@
     display: inline;
   }
 
+  .audit-request-highlights {
+    @apply mx-auto mt-5 flex flex-col items-center gap-2 sm:mt-6;
+    list-style: none;
+    padding: 0;
+  }
+
+  .audit-request-highlight {
+    @apply inline-flex items-center gap-2.5;
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: var(--body-text-size);
+    line-height: 1.4;
+  }
+
+  .audit-request-highlight::before {
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 9999px;
+    background: var(--audit-high);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--audit-high) 22%, transparent);
+    flex-shrink: 0;
+  }
+
   .audit-request-form {
     @apply mx-auto mt-9 w-full max-w-[774px] px-5 py-5 sm:mt-12 sm:px-7 sm:py-7;
     border: 1px solid color-mix(in oklab, var(--color-border) 92%, transparent);
@@ -1131,7 +1155,7 @@
     background: oklch(0 0 0 / 0.48);
     color: var(--foreground);
     font-family: var(--font-body);
-    font-size: var(--body-text-size);
+    font-size: max(1rem, var(--body-text-size));
     line-height: 1.2;
   }
 

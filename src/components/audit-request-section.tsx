@@ -139,8 +139,12 @@ export function AuditRequestSection() {
             </h2>
             <p className="audit-request-subtitle">
               <span className="audit-request-subtitle-line">Completează formularul</span>
-              <span className="audit-request-subtitle-line">și primești rezultatul astăzi !</span>
+              <span className="audit-request-subtitle-line">&nbsp;și primești rezultatul astăzi !</span>
             </p>
+            <ul className="audit-request-highlights">
+              <li className="audit-request-highlight">100% Gratuit</li>
+              <li className="audit-request-highlight">Recomandări clare, nu raport generic</li>
+            </ul>
           </div>
 
           <form
