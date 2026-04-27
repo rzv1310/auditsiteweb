@@ -478,11 +478,12 @@ function Index() {
         <div className="section-shell site-header-shell">
           <a
             className="site-contact-link"
-            href="#contact-form"
-            aria-label="Mergi la formularul de contact"
-            onClick={handleContactScroll}
+            href="https://wa.me/40742702982"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Scrie-ne pe WhatsApp"
           >
-            Contact
+            WhatsApp
           </a>
         </div>
       </header>
@@ -494,16 +495,8 @@ function Index() {
             <div className="hero-panel">
               <div className="hero-badge">AUDIT SITE WEB GRATUIT</div>
               <h1 className="display-hero">
-                <span className="hero-accent block">
-                  Site-ul tău
-                  <br />
-                  pierde clienți.
-                </span>
-                <span className="mt-[15px] block">
-                  Noi îți spunem
-                  <br />
-                  de ce.
-                </span>
+                <span className="hero-accent block">Audit Site Gratuit</span>
+                <span className="mt-[15px] block">Află de ce pierzi clienți!</span>
               </h1>
 
               <div className="hero-copy">
